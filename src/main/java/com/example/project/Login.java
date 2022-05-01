@@ -30,13 +30,6 @@ public class Login {
         this.ID = ID;
         this.password = password;
     }
-    public Person getType() {
-        return person;
-    }
-    public void defineType() throws SQLException {
-        Singleton_Connector instance = Singleton_Connector.getInstance();
-        person = instance.checkCredentials(ID, password);
-    }
 
 
     public Pane getPane() {

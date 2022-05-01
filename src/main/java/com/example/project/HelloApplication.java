@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
         login.Login_btn.setOnAction(event -> {
             login.ID_Password_Setter(Integer.parseInt(login.ID_txt.getText()), login.Password_txt.getText());
             try {
-                login.defineType();
+
                 /*
                 Order firstOrder = Order.getOrder(4,1);
                 System.out.println(firstOrder);
@@ -45,7 +45,6 @@ public class HelloApplication extends Application {
 
                 */
                 ArrayList<Order> orders = Order.getAllOrders(1);
-
                 for(Order o : orders)
                     o.test();
 

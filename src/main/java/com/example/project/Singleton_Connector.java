@@ -67,7 +67,7 @@ public class Singleton_Connector {
         try {
 
             while (resultSet.next()) {
-                userId = resultSet.getInt("User_Id");
+                userId = resultSet.getInt("User_ID");
                 orderId = resultSet.getInt("Order_ID");
                 String carType = resultSet.getString("Car_Type");
                 int price = resultSet.getInt("Price");
@@ -115,7 +115,7 @@ public class Singleton_Connector {
         try{
 
             while(resultSet.next()){
-                userId = resultSet.getInt("User_Id");
+                userId = resultSet.getInt("User_ID");
                 int orderId = resultSet.getInt("Order_ID");
                 String carType = resultSet.getString("Car_Type");
                 int price = resultSet.getInt("Price");
