@@ -1,10 +1,6 @@
 package com.example.project;
 
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
-import java.io.File;
-import java.security.spec.ECField;
 import java.sql.*;
 
 public class Singleton_Connector {
@@ -23,7 +19,7 @@ public class Singleton_Connector {
     }
 
     private void establishConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_database","root","rootpassword");;
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_database","root","rootpassword");
     }
 
 
@@ -33,7 +29,7 @@ public class Singleton_Connector {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         try {
-            while(resultSet.next()) {;
+            while(resultSet.next()) {
                 if(password.equals(resultSet.getString("Password"))) {
                     String name = resultSet.getString("Name");
                     int age = resultSet.getInt("Age");
@@ -41,6 +37,7 @@ public class Singleton_Connector {
                     String email = resultSet.getString("Email");
                     String phoneNumber = resultSet.getString("PhoneNumber");
                     System.out.println(name + " " + age + " " + address + " " + email +  " " + phoneNumber) ;
+
                     if(resultSet.getInt("AdminLevel") == 0)
                         return new Admin_User(ID, name, age, address, email, phoneNumber);
 
@@ -49,6 +46,7 @@ public class Singleton_Connector {
 
                 } else {
                     // Account exists but wrong password, to be implemented later
+                    System.out.println("Wrong password");
                 }
             }
         } catch (Exception e) {
