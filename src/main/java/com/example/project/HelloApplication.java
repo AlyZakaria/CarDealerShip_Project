@@ -31,16 +31,14 @@ public class HelloApplication extends Application {
             Singleton_Connector connector = Singleton_Connector.getInstance();
             int IDInput = Integer.parseInt(login.ID_txt.getText());
             String passwordInput = login.Password_txt.getText();
-            // FIXME: 5/2/2022 
             try {
                 person = connector.checkCredentials(IDInput, passwordInput);
                 MainScreen mainScreen = new MainScreen();
 
                 if(person != null) {
-                    Scene mainScene = new Scene(mainScreen.getMainPane(), 300, 240);
+                    Scene mainScene = new Scene(mainScreen.getMainPane());
 
                     stage.setScene(mainScene);
-                    stage.setMaximized(true);
 
                     stage.show();
                 }
