@@ -18,18 +18,6 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
 
-        final String pass = "";
-/*
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc","root",pass);
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from tbl_users");
-
-
-        while(resultSet.next()){
-            System.out.println(resultSet.getString("Name"));
-        }
-
-*/
         BorderPane main_pane = new BorderPane();
         HBox left_pane = new HBox();
         VBox top_pane = new VBox();
@@ -44,7 +32,7 @@ public class HelloApplication extends Application {
         stage.setMaximized(true);
 
         stage.setTitle("Hello!");
-        stage.setScene(scene);
+        stage.setScene(scene); 
         stage.show();
     }
 
