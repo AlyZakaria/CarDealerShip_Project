@@ -13,66 +13,45 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.concurrent.Flow;
 
 public class HelloApplication extends Application {
+    Person person;
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-
-
+        stage.setMaximized(true);
+        stage.resizableProperty().setValue(Boolean.FALSE);
 
         Login login = new Login();
 
         Pane test = login.getPane();
-        Person person;
 
-        //Event Handler
-
-        login.Login_btn.setOnAction(event -> {
-            login.ID_Password_Setter(Integer.parseInt(login.ID_txt.getText()), login.Password_txt.getText());
+        //login event handler
+        login.Login_btn.setOnAction(event ->  {
+            Singleton_Connector connector = Singleton_Connector.getInstance();
+            int IDInput = Integer.parseInt(login.ID_txt.getText());
+            String passwordInput = login.Password_txt.getText();
+            // FIXME: 5/2/2022 
             try {
+                person = connector.checkCredentials(IDInput, passwordInput);
+                MainScreen mainScreen = new MainScreen();
 
-                /*
-                Order firstOrder = Order.getOrder(4,1);
-                System.out.println(firstOrder);
-                 firstOrder.test();
-                if(firstOrder != null) {
-                    firstOrder.DeleteOrder(0, 1);
-                    firstOrder.test();
+                if(person != null) {
+                    Scene mainScene = new Scene(mainScreen.getMainPane(), 300, 240);
+
+                    stage.setScene(mainScene);
+                    stage.setMaximized(true);
+
+                    stage.show();
                 }
-                else
-                    System.out.println("Not Found");
-
-                */
-                ArrayList<Order> orders = Order.getAllOrders(1);
-                for(Order o : orders)
-                    o.test();
-
-
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-
         });
 
 
-
-//        BorderPane main_pane = new BorderPane();
-//        HBox left_pane = new HBox();
-//        VBox top_pane = new VBox();
-//        left_pane.setMinSize(60, 50);
-//        top_pane.setMinSize(60, 50);
-//
-//        left_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "000000"), CornerRadii.EMPTY, Insets.EMPTY)));
-//        top_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
-//
-//        main_pane.setLeft(left_pane);
-//        main_pane.setTop(top_pane);
-        //for full screen
-
-        stage.setMaximized(true);
-        Scene scene = new Scene(test, 300, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(test);
+        stage.setTitle("Project");
         stage.setScene(scene);
         stage.show();
     }
