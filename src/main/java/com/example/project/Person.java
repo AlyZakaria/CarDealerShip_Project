@@ -16,10 +16,9 @@ public abstract class  Person {
         Email = email;
         PhoneNumber = phoneNumber;
     }
-    public Person() {
-
-    }
-    public void test() {
+    public  void test() {
         System.out.println(this.Name);
     }
 }
+
+
