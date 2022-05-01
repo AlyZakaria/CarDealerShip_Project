@@ -13,26 +13,68 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
 
-        BorderPane main_pane = new BorderPane();
-        HBox left_pane = new HBox();
-        VBox top_pane = new VBox();
-        left_pane.setMinSize(60, 50);
-        top_pane.setMinSize(60, 50);
-        left_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "000000"), CornerRadii.EMPTY, Insets.EMPTY)));
-        top_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
-        main_pane.setLeft(left_pane);
-        main_pane.setTop(top_pane);
-        Scene scene = new Scene(main_pane, 300, 240);
-        //for full screen
-        stage.setMaximized(true);
 
+
+        Login login = new Login();
+
+        Pane test = login.getPane();
+        Person person;
+
+        //Event Handler
+
+        login.Login_btn.setOnAction(event -> {
+            login.ID_Password_Setter(Integer.parseInt(login.ID_txt.getText()), login.Password_txt.getText());
+            try {
+                login.defineType();
+                /*
+                Order firstOrder = Order.getOrder(4,1);
+                System.out.println(firstOrder);
+                 firstOrder.test();
+                if(firstOrder != null) {
+                    firstOrder.DeleteOrder(0, 1);
+                    firstOrder.test();
+                }
+                else
+                    System.out.println("Not Found");
+
+                */
+                ArrayList<Order> orders = Order.getAllOrders(1);
+
+                for(Order o : orders)
+                    o.test();
+
+
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
+        });
+
+
+
+//        BorderPane main_pane = new BorderPane();
+//        HBox left_pane = new HBox();
+//        VBox top_pane = new VBox();
+//        left_pane.setMinSize(60, 50);
+//        top_pane.setMinSize(60, 50);
+//
+//        left_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "000000"), CornerRadii.EMPTY, Insets.EMPTY)));
+//        top_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
+//
+//        main_pane.setLeft(left_pane);
+//        main_pane.setTop(top_pane);
+        //for full screen
+
+        stage.setMaximized(true);
+        Scene scene = new Scene(test, 300, 240);
         stage.setTitle("Hello!");
-        stage.setScene(scene); 
+        stage.setScene(scene);
         stage.show();
     }
 
