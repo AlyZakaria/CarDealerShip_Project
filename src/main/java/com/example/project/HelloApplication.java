@@ -18,31 +18,38 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
 
-        final String pass = "";
-/*
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc","root",pass);
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from tbl_users");
+        Login login = new Login();
+
+        Pane test = login.getPane();
+        Person person;
+        //Event Handler
+        login.Login_btn.setOnAction(event -> {
+            login.ID_Password_Setter(Integer.parseInt(login.ID_txt.getText()), login.Password_txt.getText());
+            try {
+                login.defineType();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        });
 
 
-        while(resultSet.next()){
-            System.out.println(resultSet.getString("Name"));
-        }
 
-*/
-        BorderPane main_pane = new BorderPane();
-        HBox left_pane = new HBox();
-        VBox top_pane = new VBox();
-        left_pane.setMinSize(60, 50);
-        top_pane.setMinSize(60, 50);
-        left_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "000000"), CornerRadii.EMPTY, Insets.EMPTY)));
-        top_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
-        main_pane.setLeft(left_pane);
-        main_pane.setTop(top_pane);
-        Scene scene = new Scene(main_pane, 300, 240);
-        //for full screen
+//        BorderPane main_pane = new BorderPane();
+//        HBox left_pane = new HBox();
+//        VBox top_pane = new VBox();
+//        left_pane.setMinSize(60, 50);
+//        top_pane.setMinSize(60, 50);
+//
+//        left_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "000000"), CornerRadii.EMPTY, Insets.EMPTY)));
+//        top_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
+//
+//        main_pane.setLeft(left_pane);
+//        main_pane.setTop(top_pane);
+//
+//
+//        //for full screen
         stage.setMaximized(true);
-
+        Scene scene = new Scene(test, 300, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
