@@ -16,37 +16,41 @@ import java.io.IOException;
 import java.util.concurrent.Flow;
 
 public class HelloApplication extends Application {
+    Person person;
     @Override
     public void start(Stage stage) throws IOException, SQLException {
+        stage.setMaximized(true);
+        stage.resizableProperty().setValue(Boolean.FALSE);
 
         Login login = new Login();
 
         Pane test = login.getPane();
-        Person person;
-        //Event Handler
-        // FIXME: 5/1/2022
+
+        //login event handler
+        login.Login_btn.setOnAction(event ->  {
+            Singleton_Connector connector = Singleton_Connector.getInstance();
+            int IDInput = Integer.parseInt(login.ID_txt.getText());
+            String passwordInput = login.Password_txt.getText();
+            try {
+                person = connector.checkCredentials(IDInput, passwordInput);
+                MainScreen mainScreen = new MainScreen();
+
+                if(person != null) {
+                    Scene mainScene = new Scene(mainScreen.getMainPane(), 300, 240);
+
+                    stage.setScene(mainScene);
+                    stage.setMaximized(true);
+
+                    stage.show();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        });
 
 
-        BorderPane main_pane = new BorderPane();
-        HBox left_pane = new HBox();
-        VBox top_pane = new VBox();
-        left_pane.setMinSize(60, 50);
-        top_pane.setMinSize(60, 50);
-
-        FlowPane center = new FlowPane();
-
-        left_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "000000"), CornerRadii.EMPTY, Insets.EMPTY)));
-        top_pane.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
-        center.setBackground(new Background(new BackgroundFill(Color.web("#" + "abcdef"), CornerRadii.EMPTY, Insets.EMPTY)));
-
-        main_pane.setLeft(left_pane);
-        main_pane.setTop(top_pane);
-        main_pane.setCenter(center);
-
-        //for full screen
-        stage.setMaximized(true);
-        Scene scene = new Scene(test, 300, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(test);
+        stage.setTitle("Project");
         stage.setScene(scene);
         stage.show();
     }

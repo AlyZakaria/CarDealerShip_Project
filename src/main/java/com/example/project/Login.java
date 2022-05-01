@@ -24,17 +24,17 @@ import java.sql.SQLException;
 public class Login {
     private int ID;
     private String password;
-    private Person person = new User();
+
+    public TextField ID_txt = new TextField();
+    public TextField Password_txt = new TextField();
+    public Button Login_btn = new Button("Login");
+    Person person;
 
     public void ID_Password_Setter(int ID, String password) {
         this.ID = ID;
         this.password = password;
     }
 
-    public void defineType() throws SQLException {
-        Singleton_Connector instance = Singleton_Connector.getInstance();
-        person = instance.checkCredentials(ID, password);
-    }
 
 
     public Pane getPane() {
@@ -44,10 +44,6 @@ public class Login {
         ImageView loginImg = new ImageView(image.getAbsolutePath());
         loginImg.setFitWidth(1100);
         fullPane.getChildren().add(loginImg);
-
-        TextField ID_txt = new TextField();
-        TextField Password_txt = new TextField();
-        Button Login_btn = new Button("Login");
 
         ID_txt.setPrefHeight(40);
         ID_txt.setPrefWidth(350);
@@ -68,18 +64,7 @@ public class Login {
         Login_btn.setPrefHeight(40);
         rightPane.add(Login_btn, 0, 2);
         fullPane.getChildren().add(rightPane);
-        Login_btn.setOnAction(event ->  {
-            Singleton_Connector connector = Singleton_Connector.getInstance();
-            int IDInput = Integer.parseInt(ID_txt.getText());
-            String passwordInput = Password_txt.getText();
-            try {
-                person = connector.checkCredentials(IDInput, passwordInput);
-                person.test();
 
-            } catch (SQLException e) {
-                e.getMessage();
-            }
-        });
         return fullPane;
     }
 
