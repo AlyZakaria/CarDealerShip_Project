@@ -31,6 +31,7 @@ public class HelloApplication extends Application {
             Singleton_Connector connector = Singleton_Connector.getInstance();
             int IDInput = Integer.parseInt(login.ID_txt.getText());
             String passwordInput = login.Password_txt.getText();
+            // FIXME: 5/2/2022 
             try {
                 person = connector.checkCredentials(IDInput, passwordInput);
                 MainScreen mainScreen = new MainScreen();
