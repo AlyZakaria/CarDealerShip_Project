@@ -29,15 +29,10 @@ public class HelloController {
         } catch (WrongPasswordException E) {
             status.setText("Wrong Password");
             password.clear();
-        } catch (InvalindInputException E) {
+        } catch (InvalidInputException E) {
             status.setText("Invalid ID");
             ID.clear();
             password.clear();
         }
-
-
-
     }
-
-
 }

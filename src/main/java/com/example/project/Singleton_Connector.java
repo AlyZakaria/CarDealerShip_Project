@@ -37,7 +37,7 @@ public class Singleton_Connector {
         try {
             ID = Integer.parseInt(ID_string);
         } catch (Exception e) {
-            throw  new InvalindInputException();
+            throw  new InvalidInputException();
         }
 
 
