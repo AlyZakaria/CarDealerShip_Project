@@ -25,11 +25,23 @@ public class Singleton_Connector {
 
     private void establishConnection() throws SQLException {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_database", "root", "rootpassword");
-        ;
     }
 
 
-    public Person checkCredentials(int ID, String password) throws SQLException {
+    public Person checkCredentials(String ID_string, String password) throws SQLException {
+        if(ID_string == "" || password == "" ) {
+            //wrong input
+            throw  new LoginExceptionEmpty();
+        }
+        int ID;
+        try {
+            ID = Integer.parseInt(ID_string);
+        } catch (Exception e) {
+            throw  new InvalindInputException();
+        }
+
+
+
         instance.establishConnection();
         String query = "SELECT * FROM tbl_users WHERE ID = " + ID;
         Statement statement = connection.createStatement();
@@ -50,10 +62,11 @@ public class Singleton_Connector {
                         return new User(ID, name, age, address, email, phoneNumber);
 
                 } else {
-                    // Account exists but wrong password, to be implemented later
+                    //Wrong password
+                    throw new WrongPasswordException();
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return null;

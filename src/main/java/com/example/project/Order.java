@@ -48,6 +48,6 @@ public class Order {
 
         public void test(){
             System.out.println(carType + " " + price +" " + Transmission + " " + Color + " " + Model + " " + year +
-                    " "  + kilometers + " " + ExtraInfo + " " + status );
+                    " "  + kilometers + " " + ExtraInfo + " " + status);
         }
 }

@@ -1,14 +1,18 @@
 package com.example.project;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.*;
 
@@ -16,40 +20,23 @@ import java.io.IOException;
 import java.util.concurrent.Flow;
 
 public class HelloApplication extends Application {
-    Person person;
+
+
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        stage.setMaximized(true);
-        stage.resizableProperty().setValue(Boolean.FALSE);
 
-        Login login = new Login();
 
-        Pane test = login.getPane();
-
-        //login event handler
-        login.Login_btn.setOnAction(event ->  {
-            Singleton_Connector connector = Singleton_Connector.getInstance();
-            int IDInput = Integer.parseInt(login.ID_txt.getText());
-            String passwordInput = login.Password_txt.getText();
-            try {
-                person = connector.checkCredentials(IDInput, passwordInput);
-                MainScreen mainScreen = new MainScreen();
-
-                if(person != null) {
-                    Scene mainScene = new Scene(mainScreen.getMainPane());
-
-                    stage.setScene(mainScene);
-
-                    stage.show();
-                }
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
+        Parent LoginScreen = ScreenSelector.getLoginScreen().load();
+        //To be able to drag it
+        LoginScreen.setOnMousePressed(pressEvent -> {
+            LoginScreen.setOnMouseDragged(dragEvent -> {
+                stage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+            });
         });
 
-
-        Scene scene = new Scene(test);
-        stage.setTitle("Project");
+        Scene scene = new Scene(LoginScreen);
+        stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }
