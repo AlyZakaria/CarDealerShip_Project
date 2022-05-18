@@ -10,5 +10,8 @@ public class ScreenSelector {
     public static FXMLLoader getLoginScreen() {
         return  new FXMLLoader(HelloApplication.class.getResource("LoginScreen.fxml"));
     }
+    public static FXMLLoader getUserMainScreen() {
+        return new FXMLLoader(HelloApplication.class.getResource("UserMainScreen.fxml"));
+    }
 
 }
