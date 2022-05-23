@@ -1,10 +1,4 @@
 package com.example.project;
-
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-
-import java.io.File;
-import java.security.spec.ECField;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -39,15 +33,12 @@ public class Singleton_Connector {
         } catch (Exception e) {
             throw  new InvalidInputException();
         }
-
-
-
         instance.establishConnection();
         String query = "SELECT * FROM tbl_users WHERE ID = " + ID;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         try {
-            while (resultSet.next()) {
+            while(resultSet.next()) {
                 if (password.equals(resultSet.getString("Password"))) {
                     String name = resultSet.getString("Name");
                     int age = resultSet.getInt("Age");
@@ -118,9 +109,9 @@ public class Singleton_Connector {
     }
 
     public ArrayList<Order> getAllOrders(int userId) throws SQLException {
-        
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
+        //why is there an ID? ID isn't needed @Aly
         String query = "SELECT * FROM tbl_orders WHERE User_ID = " + userId;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
@@ -147,8 +138,23 @@ public class Singleton_Connector {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-
     return orders;
+    }
+
+    public int getLastOrderID() throws SQLException {
+        instance.establishConnection();
+        String query = "SELECT max(Order_ID) FROM tbl_orders";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        int last = -1;
+        try {
+            while(resultSet.next()) {
+                last = resultSet.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return last +1;
     }
 }
 

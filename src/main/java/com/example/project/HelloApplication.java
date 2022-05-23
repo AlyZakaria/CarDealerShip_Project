@@ -7,16 +7,20 @@ import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.sql.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.Flow;
 
 public class HelloApplication extends Application {
@@ -25,6 +29,21 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
 
+//        //file chooser
+//        Pane pane = new Pane();
+//        Button btn = new Button("Click me");
+//        pane.getChildren().add(btn);
+//        btn.setOnAction(event -> {
+//            FileChooser fc = new FileChooser();
+//            List<File> list = fc.showOpenMultipleDialog(null);
+//            try {
+//                File_Handler.createOrderFile(list);
+//            } catch (Exception e) {
+//                System.out.println("here");
+//                System.out.println(e.getMessage());
+//            }
+//
+//        });
 
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
         //To be able to drag it

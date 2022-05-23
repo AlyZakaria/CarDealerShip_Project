@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,17 +22,18 @@ public class HelloController {
     public TextField ID;
     public PasswordField password;
     public Text status;
+    public Button loginBtn;
     private Stage stage;
     private Scene scene;
+    private Person person;
     public void exitBtn(ActionEvent event) {
-        System.out.println("test");
         System.exit(0);
     }
     public void LoginBtn(ActionEvent event) throws SQLException, IOException {
         Singleton_Connector instance = Singleton_Connector.getInstance();
 
         try{
-            instance.checkCredentials(ID.getText(), password.getText());
+            person = instance.checkCredentials(ID.getText(), password.getText());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             Parent UserScreen = ScreenSelector.getUserMainScreen().load();
             //To be able to drag it
@@ -41,7 +43,6 @@ public class HelloController {
                     stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
                 });
             });
-
             Scene scene = new Scene(UserScreen);
             stage.setScene(scene);
             stage.show();

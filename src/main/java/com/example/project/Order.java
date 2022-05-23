@@ -16,8 +16,12 @@ public class Order {
         private String ExtraInfo;
         private int status;
 
-        public Order(int userId,int orderId, String carType, int price, String Transmission, String Color,
-                     String Model, int year, int kilometers, String ExtraInfo, int status){
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public Order(int userId, int orderId, String carType, int price, String Transmission, String Color,
+                 String Model, int year, int kilometers, String ExtraInfo, int status){
          this.userId = userId;
          this.orderId = orderId;
          this.carType = carType;
