@@ -7,17 +7,56 @@ public abstract class  Person {
     private String Address;
     private String Email;
     private String PhoneNumber;
+    private int gender;
+    private String password;
+    private String National_ID;
 
-    public Person(int ID, String name, int age, String address, String email, String phoneNumber) {
+    public Person(int ID, String name, int age, String address, String email, String phoneNumber, int gender, String password, String National_ID) {
         this.ID = ID;
-        Name = name;
-        Age = age;
-        Address = address;
-        Email = email;
-        PhoneNumber = phoneNumber;
+        this.Name = name;
+        this.Age = age;
+        this.Address = address;
+        this.Email = email;
+        this.PhoneNumber = phoneNumber;
+        this.gender = gender;
+        this.password = password;
+        this.National_ID = National_ID;
     }
-    public  void test() {
-        System.out.println(this.Name);
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public int getAge() {
+        return Age;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNational_ID() {
+        return National_ID;
     }
 }
 

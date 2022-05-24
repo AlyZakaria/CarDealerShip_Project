@@ -16,8 +16,48 @@ public class Order {
         private String ExtraInfo;
         private int status;
 
+    public int getUserId() {
+        return userId;
+    }
+
     public int getOrderId() {
         return orderId;
+    }
+
+    public String getCarType() {
+        return carType;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getTransmission() {
+        return Transmission;
+    }
+
+    public String getColor() {
+        return Color;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getKilometers() {
+        return kilometers;
+    }
+
+    public String getExtraInfo() {
+        return ExtraInfo;
+    }
+
+    public int getStatus() {
+        return status;
     }
 
     public Order(int userId, int orderId, String carType, int price, String Transmission, String Color,
@@ -49,7 +89,10 @@ public class Order {
             Singleton_Connector instance = Singleton_Connector.getInstance();
             instance.deleteOrder(userId, orderId);
         }
-
+        public void AddOrder() throws SQLException {
+            Singleton_Connector instance = Singleton_Connector.getInstance();
+            instance.addOrder(this);
+        }
         public void test(){
             System.out.println(carType + " " + price +" " + Transmission + " " + Color + " " + Model + " " + year +
                     " "  + kilometers + " " + ExtraInfo + " " + status);

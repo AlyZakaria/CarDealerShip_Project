@@ -17,8 +17,10 @@ public class File_Handler {
     }
 
     public static void deleteOrder(Order order ) {
-        new File("Orders\\" + String.valueOf(order.getOrderId())).delete();
+        new File(
+                "Orders\\" + String.valueOf(order.getOrderId())).delete();
     }
+
     public static void createOrderFile(List<File> files) throws SQLException, IOException {
         Singleton_Connector instance = Singleton_Connector.getInstance();
         int last = instance.getLastOrderID();
@@ -32,6 +34,6 @@ public class File_Handler {
                     (new File(path + file.getName())).toPath(),
                     StandardCopyOption.REPLACE_EXISTING);
         }
-
     }
+    
 }

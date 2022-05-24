@@ -45,6 +45,18 @@ public class HelloApplication extends Application {
 //
 //        });
 
+//        Singleton_Connector instance = Singleton_Connector.getInstance();
+//        instance.addOrder(new Order(1, 2, "Sedan", 500, "automatic", "red", "test",
+//                2001, 90, "sh8ala", 1));
+
+        Singleton_Connector instance = Singleton_Connector.getInstance();
+        try {
+            instance.addUser(new User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001"));
+        } catch (UserExistsException e) {
+            System.out.println("user exists");
+        }
+        // when creating an order, you have to set the orderID to be the last one, use getLastOrderID
+
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
         //To be able to drag it
         LoginScreen.setOnMousePressed(pressEvent -> {

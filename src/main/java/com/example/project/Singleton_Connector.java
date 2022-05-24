@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Singleton_Connector {
-    Connection connection;
+    private Connection connection;
     private static Singleton_Connector instance;
 
     private Singleton_Connector() {
@@ -20,7 +20,9 @@ public class Singleton_Connector {
     private void establishConnection() throws SQLException {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_database", "root", "rootpassword");
     }
-
+    private void closeConnection() throws SQLException {
+        connection.close();
+    }
 
     public Person checkCredentials(String ID_string, String password) throws SQLException {
         if(ID_string == "" || password == "" ) {
@@ -45,12 +47,15 @@ public class Singleton_Connector {
                     String address = resultSet.getString("Address");
                     String email = resultSet.getString("Email");
                     String phoneNumber = resultSet.getString("PhoneNumber");
+                    String password_DB = resultSet.getString("Password");
+                    int gender = resultSet.getInt("Gender");
+                    String National_ID = resultSet.getString("National_ID");
                     System.out.println(name + " " + age + " " + address + " " + email + " " + phoneNumber);
                     if (resultSet.getInt("AdminLevel") == 0)
-                        return new Admin_User(ID, name, age, address, email, phoneNumber);
+                        return new Admin_User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
 
                     else
-                        return new User(ID, name, age, address, email, phoneNumber);
+                        return new User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
 
                 } else {
                     //Wrong password
@@ -59,6 +64,8 @@ public class Singleton_Connector {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
         }
         return null;
     }
@@ -90,6 +97,8 @@ public class Singleton_Connector {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
         }
 
         return null;
@@ -97,13 +106,15 @@ public class Singleton_Connector {
 
     public void deleteOrder(int userId , int orderId) throws SQLException {
         instance.establishConnection();
-        String query = "DELETE FROM tbl_orders WHERE User_ID = " + userId + " AND Order_ID = " + orderId;
+            String query = "DELETE FROM tbl_orders WHERE User_ID = " + userId + " AND Order_ID = " + orderId;
         Statement statement = connection.createStatement();
         try {
             int resultSet = statement.executeUpdate(query);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
         }
 
     }
@@ -135,8 +146,10 @@ public class Singleton_Connector {
                         Model, year, kilometers, ExtraInfo, status) );
             }
 
-        }catch(Exception e){
+        } catch(Exception e){
             System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
         }
     return orders;
     }
@@ -153,8 +166,97 @@ public class Singleton_Connector {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
         }
         return last +1;
+    }
+
+    public int getLastUserID() throws SQLException {
+        instance.establishConnection();
+        String query = "SELECT max(User_ID) FROM tbl_users";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        int last = -1;
+        try {
+            while(resultSet.next()) {
+                last = resultSet.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+        return last +1;
+    }
+
+    public void addOrder(Order order) throws SQLException {
+        instance.establishConnection();
+        String query = "INSERT INTO `project_database`.`tbl_orders` (User_ID, Order_ID, Car_Type, Price, Transmission, Color, Model, Year, Kilometers, Extra_Info, Status)"
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setInt(1, order.getUserId());
+            preparedStmt.setInt(2, order.getOrderId() );
+            preparedStmt.setString(3, order.getCarType());
+            preparedStmt.setInt(4, order.getPrice());
+            preparedStmt.setString(5,order.getTransmission() );
+            preparedStmt.setString(6, order.getColor());
+            preparedStmt.setString(7, order.getModel() );
+            preparedStmt.setInt(8, order.getYear());
+            preparedStmt.setInt(9, order.getKilometers());
+            preparedStmt.setString(10, order.getExtraInfo() );
+            preparedStmt.setInt(11, order.getStatus());
+            preparedStmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            connection.close();
+        }
+    }
+    private int userExists(String National_ID) throws SQLException {
+        instance.establishConnection();
+        String query = "SELECT * FROM tbl_users WHERE National_ID = " + National_ID;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        int ID = -1;
+        try {
+            while(resultSet.next()) {
+                ID = resultSet.getInt("ID");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+        return ID;
+    }
+    public void addUser(User user) throws SQLException {
+        instance.establishConnection();
+        if(userExists(user.getNational_ID()) != -1) {
+            throw new UserExistsException();
+        }
+        String query = "INSERT INTO `project_database`.`tbl_users` (ID, Name, Age, Address, Email, PhoneNumber, AdminLevel, Password, Gender, National_ID)"
+                +   "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setInt(1, user.getID());
+            preparedStmt.setString(2, user.getName());
+            preparedStmt.setInt(3, user.getAge());
+            preparedStmt.setString(4, user.getAddress());
+            preparedStmt.setString(5, user.getEmail());
+            preparedStmt.setString(6, user.getPhoneNumber());
+            preparedStmt.setInt(7, 0);
+            preparedStmt.setString(8, user.getPassword());
+            preparedStmt.setInt(9, user.getGender());
+            preparedStmt.setString(10, user.getNational_ID());
+
+            preparedStmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            connection.close();
+        }
     }
 }
 
