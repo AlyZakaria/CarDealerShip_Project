@@ -8,10 +8,21 @@ import javafx.scene.paint.Color;
 
 public class ScreenSelector {
     public static FXMLLoader getLoginScreen() {
-        return  new FXMLLoader(HelloApplication.class.getResource("LoginScreen.fxml"));
+        return new FXMLLoader(HelloApplication.class.getResource("LoginScreen.fxml"));
     }
     public static FXMLLoader getUserMainScreen() {
         return new FXMLLoader(HelloApplication.class.getResource("UserMainScreen.fxml"));
     }
-
+    public static FXMLLoader getSettingScreen(){
+        return new FXMLLoader(HelloApplication.class.getResource("SettingScreen.fxml"));
+    }
+    public static FXMLLoader getHomeScreen(){
+        return new FXMLLoader(HelloApplication.class.getResource("HomeScreen.fxml"));
+    }
+    public static FXMLLoader getChangePassScreen(){
+        return new FXMLLoader(HelloApplication.class.getResource("ChangePassScreen.fxml"));
+    }
+    public static FXMLLoader getMyOrders(){
+        return new FXMLLoader(HelloApplication.class.getResource("MyOrders.fxml"));
+    }
 }

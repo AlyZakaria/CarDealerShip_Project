@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.MainScreenController">
+   <children>
+      <AnchorPane layoutX="54.0" layoutY="21.0" prefHeight="365.0" prefWidth="467.0">
+         <children>
+            <Button fx:id="ChangePassBtn" layoutX="77.0" layoutY="84.0" mnemonicParsing="false" onAction="#ChangePassBtn" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #0598ff; -fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: white; -fx-border-width: 2px; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Change Password" textFill="WHITE" />
+            <Button layoutX="284.0" layoutY="84.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: #0598ff; -fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: white; -fx-border-width: 2px; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Edit Info" textFill="WHITE" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

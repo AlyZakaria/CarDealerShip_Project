@@ -1,6 +1,6 @@
 package com.example.project;
 
-public abstract class  Person {
+public class  Person {
     private int ID;
     private String Name;
     private int Age;
