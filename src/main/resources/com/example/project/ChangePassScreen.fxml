@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.MainScreenController">
+   <children>
+      <AnchorPane layoutX="71.0" layoutY="68.0" prefHeight="284.0" prefWidth="440.0">
+         <children>
+            <Label layoutX="44.0" layoutY="54.0" prefHeight="26.0" prefWidth="86.0" text="Old Password: " textFill="#0598ff" />
+            <TextField fx:id="oldPass" layoutX="131.0" layoutY="55.0" />
+            <TextField fx:id="newPass" layoutX="132.0" layoutY="114.0" />
+            <Label layoutX="43.0" layoutY="118.0" prefHeight="18.0" prefWidth="86.0" text="New Password: " textFill="#0598ff" />
+            <Button layoutX="180.0" layoutY="172.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: #0598ff; -fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: white; -fx-border-width: 2px; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Change" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

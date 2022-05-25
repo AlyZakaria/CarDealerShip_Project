@@ -16,9 +16,10 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class HelloController {
-
+    @FXML
     public TextField ID;
     public PasswordField password;
     public Text status;
@@ -29,13 +30,24 @@ public class HelloController {
     public void exitBtn(ActionEvent event) {
         System.exit(0);
     }
+
+
+
     public void LoginBtn(ActionEvent event) throws SQLException, IOException {
         Singleton_Connector instance = Singleton_Connector.getInstance();
+
 
         try{
             person = instance.checkCredentials(ID.getText(), password.getText());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            Parent UserScreen = ScreenSelector.getUserMainScreen().load();
+
+
+            FXMLLoader loader = ScreenSelector.getUserMainScreen();
+            Parent UserScreen = loader.load();
+            MainScreenController mainScreen = loader.getController();
+            mainScreen.sendPersonData(person);
+
+
             //To be able to drag it
             UserScreen.setOnMousePressed(pressEvent -> {
                 UserScreen.setOnMouseDragged(dragEvent -> {
@@ -43,6 +55,8 @@ public class HelloController {
                     stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
                 });
             });
+
+
             Scene scene = new Scene(UserScreen);
             stage.setScene(scene);
             stage.show();
@@ -59,5 +73,7 @@ public class HelloController {
             password.clear();
         }
     }
+
+
 
 }

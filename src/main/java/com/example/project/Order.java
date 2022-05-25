@@ -83,9 +83,9 @@ public class Order {
             return instance.checkOrder(userId,orderId);
         }
 
-        public static ArrayList<Order> getAllOrders(int userId) throws SQLException {
+        public static ArrayList<Order> getAllUserOrders(int userId) throws SQLException {
             Singleton_Connector instance = Singleton_Connector.getInstance();
-            return instance.getAllOrders(userId);
+            return instance.getAllUserOrders(userId);
         }
 
         public void DeleteOrder() throws SQLException {
@@ -97,6 +97,10 @@ public class Order {
             Singleton_Connector instance = Singleton_Connector.getInstance();
             instance.addOrder(this);
             File_Handler.createOrderFile(list, this);
+        }
+        public static ArrayList<Order> getAllOrders() throws SQLException {
+            Singleton_Connector instance = Singleton_Connector.getInstance();
+            return instance.getAllOrders();
         }
         public void test(){
             System.out.println(carType + " " + price +" " + Transmission + " " + Color + " " + Model + " " + year +
