@@ -26,7 +26,7 @@ public class MainScreenController implements Initializable{
     @FXML
     private TextField name;
     @FXML
-    private AnchorPane MainPane;
+    private AnchorPane MainPane = new AnchorPane();
 
     @FXML
     private TextField date;

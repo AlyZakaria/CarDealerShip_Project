@@ -46,7 +46,7 @@ public class HelloApplication extends Application {
 //        });
 
 //        Singleton_Connector instance = Singleton_Connector.getInstance();
-//        Order order = new Order(1, instance.getLastOrderID(), "Sedan", 500, "automatic", "red", "test",
+//        Order order = new Order(1, 3, "Sedan", 500, "automatic", "red", "test",
 //                2001, 90, "sh8ala", 1);
 //        order.AddOrder(null);
 //        order.DeleteOrder();
@@ -75,7 +75,6 @@ public class HelloApplication extends Application {
                 stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
             });
         });
-
         Scene scene = new Scene(LoginScreen);
         stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         stage.setScene(scene);

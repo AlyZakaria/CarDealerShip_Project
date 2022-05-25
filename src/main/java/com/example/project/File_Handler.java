@@ -20,8 +20,10 @@ public class File_Handler {
     public static void deleteOrder(Order order ) {
         File file = new File("Orders\\" + String.valueOf(order.getOrderId()));
         File files[] = file.listFiles();
-        for(File f : files) {
-            f.delete();
+        if(files.length > 0) {
+            for (File f : files) {
+                f.delete();
+            }
         }
         file.delete();
     }
@@ -32,11 +34,12 @@ public class File_Handler {
 
         String path = newFile.getAbsolutePath() + "\\";
         System.out.println(path);
-        for(File file : files) {
-            Files.copy(file.toPath(),
-                    (new File(path + file.getName())).toPath(),
-                    StandardCopyOption.REPLACE_EXISTING);
+        if(files != null) {
+            for(File file : files) {
+                Files.copy(file.toPath(),
+                        (new File(path + file.getName())).toPath(),
+                        StandardCopyOption.REPLACE_EXISTING);
+            }
         }
     }
-    
 }
