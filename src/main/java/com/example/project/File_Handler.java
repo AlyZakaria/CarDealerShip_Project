@@ -11,20 +11,23 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.List;
 
+
 public class File_Handler {
     public static File getOrderDirectory(Order order) {
         return new File("Orders\\" + String.valueOf(order.getOrderId()));
     }
 
     public static void deleteOrder(Order order ) {
-        new File(
-                "Orders\\" + String.valueOf(order.getOrderId())).delete();
+        File file = new File("Orders\\" + String.valueOf(order.getOrderId()));
+        File files[] = file.listFiles();
+        for(File f : files) {
+            f.delete();
+        }
+        file.delete();
     }
 
-    public static void createOrderFile(List<File> files) throws SQLException, IOException {
-        Singleton_Connector instance = Singleton_Connector.getInstance();
-        int last = instance.getLastOrderID();
-        File newFile = new File("Orders\\" + String.valueOf(last));
+    public static void createOrderFile(List<File> files, Order order) throws SQLException, IOException {
+        File newFile = new File("Orders\\" + String.valueOf(order.getOrderId()));
         newFile.mkdir();
 
         String path = newFile.getAbsolutePath() + "\\";

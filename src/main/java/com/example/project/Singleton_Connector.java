@@ -104,21 +104,35 @@ public class Singleton_Connector {
         return null;
     }
 
-    public void deleteOrder(int userId , int orderId) throws SQLException {
+    public void deleteOrder(Order order) throws SQLException {
         instance.establishConnection();
-            String query = "DELETE FROM tbl_orders WHERE User_ID = " + userId + " AND Order_ID = " + orderId;
+        String query = "DELETE FROM tbl_orders WHERE Order_ID = " + order.getOrderId();
         Statement statement = connection.createStatement();
         try {
             int resultSet = statement.executeUpdate(query);
+
         }
         catch(Exception e){
             System.out.println(e.getMessage());
         } finally {
             instance.closeConnection();
         }
-
     }
 
+    public void deleteUser(User user) throws SQLException {
+        instance.establishConnection();
+        String query = "DELETE FROM tbl_users WHERE ID = " +user.getID();
+        Statement statement = connection.createStatement();
+        try {
+            int resultSet = statement.executeUpdate(query);
+
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+    }
     public ArrayList<Order> getAllOrders(int userId) throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
@@ -232,10 +246,10 @@ public class Singleton_Connector {
         return ID;
     }
     public void addUser(User user) throws SQLException {
-        instance.establishConnection();
         if(userExists(user.getNational_ID()) != -1) {
             throw new UserExistsException();
         }
+        instance.establishConnection();
         String query = "INSERT INTO `project_database`.`tbl_users` (ID, Name, Age, Address, Email, PhoneNumber, AdminLevel, Password, Gender, National_ID)"
                 +   "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {

@@ -58,6 +58,9 @@ public abstract class  Person {
     public String getNational_ID() {
         return National_ID;
     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
 
 

@@ -1,7 +1,10 @@
 package com.example.project;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
         private int userId;
@@ -85,13 +88,15 @@ public class Order {
             return instance.getAllOrders(userId);
         }
 
-        public void DeleteOrder(int userId, int orderId) throws SQLException {
+        public void DeleteOrder() throws SQLException {
             Singleton_Connector instance = Singleton_Connector.getInstance();
-            instance.deleteOrder(userId, orderId);
+            File_Handler.deleteOrder(this);
+            instance.deleteOrder(this);
         }
-        public void AddOrder() throws SQLException {
+        public void AddOrder(List<File> list) throws SQLException, IOException {
             Singleton_Connector instance = Singleton_Connector.getInstance();
             instance.addOrder(this);
+            File_Handler.createOrderFile(list, this);
         }
         public void test(){
             System.out.println(carType + " " + price +" " + Transmission + " " + Color + " " + Model + " " + year +

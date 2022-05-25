@@ -46,15 +46,25 @@ public class HelloApplication extends Application {
 //        });
 
 //        Singleton_Connector instance = Singleton_Connector.getInstance();
-//        instance.addOrder(new Order(1, 2, "Sedan", 500, "automatic", "red", "test",
-//                2001, 90, "sh8ala", 1));
+//        Order order = new Order(1, instance.getLastOrderID(), "Sedan", 500, "automatic", "red", "test",
+//                2001, 90, "sh8ala", 1);
+//        order.AddOrder(null);
+//        order.DeleteOrder();
 
-        Singleton_Connector instance = Singleton_Connector.getInstance();
-        try {
-            instance.addUser(new User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001"));
-        } catch (UserExistsException e) {
-            System.out.println("user exists");
-        }
+
+//        Singleton_Connector instance = Singleton_Connector.getInstance();
+//        try {
+//            instance.addUser(new User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001"));
+//        } catch (UserExistsException e) {
+//            System.out.println("user exists");
+//        }
+
+
+        Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
+        //admin.addUser(new User(9,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609"));
+        User user = new User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+        admin.deleteUser(user);
+
         // when creating an order, you have to set the orderID to be the last one, use getLastOrderID
 
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
