@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable{
 
+    public Button SettingsButton;
+    public Button LogOutBtn;
     @FXML
     private Label date;
     @FXML
