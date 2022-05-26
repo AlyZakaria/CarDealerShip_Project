@@ -83,9 +83,9 @@ public class Order {
             return instance.checkOrder(userId,orderId);
         }
 
-        public static ArrayList<Order> getAllUserOrders(int userId) throws SQLException {
+        public static ArrayList<Order> getAllUserOrders(User user) throws SQLException {
             Singleton_Connector instance = Singleton_Connector.getInstance();
-            return instance.getAllUserOrders(userId);
+            return instance.getAllUserOrders(user);
         }
 
         public void DeleteOrder() throws SQLException {

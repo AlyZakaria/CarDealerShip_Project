@@ -17,6 +17,8 @@ public class Admin_User extends Person{
     public void deleteUser(User user) throws SQLException {
         Singleton_Connector instance = Singleton_Connector.getInstance();
         instance.deleteUser(user);
+        File_Handler.deleteAllUserOrdersFiles(user);
+        instance.deleteUserOrders(user);
     }
     private String generatePassword() {
         Random random = new Random();

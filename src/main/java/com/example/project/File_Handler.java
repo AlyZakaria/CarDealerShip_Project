@@ -9,6 +9,7 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,13 +34,18 @@ public class File_Handler {
         newFile.mkdir();
 
         String path = newFile.getAbsolutePath() + "\\";
-        System.out.println(path);
         if(files != null) {
             for(File file : files) {
                 Files.copy(file.toPath(),
                         (new File(path + file.getName())).toPath(),
                         StandardCopyOption.REPLACE_EXISTING);
             }
+        }
+    }
+    public static void deleteAllUserOrdersFiles(User user) throws SQLException {
+        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllUserOrders(user);
+        for(Order order : orders) {
+            deleteOrder(order);
         }
     }
 }

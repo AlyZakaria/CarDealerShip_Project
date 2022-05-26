@@ -133,18 +133,17 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
     }
-    public ArrayList<Order> getAllUserOrders(int userId) throws SQLException {
+    public ArrayList<Order> getAllUserOrders(User user) throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
         //why is there an ID? ID isn't needed @Aly
-        String query = "SELECT * FROM tbl_orders WHERE User_ID = " + userId;
+        String query = "SELECT * FROM tbl_orders WHERE User_ID = " + user.getID();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         
         try{
 
             while(resultSet.next()){
-                userId = resultSet.getInt("User_ID");
                 int orderId = resultSet.getInt("Order_ID");
                 String carType = resultSet.getString("Car_Type");
                 int price = resultSet.getInt("Price");
@@ -155,17 +154,15 @@ public class Singleton_Connector {
                 int kilometers = resultSet.getInt("Kilometers");
                 String ExtraInfo = resultSet.getString("Extra_Info");
                 int status = resultSet.getInt("Status");
-
-                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
+                orders.add(new Order(user.getID(), orderId, carType, price, Transmission, Color,
                         Model, year, kilometers, ExtraInfo, status) );
             }
-
         } catch(Exception e){
             System.out.println(e.getMessage());
         } finally {
             instance.closeConnection();
         }
-    return orders;
+        return orders;
     }
 
     public int getLastOrderID() throws SQLException {
@@ -306,6 +303,20 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
         return orders;
+    }
+    public void deleteUserOrders(User user) throws SQLException {
+        instance.establishConnection();
+        String query = "DELETE FROM tbl_orders WHERE User_ID = " + user.getID();
+        Statement statement = connection.createStatement();
+        try {
+          statement.executeUpdate(query);
+
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
     }
 }
 
