@@ -21,15 +21,18 @@ import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable{
 
+    @FXML
+    private Label date;
+    @FXML
+    private Label name;
+
 
     //   private Label no_orders;
-    @FXML
-    private TextField name;
+
     @FXML
     private AnchorPane MainPane = new AnchorPane();
 
-    @FXML
-    private TextField date;
+
 
 
     private Person person;
@@ -69,6 +72,7 @@ public class MainScreenController implements Initializable{
     public void ChangePassBtn(ActionEvent event) throws IOException {
         try {
             AnchorPane ChangePassScreen = ScreenSelector.getChangePassScreen().load();
+            MainPane.getChildren().removeAll();
             MainPane.getChildren().setAll(ChangePassScreen);
 
         }catch(NullPointerException e) {
@@ -96,6 +100,6 @@ public class MainScreenController implements Initializable{
        name.setText(user.getName());
        date.setText(String.valueOf(java.time.LocalDate.now()));
 
-      //  no_orders.setText(String.valueOf(Order.getAllOrders(user.getID()).size()));
+      // no_orders.setText(String.valueOf(Order.getAllOrders(user.getID()).size()));
     }
 }

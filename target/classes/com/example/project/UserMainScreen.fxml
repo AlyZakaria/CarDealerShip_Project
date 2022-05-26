@@ -20,10 +20,11 @@
                   <FontAwesomeIconView glyphName="CLOSE" size="20" />
                </graphic>
             </Button>
-            <TextField fx:id="name" layoutX="38.0" layoutY="17.0" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: transparent;" text="Name">
+            <Label fx:id="name" layoutX="45.0" layoutY="21.0" prefHeight="30.0" prefWidth="90.0" text="Label">
                <font>
                   <Font name="System Bold" size="16.0" />
-               </font></TextField>
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </top>
@@ -34,38 +35,40 @@
                <font>
                   <Font name="System Bold" size="21.0" />
                </font></Button>
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="28.0" layoutY="134.0" size="40" text="" wrappingWidth="28.0" />
-            <Button layoutX="1.0" layoutY="149.0" mnemonicParsing="false" onAction="#MyOrdersBtn" prefHeight="58.0" prefWidth="232.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="   My Orders" textFill="#0598ff">
+            <Button layoutX="1.0" layoutY="149.0" mnemonicParsing="false" onAction="#MyOrdersBtn" prefHeight="58.0" prefWidth="232.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text=" My Orders" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#0598ff" glyphName="LIST" size="29" text="" wrappingWidth="28.0" />
+               </graphic>
+            </Button>
+            <Button layoutX="1.0" layoutY="207.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="231.0" style="-fx-background-color: Transparent; -fx-cursor: hand;" text="          My Wishlists" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="28.0" layoutY="188.0" size="29" text="" wrappingWidth="28.0" />
-            <Button layoutX="1.0" layoutY="207.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="231.0" style="-fx-background-color: Transparent; -fx-cursor: hand;" text="      My Wishlists" textFill="#0598ff">
+            <Button fx:id="SettingsButton" layoutX="-1.0" layoutY="265.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="57.0" prefWidth="235.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="  Settings" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="28.0" layoutY="246.0" size="29" text="" wrappingWidth="28.0" />
-            <Button fx:id="SettingsButton" layoutX="-1.0" layoutY="265.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="57.0" prefWidth="235.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Settings" textFill="#0598ff">
+            <Button fx:id="LogOutBtn" layoutY="323.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="57.0" prefWidth="234.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="   Log Out" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="33.0" layoutY="304.0" size="29" text="" wrappingWidth="28.0" />
-            <Button fx:id="LogOutBtn" layoutY="323.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="57.0" prefWidth="234.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Log Out" textFill="#0598ff">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Button>
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="33.0" layoutY="362.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="46.0" layoutY="246.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="46.0" layoutY="304.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="46.0" layoutY="363.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="40.0" layoutY="134.0" selectionEnd="1" size="40" text="" wrappingWidth="28.0" />
          </children></AnchorPane>
    </left>
    <bottom>
       <AnchorPane prefHeight="42.0" prefWidth="1080.0" style="-fx-border-color: #000000; -fx-border-width: 2px 0px 0px 0px;" BorderPane.alignment="CENTER">
          <children>
             <TextField layoutX="406.0" layoutY="9.0" style="-fx-background-color: transparent;" text="\@Copyright" />
-            <TextField fx:id="date" layoutX="749.0" layoutY="9.0" style="-fx-background-color: transparent;" text="Date" />
+            <Label fx:id="date" layoutX="815.0" layoutY="13.0" prefHeight="23.0" prefWidth="110.0" text="Label" />
          </children></AnchorPane>
    </bottom>
    <center>
