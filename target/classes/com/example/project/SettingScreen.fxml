@@ -72,8 +72,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="oldPassword" layoutX="108.0" layoutY="232.0" />
-      <TextField layoutX="108.0" layoutY="284.0" />
       <Label layoutX="-2.0" layoutY="288.0" prefHeight="19.0" prefWidth="98.0" text="New Password: ">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -87,5 +85,8 @@
       <Label fx:id="MyOrders" layoutX="306.0" layoutY="68.0" prefHeight="18.0" prefWidth="50.0" text="Label" />
       <Label fx:id="MessageText" layoutX="59.0" layoutY="173.0" prefHeight="18.0" prefWidth="260.0" textAlignment="CENTER" textFill="RED" />
       <Line endX="364.0" layoutX="108.0" layoutY="212.0" startX="-107.99998474121094" stroke="#8e7c7c" />
+      <Label fx:id="PasswordMessage" layoutX="94.0" layoutY="322.0" prefHeight="18.0" prefWidth="159.0" textAlignment="CENTER" textFill="RED" />
+      <PasswordField fx:id="oldPassword" layoutX="108.0" layoutY="233.0" />
+      <PasswordField fx:id="newPassword" layoutX="109.0" layoutY="285.0" />
    </AnchorPane>
 </AnchorPane>

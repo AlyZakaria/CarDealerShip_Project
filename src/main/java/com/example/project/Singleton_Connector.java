@@ -1,4 +1,6 @@
 package com.example.project;
+import javafx.scene.control.TextField;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -339,6 +341,23 @@ public class Singleton_Connector {
         }
         return new User(user.getID(),user.getName(),user.getAge(),Address,Email,PhoneNumber,user.getGender(),user.getPassword(),
                 user.getNational_ID());
+    }
+
+    public boolean changePassword(int id, String oldpassword, String newpassword) throws SQLException {
+
+        instance.establishConnection();
+        String query = "UPDATE tbl_users" +" SET Password =" + newpassword + " where ID =" +  id;
+            Statement statement = connection.createStatement();
+        try {
+            statement.executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            instance.closeConnection();
+            return true;
+        }
     }
 }
 

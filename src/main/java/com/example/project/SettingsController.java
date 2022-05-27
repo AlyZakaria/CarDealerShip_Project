@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -15,6 +16,10 @@ import java.util.logging.Logger;
 public class SettingsController implements Initializable {
 
     @FXML
+    private PasswordField newPassword;
+    @FXML
+    private Label PasswordMessage;
+    @FXML
     private Label MessageText;
     @FXML
     private Label genderField;
@@ -25,7 +30,7 @@ public class SettingsController implements Initializable {
     @FXML
     private TextField phoneText;
     @FXML
-    private TextField oldPassword;
+    private PasswordField oldPassword;
     @FXML
     private Label ageField;
     @FXML
@@ -66,9 +71,26 @@ public class SettingsController implements Initializable {
             Logger.getLogger(SettingsController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    public void ChangePassBtn(ActionEvent event) throws IOException {
+        String oldpassword = oldPassword.getText();
+        String newpassword = newPassword.getText();
+        try{
+            if(oldpassword.equals("") || newpassword.equals(""))
+                throw new Exception();
+            if(user.changePassword(user.getID() , oldpassword, newpassword)) {
+                PasswordMessage.setText("Password has been Changed!");
+                user.setPassword(newpassword);
+            }
+            else
+                throw new Exception();
+
+        }catch(Exception e) {
+            PasswordMessage.setText("Invalid Input");
+        }
+        oldPassword.clear();newPassword.clear();
+    }
+
     public void EditInfo(ActionEvent event) throws IOException {
-
-
 
         try{
             String Email = EmailText.getText();

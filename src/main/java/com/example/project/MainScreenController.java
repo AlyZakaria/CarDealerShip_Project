@@ -83,18 +83,7 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll( (AnchorPane) HomeScreen );
     }
-    @FXML
-    // it is not working yet
-    public void ChangePassBtn(ActionEvent event) throws IOException {
-        try {
-            AnchorPane ChangePassScreen = ScreenSelector.getChangePassScreen().load();
-            MainPane.getChildren().removeAll();
-            MainPane.getChildren().setAll(ChangePassScreen);
 
-        }catch(NullPointerException e) {
-            throw e;
-        }
-    }
     @FXML
     public void MyOrdersBtn(ActionEvent event) throws IOException {
         AnchorPane MyOrder = ScreenSelector.getMyOrders().load();
