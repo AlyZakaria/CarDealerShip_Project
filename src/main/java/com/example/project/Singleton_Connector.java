@@ -346,7 +346,7 @@ public class Singleton_Connector {
     public boolean changePassword(int id, String oldpassword, String newpassword) throws SQLException {
 
         instance.establishConnection();
-        String query = "UPDATE tbl_users" +" SET Password =" + newpassword + " where ID =" +  id;
+        String query = "UPDATE `project_database`.`tbl_users`" +" SET Password = '" + newpassword + "' WHERE ID = " +  id;
             Statement statement = connection.createStatement();
         try {
             statement.executeUpdate(query);
