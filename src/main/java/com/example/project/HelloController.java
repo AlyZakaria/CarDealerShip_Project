@@ -60,6 +60,7 @@ public class HelloController {
                 UserScreen = loader.load();
                 MainScreenController mainController = loader.getController();
                 mainController.sendPersonData(person);
+               // mainController.HomeScreenBtn(event);
             }
 
 

@@ -189,10 +189,12 @@ public class Singleton_Connector {
     }
 
     public int getLastUserID() throws SQLException {
+
         instance.establishConnection();
-        String query = "SELECT max(User_ID) FROM tbl_users";
+        String query = "SELECT max(ID) FROM tbl_users";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
+        System.out.println("Here");
         int last = -1;
         try {
             while(resultSet.next()) {
@@ -230,12 +232,17 @@ public class Singleton_Connector {
             connection.close();
         }
     }
-    private int userExists(String National_ID) throws SQLException {
+    public int userExists(String National_ID) throws SQLException {
         instance.establishConnection();
+
         String query = "SELECT * FROM tbl_users WHERE National_ID = " + National_ID;
+
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
+       // System.out.println(National_ID);
+
         int ID = -1;
+
         try {
             while(resultSet.next()) {
                 ID = resultSet.getInt("ID");
