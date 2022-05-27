@@ -4,8 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="206.0" style="-fx-border-color: #a9a9a9; -fx-border-width: 1px 1px 1px 1px;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="206.0" style="-fx-border-color: #a9a9a9; -fx-border-width: 1px 1px 1px 1px; -fx-border-radius: 5px;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutY="134.0" prefHeight="38.0" prefWidth="206.0" style="-fx-background-color: #a9a9a9;">
          <children>

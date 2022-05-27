@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -81,10 +82,9 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void HomeScreenBtn(ActionEvent event) throws IOException {
-
+        MainPane.getChildren().removeAll();
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
-        flowPane.setStyle("-fx-border-color: red");
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
@@ -96,10 +96,9 @@ public class MainScreenController implements Initializable{
         }
 
 
-        MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(scrollPane);
     }
-    
+
     @FXML
     public void MyOrdersBtn(ActionEvent event) throws IOException {
         AnchorPane MyOrder = ScreenSelector.getMyOrders().load();
