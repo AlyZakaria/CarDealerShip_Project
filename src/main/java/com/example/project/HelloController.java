@@ -41,10 +41,22 @@ public class HelloController {
             person = instance.checkCredentials(ID.getText(), password.getText());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-            FXMLLoader loader = ScreenSelector.getUserMainScreen();
-            Parent UserScreen = loader.load();
-            MainScreenController mainScreen = loader.getController();
-            mainScreen.sendPersonData(person);
+
+            Parent UserScreen;
+            if(person instanceof Admin_User) {
+                FXMLLoader loader = ScreenSelector.getAdminScreen();
+                UserScreen = loader.load();
+                AdminMainScreenCotroller adminController = loader.getController();
+
+            }
+            else {
+                FXMLLoader loader = ScreenSelector.getUserMainScreen();
+                UserScreen = loader.load();
+                MainScreenController mainController = loader.getController();
+                mainController.sendPersonData(person);
+            }
+
+
 
 
             //To be able to drag it

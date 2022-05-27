@@ -25,7 +25,7 @@
                   <FontAwesomeIconView fill="#0598ff" glyphName="CLOSE" size="18" text="" />
                </graphic></Button>
             <Text fx:id="status" fill="#f20909" layoutX="67.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.13671875" />
-            <Button layoutX="193.0" layoutY="297.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #0598ff; -fx-cursor: hand; -fx-background-radius: 50px;" text="Button" textFill="WHITE" />
+            <Button layoutX="193.0" layoutY="297.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #0598ff; -fx-cursor: hand; -fx-background-radius: 50px;" text="Sign Up" textFill="WHITE" />
          </children>
       </AnchorPane>
    </right>
