@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="125.0" prefWidth="182.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.OrderCardController">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="206.0" style="-fx-border-color: #a9a9a9; -fx-border-width: 1px 1px 1px 1px;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutY="134.0" prefHeight="38.0" prefWidth="206.0" style="-fx-background-color: #a9a9a9;">
+         <children>
+            <Label layoutX="20.0" layoutY="15.0" text="Label" />
+            <Label layoutX="161.0" layoutY="15.0" text="Label" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="134.0" fitWidth="206.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
 </AnchorPane>

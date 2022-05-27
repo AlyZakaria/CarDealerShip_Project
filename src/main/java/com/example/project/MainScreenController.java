@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -84,9 +85,9 @@ public class MainScreenController implements Initializable{
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
         flowPane.setStyle("-fx-border-color: red");
-        flowPane.setHgap(30);
-        flowPane.setVgap(30);
-        flowPane.setPadding(new Insets(10, 10, 10, 30));
+        flowPane.setHgap(20);
+        flowPane.setVgap(20);
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
         flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());
         for(int i = 0; i < 50; i++) {
             FXMLLoader loader = ScreenSelector.getOrderCard();
@@ -98,7 +99,7 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(scrollPane);
     }
-
+    
     @FXML
     public void MyOrdersBtn(ActionEvent event) throws IOException {
         AnchorPane MyOrder = ScreenSelector.getMyOrders().load();
