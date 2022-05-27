@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Singleton_Connector {
-    private Connection connection;
+    private static Connection connection;
     private static Singleton_Connector instance;
 
     private Singleton_Connector() {
@@ -317,6 +317,28 @@ public class Singleton_Connector {
         } finally {
             instance.closeConnection();
         }
+    }
+
+    public static User EditInfo(User user, String Email, String PhoneNumber,String Address) throws SQLException {
+        instance.establishConnection();
+        String query = "UPDATE tbl_users " + " SET Email=?, PhoneNumber=?, Address=?"  + "WHERE ID=?";
+        try {
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, Email);
+
+            preparedStmt.setString(2,PhoneNumber);
+            preparedStmt.setString(3, Address);
+            preparedStmt.setInt(4,user.getID());
+            preparedStmt.execute();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            instance.closeConnection();
+        }
+        return new User(user.getID(),user.getName(),user.getAge(),Address,Email,PhoneNumber,user.getGender(),user.getPassword(),
+                user.getNational_ID());
     }
 }
 

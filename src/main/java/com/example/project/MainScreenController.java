@@ -22,7 +22,15 @@ import java.util.ResourceBundle;
 public class MainScreenController implements Initializable{
 
     public Button SettingsButton;
+
     public Button LogOutBtn;
+
+    public Label MyOdrders;
+
+    @FXML
+    private Label nameField;
+
+
     @FXML
     private Label date;
     @FXML
@@ -32,10 +40,7 @@ public class MainScreenController implements Initializable{
     //   private Label no_orders;
 
     @FXML
-    private AnchorPane MainPane = new AnchorPane();
-
-
-
+    private AnchorPane MainPane;
 
     private Person person;
     private User user;
@@ -50,9 +55,18 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void SettingsButton(ActionEvent event) throws IOException  {
-        Parent sidePane = ScreenSelector.getSettingScreen().load();
+
+
+        FXMLLoader Loader = ScreenSelector.getSettingScreen();
+        Parent SettingPane = Loader.load();
+        SettingsController controller = Loader.getController();
+
         MainPane.getChildren().removeAll();
-        MainPane.getChildren().setAll((AnchorPane)sidePane );
+        MainPane.getChildren().setAll((AnchorPane)SettingPane);
+
+        controller.SetValues(user);
+
+
     }
     @FXML
     public void LogOutBtn(ActionEvent event) throws IOException {
@@ -99,9 +113,15 @@ public class MainScreenController implements Initializable{
         user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
                 person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
 
-       name.setText(user.getName());
-       date.setText(String.valueOf(java.time.LocalDate.now()));
+        name.setText(user.getName());
+        date.setText(String.valueOf(java.time.LocalDate.now()));
 
-      // no_orders.setText(String.valueOf(Order.getAllOrders(user.getID()).size()));
     }
+
+    @FXML
+    public void EditInfo(ActionEvent event) throws IOException{
+
+    }
+
+
 }
