@@ -3,11 +3,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -27,6 +29,7 @@ public class MainScreenController implements Initializable{
     public Button LogOutBtn;
 
     public Label MyOdrders;
+    public Button AddOrderBtn;
 
     @FXML
     private Label nameField;
@@ -78,18 +81,22 @@ public class MainScreenController implements Initializable{
     @FXML
     public void HomeScreenBtn(ActionEvent event) throws IOException {
 
-        System.out.println("here");
         FlowPane flowPane = new FlowPane();
-        for(int i = 0; i < 5; i++) {
+        ScrollPane scrollPane = new ScrollPane(flowPane);
+        flowPane.setStyle("-fx-border-color: red");
+        flowPane.setHgap(30);
+        flowPane.setVgap(30);
+        flowPane.setPadding(new Insets(10, 10, 10, 30));
+        flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());
+        for(int i = 0; i < 50; i++) {
             FXMLLoader loader = ScreenSelector.getOrderCard();
             Parent HomeScreen = loader.load();
             flowPane.getChildren().add(HomeScreen);
         }
 
-        flowPane.setHgap(10);
-        flowPane.setVgap(10);
+
         MainPane.getChildren().removeAll();
-        MainPane.getChildren().setAll(flowPane);
+        MainPane.getChildren().setAll(scrollPane);
     }
 
     @FXML
@@ -121,4 +128,6 @@ public class MainScreenController implements Initializable{
     }
 
 
+    public void AddOrderBtn(ActionEvent event) {
+    }
 }
