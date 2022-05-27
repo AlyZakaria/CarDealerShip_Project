@@ -41,7 +41,6 @@ public class HelloController {
             person = instance.checkCredentials(ID.getText(), password.getText());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-
             FXMLLoader loader = ScreenSelector.getUserMainScreen();
             Parent UserScreen = loader.load();
             MainScreenController mainScreen = loader.getController();

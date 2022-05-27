@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AdminMainScreenCotroller">
+   <top>
+      <AnchorPane fx:id="TopAnchorPane" prefHeight="74.0" prefWidth="960.0" style="-fx-background-color: #0598FF;" BorderPane.alignment="CENTER">
+         <children>
+            <FontAwesomeIconView fill="#fafafa" glyphName="CAR" layoutX="703.0" layoutY="40.0" size="30" text="" wrappingWidth="15.885688781738281" />
+            <Text fill="#f7f2f2" layoutX="744.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Text>
+            <Button fx:id="userScreenExitBtn" layoutX="932.0" layoutY="1.0" mnemonicParsing="false" onAction="#exitBtn" style="-fx-background-color: transparent;">
+               <graphic>
+                  <FontAwesomeIconView fx:id="ExitBtn" glyphName="CLOSE" size="20" />
+               </graphic>
+            </Button>
+            <Label fx:id="name" layoutX="45.0" layoutY="21.0" prefHeight="30.0" prefWidth="90.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="479.0" prefWidth="230.0" style="-fx-border-color: #dddddd; -fx-border-width: 0px 4px 0px 0px;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="HomeBtn" layoutY="91.0" mnemonicParsing="false" onAction="#HomeScreenBtn" prefHeight="58.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 0px 0px; -fx-cursor: hand;" text="Home" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Button>
+            <Button fx:id="PendingOrdersBtn" layoutX="-3.0" layoutY="150.0" mnemonicParsing="false" onAction="#pendingOrdersBtn" prefHeight="58.0" prefWidth="251.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="           Pending Orders" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="SearchUserBtn" layoutX="-1.0" layoutY="201.0" mnemonicParsing="false" onAction="#searchUserBtn" prefHeight="58.0" prefWidth="250.0" style="-fx-background-color: Transparent; -fx-cursor: hand;" text="    Search User" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="SettingsBtn" layoutX="-13.0" layoutY="265.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="58.0" prefWidth="256.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="  Settings" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="LogOutBtn" layoutX="-14.0" layoutY="323.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="58.0" prefWidth="262.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="   Log Out" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Button>
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="41.0" layoutY="304.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="41.0" layoutY="362.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="40.0" layoutY="134.0" selectionEnd="1" size="40" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="SEARCH" layoutX="41.0" layoutY="240.0" size="29" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="40.0" layoutY="189.0" size="29" text="" wrappingWidth="28.0" />
+         </children></AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="42.0" prefWidth="1080.0" style="-fx-border-color: #000000; -fx-border-width: 2px 0px 0px 0px;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="406.0" layoutY="9.0" style="-fx-background-color: transparent;" text="\@Copyright" />
+            <Label fx:id="date" layoutX="815.0" layoutY="13.0" prefHeight="23.0" prefWidth="110.0" text="Label" />
+         </children></AnchorPane>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="MainPane" layoutX="44.0" layoutY="51.0" prefHeight="425.0" prefWidth="537.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

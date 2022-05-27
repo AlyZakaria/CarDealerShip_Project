@@ -6,6 +6,8 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.util.Locale;
+
 public class ScreenSelector {
     public static FXMLLoader getLoginScreen() {
         return new FXMLLoader(HelloApplication.class.getResource("LoginScreen.fxml"));
@@ -24,5 +26,8 @@ public class ScreenSelector {
     }
     public static FXMLLoader getMyOrders(){
         return new FXMLLoader(HelloApplication.class.getResource("MyOrders.fxml"));
+    }
+    public static FXMLLoader getAdminScreen() {
+        return new FXMLLoader(HelloApplication.class.getResource("AdminMainScreen.fxml"));
     }
 }
