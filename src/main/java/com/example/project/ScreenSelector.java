@@ -30,4 +30,7 @@ public class ScreenSelector {
     public static FXMLLoader getAdminScreen() {
         return new FXMLLoader(HelloApplication.class.getResource("AdminMainScreen.fxml"));
     }
+    public static FXMLLoader getSignUpScreen(){
+        return new FXMLLoader(HelloApplication.class.getResource("SignUpScreen.fxml"));
+    }
 }

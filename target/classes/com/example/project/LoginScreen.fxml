@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="726.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.HelloController">
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="326.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="loginPane" prefHeight="500.0" prefWidth="358.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="ID" layoutX="80.0" layoutY="207.0" prefHeight="26.0" prefWidth="174.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
             <PasswordField fx:id="password" layoutX="80.0" layoutY="251.0" prefHeight="26.0" prefWidth="178.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
@@ -20,17 +20,17 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Button layoutX="303.0" layoutY="5.0" mnemonicParsing="false" onAction="#exitBtn" style="-fx-background-color: transparent;">
+            <Button layoutX="303.0" layoutY="5.0" mnemonicParsing="false" onAction="#exitBtn" style="-fx-background-color: transparent; -fx-cursor: hand;">
                <graphic>
                   <FontAwesomeIconView fill="#0598ff" glyphName="CLOSE" size="18" text="" />
                </graphic></Button>
             <Text fx:id="status" fill="#f20909" layoutX="67.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.13671875" />
-            <Button layoutX="193.0" layoutY="297.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #0598ff; -fx-cursor: hand; -fx-background-radius: 50px;" text="Sign Up" textFill="WHITE" />
+            <Button fx:id="SignUpBtn" layoutX="193.0" layoutY="297.0" mnemonicParsing="false" onAction="#SignUpBtn" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #0598ff; -fx-cursor: hand; -fx-background-radius: 50px;" text="Sign Up" textFill="WHITE" />
          </children>
       </AnchorPane>
    </right>
    <center>
-      <AnchorPane prefHeight="500.0" prefWidth="374.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="371.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
          <children>
             <FontAwesomeIconView fill="#efefef" glyphName="CAR" layoutX="144.0" layoutY="232.0" size="75" />
             <Text fill="#f7f7f7" layoutX="95.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">

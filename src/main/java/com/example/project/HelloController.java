@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,6 +25,10 @@ public class HelloController {
     public PasswordField password;
     public Text status;
     public Button loginBtn;
+
+    @FXML
+    private AnchorPane loginPane;
+
     private Stage stage;
     private Scene scene;
     private Person person;
@@ -83,6 +88,14 @@ public class HelloController {
             ID.clear();
             password.clear();
         }
+    }
+    public void SignUpBtn(ActionEvent event)throws IOException{
+        FXMLLoader loader = ScreenSelector.getSignUpScreen();
+        Parent SignUpScreen = loader.load();
+        loginPane.getChildren().removeAll();
+        loginPane.getChildren().setAll ( (AnchorPane)SignUpScreen );
+        SignUpController signUPScreen = loader.getController();
+
     }
 
 
