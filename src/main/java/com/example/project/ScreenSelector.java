@@ -33,4 +33,9 @@ public class ScreenSelector {
     public static FXMLLoader getSignUpScreen(){
         return new FXMLLoader(HelloApplication.class.getResource("SignUpScreen.fxml"));
     }
+
+    public static FXMLLoader getOrderCard(){
+        return new FXMLLoader(HelloApplication.class.getResource("OrderCard.fxml"));
+    }
+
 }

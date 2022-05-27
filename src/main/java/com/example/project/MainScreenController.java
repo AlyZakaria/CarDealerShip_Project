@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -56,7 +57,6 @@ public class MainScreenController implements Initializable{
     @FXML
     public void SettingsButton(ActionEvent event) throws IOException  {
 
-
         FXMLLoader Loader = ScreenSelector.getSettingScreen();
         Parent SettingPane = Loader.load();
         SettingsController controller = Loader.getController();
@@ -65,8 +65,6 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
 
         controller.SetValues(user);
-
-
     }
     @FXML
     public void LogOutBtn(ActionEvent event) throws IOException {
@@ -79,9 +77,19 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void HomeScreenBtn(ActionEvent event) throws IOException {
-        Parent HomeScreen = ScreenSelector.getHomeScreen().load();
+
+        System.out.println("here");
+        FlowPane flowPane = new FlowPane();
+        for(int i = 0; i < 5; i++) {
+            FXMLLoader loader = ScreenSelector.getOrderCard();
+            Parent HomeScreen = loader.load();
+            flowPane.getChildren().add(HomeScreen);
+        }
+
+        flowPane.setHgap(10);
+        flowPane.setVgap(10);
         MainPane.getChildren().removeAll();
-        MainPane.getChildren().setAll( (AnchorPane) HomeScreen );
+        MainPane.getChildren().setAll(flowPane);
     }
 
     @FXML
@@ -102,7 +110,7 @@ public class MainScreenController implements Initializable{
         user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
                 person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
 
-        name.setText(user.getName());
+        name.setText("Hello, " + user.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
 
     }

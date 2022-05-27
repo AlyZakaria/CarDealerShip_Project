@@ -52,6 +52,7 @@ public class HelloController {
                 FXMLLoader loader = ScreenSelector.getAdminScreen();
                 UserScreen = loader.load();
                 AdminMainScreenCotroller adminController = loader.getController();
+                adminController.sendPersonData(person);
 
             }
             else {
@@ -62,8 +63,6 @@ public class HelloController {
             }
 
 
-
-
             //To be able to drag it
             UserScreen.setOnMousePressed(pressEvent -> {
                 UserScreen.setOnMouseDragged(dragEvent -> {
@@ -71,7 +70,6 @@ public class HelloController {
                     stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
                 });
             });
-
 
             Scene scene = new Scene(UserScreen);
             stage.setScene(scene);

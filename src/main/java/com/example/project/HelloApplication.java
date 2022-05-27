@@ -47,9 +47,10 @@ public class HelloApplication extends Application {
 
 
 //        Order order = new Order(1, 9898, "Sedan", 500, "automatic", "red", "test",
-//                2001, 90, "sh8ala", 1);
+//                2001, 90, "sh8ala", 0);
 //        order.AddOrder(null);
 //        //order.DeleteOrder();
+//        System.out.println(Singleton_Connector.getInstance().getAllPendingOrders().size());
 
 
 //        Singleton_Connector instance = Singleton_Connector.getInstance();
@@ -61,8 +62,8 @@ public class HelloApplication extends Application {
 
 
 //        Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
-//        admin.addUser(new User(9,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609"));
-//        User user = new User(1,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        admin.addUser(new User(99,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609"));
+//        //User user = new User(1,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
 //        //admin.deleteUser(user);
 
         // when creating an order, you have to set the orderID to be the last one, use getLastOrderID

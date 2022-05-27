@@ -1,6 +1,7 @@
 package com.example.project;
 import javafx.scene.control.TextField;
 
+import java.nio.channels.InterruptedByTimeoutException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class Singleton_Connector {
         String query = "SELECT * FROM tbl_users WHERE ID = " + ID;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
+
         try {
             while(resultSet.next()) {
                 if (password.equals(resultSet.getString("Password"))) {
@@ -55,9 +57,10 @@ public class Singleton_Connector {
                     System.out.println(name + " " + age + " " + address + " " + email + " " + phoneNumber);
                     if (resultSet.getInt("AdminLevel") == 0)
                         return new Admin_User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
-
-                    else
+                    else if (resultSet.getInt("AdminLevel") == 1)
                         return new User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
+                    else
+                        throw new InvalidInputException();
 
                 } else {
                     //Wrong password
@@ -69,7 +72,7 @@ public class Singleton_Connector {
         } finally {
             instance.closeConnection();
         }
-        return null;
+        throw new InvalidInputException();
     }
 
     public Order checkOrder(int userId, int orderId) throws SQLException {
@@ -275,8 +278,7 @@ public class Singleton_Connector {
     public ArrayList<Order> getAllOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
-        //why is there an ID? ID isn't needed @Aly
-        String query = "SELECT * FROM tbl_orders ";
+        String query = "SELECT * FROM tbl_orders WHERE Status = 1";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -358,6 +360,40 @@ public class Singleton_Connector {
             instance.closeConnection();
             return true;
         }
+    }
+
+    public ArrayList<Order> getAllPendingOrders() throws SQLException {
+        instance.establishConnection();
+        ArrayList<Order> orders = new ArrayList<>();
+        String query = "SELECT * FROM tbl_orders WHERE Status = " + " 0";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+
+        try{
+
+            while(resultSet.next()){
+                int userId = resultSet.getInt("User_ID");
+                int orderId = resultSet.getInt("Order_ID");
+                String carType = resultSet.getString("Car_Type");
+                int price = resultSet.getInt("Price");
+                String Transmission = resultSet.getString("Transmission");
+                String Color = resultSet.getString("Color");
+                String Model = resultSet.getString("Model");
+                int year = resultSet.getInt("Year");
+                int kilometers = resultSet.getInt("Kilometers");
+                String ExtraInfo = resultSet.getString("Extra_Info");
+                int status = resultSet.getInt("Status");
+
+                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
+                        Model, year, kilometers, ExtraInfo, status) );
+            }
+
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+        return orders;
     }
 }
 
