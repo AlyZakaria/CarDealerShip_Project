@@ -82,9 +82,19 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void HomeScreenBtn(ActionEvent event) throws IOException {
-        MainPane.getChildren().removeAll();
+
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
+
+        flowPane.setStyle("-fx-border-style: none");
+        flowPane.setStyle("-fx-border-width: 0");
+        flowPane.setStyle("-fx-border-insets: 0");
+
+        scrollPane.setStyle("-fx-border-style: none");
+        scrollPane.setStyle("-fx-border-width: 0");
+        scrollPane.setStyle("-fx-border-insets: 0");
+
+
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
@@ -95,7 +105,7 @@ public class MainScreenController implements Initializable{
             flowPane.getChildren().add(HomeScreen);
         }
 
-
+        MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(scrollPane);
     }
 
