@@ -69,8 +69,7 @@ public class AddOrderController implements Initializable {
             Singleton_Connector instance = Singleton_Connector.getInstance();
 
             Order order = new Order(user.getID(), instance.getLastOrderID(), carType, price, TransType, color, model, year, kilos, extraInfo, 0 );
-            File_Handler.createOrderFile(list, order);
-            instance.addOrder(order);
+            order.AddOrder(list);
             status.setText("Order Added Successfully, Order ID: " + order.getOrderId());
             cleanTextFields();
 

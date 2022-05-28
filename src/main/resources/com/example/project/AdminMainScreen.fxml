@@ -76,7 +76,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="MainPane" layoutX="44.0" layoutY="51.0" prefHeight="425.0" prefWidth="537.0" />
+            <AnchorPane fx:id="MainPane" layoutY="3.0" prefHeight="483.0" prefWidth="702.0" />
          </children>
       </AnchorPane>
    </center>

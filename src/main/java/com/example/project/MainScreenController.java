@@ -142,7 +142,7 @@ public class MainScreenController implements Initializable{
             flowPane.getChildren().add(OrderPane);
         }
 
-        //MainPane.getChildren().removeAll();
+        MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(scrollPane);
     }
 
