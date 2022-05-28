@@ -84,9 +84,10 @@ public class SignUpController {
                 LabelMessage.setText("UserID is " + newId + "  " + "\nPassword is "+newpassword);
 
         }catch (UserExistsException e){
-                LabelMessage.setText("User is already exist..");
+                LabelMessage.setText("User already exists");
         }catch (Exception e) {
-                LabelMessage.setText("Invalid Inputs, Try Again..");
+                LabelMessage.setText("Invalid Inputs, Try Again");
+
         }
 
 

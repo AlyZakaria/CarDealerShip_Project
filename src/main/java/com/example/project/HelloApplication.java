@@ -60,9 +60,8 @@ public class HelloApplication extends Application {
 //            System.out.println("user exists");
 //        }
 
-
 //        Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
-//        admin.addUser(new User(99,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609"));
+//        admin.addUser(new User(500,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "8989"));
 //        //User user = new User(1,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
 //        //admin.deleteUser(user);
 

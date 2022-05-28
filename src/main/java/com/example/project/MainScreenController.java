@@ -138,6 +138,14 @@ public class MainScreenController implements Initializable{
     }
 
 
-    public void AddOrderBtn(ActionEvent event) {
+    public void AddOrderBtn(ActionEvent event) throws IOException {
+        FXMLLoader Loader = ScreenSelector.getAddOrder();
+        Parent AddOrder = Loader.load();
+        AddOrderController controller = Loader.getController();
+
+        MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(AddOrder);
+
+        controller.SetValues(user);
     }
 }
