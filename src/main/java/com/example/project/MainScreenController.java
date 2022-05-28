@@ -90,9 +90,8 @@ public class MainScreenController implements Initializable{
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
-        flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());
-        Singleton_Connector instance = Singleton_Connector.getInstance();
-        ArrayList<Order> orders = instance.getAllOrders();
+        flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());;
+        ArrayList<Order> orders = Order.getAllOrders();
         for(Order order : orders) {
             FXMLLoader loader = ScreenSelector.getOrderCard();
             Parent OrderPane = loader.load();
@@ -122,10 +121,9 @@ public class MainScreenController implements Initializable{
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
         flowPane.setPrefSize(698, 470);
-        Singleton_Connector instance = Singleton_Connector.getInstance();
         ArrayList<Order> orders = null;
         try {
-            orders = instance.getAllOrders();
+            orders = Order.getAllOrders();
         } catch (SQLException e) {
             e.printStackTrace();
         }

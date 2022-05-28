@@ -1,10 +1,8 @@
 package com.example.project;
-import javafx.scene.control.TextField;
-
-import java.nio.channels.InterruptedByTimeoutException;
 import java.sql.*;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class Singleton_Connector {
     private static Connection connection;
     private static Singleton_Connector instance;
@@ -28,7 +26,7 @@ public class Singleton_Connector {
     }
 
     public Person checkCredentials(String ID_string, String password) throws SQLException {
-        if(ID_string == "" || password == "" ) {
+        if(ID_string.equals("") || password.equals("") ) {
             //wrong input
             throw  new LoginExceptionEmpty();
         }
@@ -373,7 +371,7 @@ public class Singleton_Connector {
     public ArrayList<Order> getAllPendingOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
-        String query = "SELECT * FROM tbl_orders WHERE Status = " + " 0";
+        String query = "SELECT * FROM tbl_orders WHERE Status = 0";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -402,6 +400,18 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
         return orders;
+    }
+    public void confirmOrder(Order order) throws SQLException {
+        instance.establishConnection();
+        String query = "UPDATE `project_database`.`tbl_orders` SET Status = 1  WHERE Order_ID = " +  order.getOrderId();
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
     }
 }
 
