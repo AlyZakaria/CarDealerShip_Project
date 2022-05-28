@@ -21,9 +21,7 @@ public class ScreenSelector {
     public static FXMLLoader getHomeScreen(){
         return new FXMLLoader(HelloApplication.class.getResource("HomeScreen.fxml"));
     }
-    public static FXMLLoader getChangePassScreen(){
-        return new FXMLLoader(HelloApplication.class.getResource("ChangePassScreen.fxml"));
-    }
+
     public static FXMLLoader getMyOrders(){
         return new FXMLLoader(HelloApplication.class.getResource("MyOrders.fxml"));
     }
@@ -39,6 +37,10 @@ public class ScreenSelector {
     }
     public static FXMLLoader getImageSlider(){
         return new FXMLLoader(HelloApplication.class.getResource("imageSlider2.fxml"));
+    }
+
+    public static FXMLLoader getAddOrder(){
+        return new FXMLLoader(HelloApplication.class.getResource("AddOrder.fxml"));
     }
 
 }

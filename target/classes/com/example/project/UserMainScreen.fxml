@@ -84,7 +84,7 @@
    <center>
       <AnchorPane prefHeight="483.0" prefWidth="693.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="MainPane" layoutX="4.0" layoutY="7.0" prefHeight="470.0" prefWidth="698.0" />
+            <AnchorPane fx:id="MainPane" layoutX="4.0" layoutY="7.0" prefHeight="470.0" prefWidth="698.0" style="-fx-border-style: none;" />
          </children>
       </AnchorPane>
    </center>
