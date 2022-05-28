@@ -39,8 +39,8 @@ public class SignUpController {
     private Stage stage;
     private User user;
 
-    public void CloseBtn(ActionEvent event) throws IOException {System.exit(0);
-    }
+    public void CloseBtn(ActionEvent event) throws IOException {System.exit(0);}
+
     public void returnBack(ActionEvent event) throws IOException {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader loader = ScreenSelector.getLoginScreen();
@@ -53,12 +53,13 @@ public class SignUpController {
     }
 
     public void SignUpBtn(ActionEvent event) throws IOException {
+
         Singleton_Connector instance = Singleton_Connector.getInstance();
         Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa",
                 "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
         int gender = -1;
-        try {
 
+        try {
             if(nameField.getText().equals("") || AgeField.getText().equals("") || PhoneField.getText().equals("")
                     || EmailField.getText().equals("") || AddressField.getText().equals("") || National_IDField.getText().equals(""))
                 throw new Exception();
