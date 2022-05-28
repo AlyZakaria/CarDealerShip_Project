@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -81,28 +82,23 @@ public class MainScreenController implements Initializable{
     }
 
     @FXML
-    public void HomeScreenBtn(ActionEvent event) throws IOException {
+    public void HomeScreenBtn(ActionEvent event) throws IOException, SQLException {
 
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
-
-        flowPane.setStyle("-fx-border-style: none");
-        flowPane.setStyle("-fx-border-width: 0");
-        flowPane.setStyle("-fx-border-insets: 0");
-
-        scrollPane.setStyle("-fx-border-style: none");
-        scrollPane.setStyle("-fx-border-width: 0");
-        scrollPane.setStyle("-fx-border-insets: 0");
-
 
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
         flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());
-        for(int i = 0; i < 50; i++) {
+        Singleton_Connector instance = Singleton_Connector.getInstance();
+        ArrayList<Order> orders = instance.getAllOrders();
+        for(Order order : orders) {
             FXMLLoader loader = ScreenSelector.getOrderCard();
-            Parent HomeScreen = loader.load();
-            flowPane.getChildren().add(HomeScreen);
+            Parent OrderPane = loader.load();
+            OrderCardController  controller = loader.getController();
+            controller.getOrder(order);
+            flowPane.getChildren().add(OrderPane);
         }
 
         MainPane.getChildren().removeAll();
@@ -119,7 +115,35 @@ public class MainScreenController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FlowPane flowPane = new FlowPane();
+        ScrollPane scrollPane = new ScrollPane(flowPane);
 
+        flowPane.setHgap(20);
+        flowPane.setVgap(20);
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
+        flowPane.setPrefSize(698, 470);
+        Singleton_Connector instance = Singleton_Connector.getInstance();
+        ArrayList<Order> orders = null;
+        try {
+            orders = instance.getAllOrders();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for(Order order : orders) {
+            FXMLLoader loader = ScreenSelector.getOrderCard();
+            Parent OrderPane = null;
+            try {
+                OrderPane = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            OrderCardController  controller = loader.getController();
+            controller.getOrder(order);
+            flowPane.getChildren().add(OrderPane);
+        }
+
+        //MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(scrollPane);
     }
 
 
@@ -148,4 +172,5 @@ public class MainScreenController implements Initializable{
 
         controller.SetValues(user);
     }
+
 }

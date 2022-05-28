@@ -85,7 +85,6 @@ public class AddOrderController implements Initializable {
     public void AddPicturesBtn(ActionEvent event) {
         FileChooser fc = new FileChooser();
         list = fc.showOpenMultipleDialog(null);
-
     }
 
     public void SetValues(User user) {

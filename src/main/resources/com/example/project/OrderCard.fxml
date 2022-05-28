@@ -3,15 +3,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="206.0" style="-fx-border-color: #a9a9a9; -fx-border-width: 1px 1px 1px 1px; -fx-border-radius: 5px;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.example.project.OrderCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="159.0" prefWidth="206.0" style="-fx-border-color: #000000; -fx-border-width: 1px 1px 1px 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-background-color: #f7EF8A;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.OrderCardController">
    <children>
-      <AnchorPane layoutY="134.0" onMouseClicked="#t" prefHeight="38.0" prefWidth="206.0" style="-fx-background-color: #a9a9a9;">
+      <AnchorPane layoutY="116.0" onMouseClicked="#t" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #000000;">
          <children>
-            <Label layoutX="20.0" layoutY="15.0" text="Label" />
-            <Label layoutX="161.0" layoutY="15.0" text="Label" />
+            <Label fx:id="ModelLbl" layoutX="20.0" layoutY="15.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="PriceLbl" layoutX="135.0" layoutY="15.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="134.0" fitWidth="206.0" layoutX="3.0" onMouseClicked="#t" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="OrderImg" fitHeight="112.0" fitWidth="200.0" layoutX="3.0" layoutY="4.0" onMouseClicked="#t" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
