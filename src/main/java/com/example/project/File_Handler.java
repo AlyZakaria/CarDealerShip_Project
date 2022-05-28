@@ -21,7 +21,7 @@ public class File_Handler {
     public static void deleteOrder(Order order ) {
         File file = new File("Orders\\" + String.valueOf(order.getOrderId()));
         File files[] = file.listFiles();
-        if(files.length > 0) {
+        if(files != null && files.length > 0) {
             for (File f : files) {
                 f.delete();
             }

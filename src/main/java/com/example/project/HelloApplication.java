@@ -46,7 +46,7 @@ public class HelloApplication extends Application {
 //        });
 
 
-//        Order order = new Order(1, 7, "Sedan", 500, "automatic", "red", "test",
+//        Order order = new Order(1, 6, "Sedan", 500, "automatic", "red", "test",
 //                2001, 90, "sh8ala", 0);
 //        order.DeleteOrder();
 //        System.out.println(Singleton_Connector.getInstance().getAllPendingOrders().size());
