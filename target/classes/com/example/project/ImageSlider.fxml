@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="291.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.ImageSliderController">
+   <children>
+      <AnchorPane fx:id="mainPane" layoutX="29.0" layoutY="15.0" prefHeight="238.0" prefWidth="393.0" style="-fx-border-color: Black; -fx-border-width: 3px; -fx-padding: 0px;">
+         <children>
+            <AnchorPane fx:id="pane1" prefHeight="235.0" prefWidth="394.0">
+               <children>
+                  <ImageView fx:id="image1" fitHeight="246.0" fitWidth="413.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pane2" prefHeight="235.0" prefWidth="394.0">
+               <children>
+                  <ImageView fx:id="image2" fitHeight="246.0" fitWidth="413.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pane3" prefHeight="235.0" prefWidth="394.0">
+               <children>
+                  <ImageView fx:id="image3" fitHeight="250.0" fitWidth="420.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Button layoutX="393.0" layoutY="120.0" mnemonicParsing="false" onAction="#next" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white; -fx-cursor: hand;" text="&gt;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button layoutX="33.0" layoutY="120.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="33.0" style="-fx-background-color: white; -fx-cursor: hand;" text="&lt;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

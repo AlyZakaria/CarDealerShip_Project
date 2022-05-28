@@ -45,18 +45,18 @@ public class HelloController {
 
 
 
+
 //        FXMLLoader loader1 = ScreenSelector.getImageSlider();
 //        Parent Screen = loader1.load();
 //        ImageSliderController imageController = loader1.getController();
 //        imageController.setTheImages(order1);
-//
 //        stage = new Stage();
-//
 //        Scene scene2 = new Scene(Screen,500 , 350);
 //        stage.setScene(scene2);
-//
 //        stage.show();
-///*
+
+
+
         try{
             person = instance.checkCredentials(ID.getText(), password.getText());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -102,6 +102,7 @@ public class HelloController {
             ID.clear();
             password.clear();
         }
+
 
     }
     public void SignUpBtn(ActionEvent event)throws IOException{

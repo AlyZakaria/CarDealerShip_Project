@@ -36,7 +36,7 @@ public class ScreenSelector {
         return new FXMLLoader(HelloApplication.class.getResource("OrderCard.fxml"));
     }
     public static FXMLLoader getImageSlider(){
-        return new FXMLLoader(HelloApplication.class.getResource("imageSlider2.fxml"));
+        return new FXMLLoader(HelloApplication.class.getResource("ImageSlider.fxml"));
     }
 
     public static FXMLLoader getAddOrder(){
