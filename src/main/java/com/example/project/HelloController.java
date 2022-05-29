@@ -45,7 +45,7 @@ public class HelloController {
 
 
 
-
+//
 //        FXMLLoader loader1 = ScreenSelector.getImageSlider();
 //        Parent Screen = loader1.load();
 //        ImageSliderController imageController = loader1.getController();

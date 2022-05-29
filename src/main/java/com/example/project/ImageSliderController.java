@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -23,9 +24,9 @@ import java.util.*;
 public class ImageSliderController implements Initializable {
 
     @FXML
+    private Label pageNo;
+    @FXML
     private AnchorPane mainPane;
-
-
     @FXML
     private ImageView image1;
     @FXML
@@ -55,6 +56,7 @@ public class ImageSliderController implements Initializable {
         int maxSize = panes.size();
 
         if(i > 0){
+            pageNo.setText(i+1 + "/" + maxSize);
             panes.get(i).getChildren().removeAll();
             mainPane.getChildren().removeAll();
             panes.get(i).getChildren().setAll(images.get(i));
@@ -66,6 +68,7 @@ public class ImageSliderController implements Initializable {
                 i++;
                 firstTime = false;
             }
+            pageNo.setText(i+1 + "/" + maxSize);
             panes.get(i).getChildren().removeAll();
             mainPane.getChildren().removeAll();
             panes.get(i).getChildren().setAll(images.get(i));
@@ -82,6 +85,7 @@ public class ImageSliderController implements Initializable {
                 i++;
                 firstTime = false;
             }
+            pageNo.setText(i+1 + "/" + maxsize);
             panes.get(i).getChildren().removeAll();
             mainPane.getChildren().removeAll();
             panes.get(i).getChildren().setAll(images.get(i));
@@ -89,6 +93,7 @@ public class ImageSliderController implements Initializable {
             i++;
         }
         else if(i == maxsize -1){
+            pageNo.setText(i+1 +  "/" + maxsize);
             panes.get(i).getChildren().removeAll();
             mainPane.getChildren().removeAll();
             panes.get(i).getChildren().setAll(images.get(i));
@@ -97,6 +102,7 @@ public class ImageSliderController implements Initializable {
         }
         else{
             i = 0;
+            pageNo.setText(i+1 + "/" + maxsize);
             panes.get(i).getChildren().removeAll();
             mainPane.getChildren().removeAll();
             panes.get(i).getChildren().setAll(images.get(i));
@@ -136,7 +142,7 @@ public class ImageSliderController implements Initializable {
             p++;
         }
 
-
+        pageNo.setText(i+1 +"/" + panes.size());
         panes.get(0).getChildren().setAll(images.get(0));
         mainPane.getChildren().setAll(panes.get(0));
 
