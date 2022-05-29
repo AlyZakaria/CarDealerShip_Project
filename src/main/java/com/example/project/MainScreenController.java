@@ -93,7 +93,8 @@ public class MainScreenController implements Initializable{
         flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());;
         ArrayList<Order> orders = Order.getAllOrders();
         for(Order order : orders) {
-            FXMLLoader loader = ScreenSelector.getOrderCard();
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
             controller.getOrder(order);
@@ -128,7 +129,8 @@ public class MainScreenController implements Initializable{
             e.printStackTrace();
         }
         for(Order order : orders) {
-            FXMLLoader loader = ScreenSelector.getOrderCard();
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = null;
             try {
                 OrderPane = loader.load();
