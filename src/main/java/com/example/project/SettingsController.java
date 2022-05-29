@@ -46,12 +46,6 @@ public class SettingsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-    public void ChangePassBtn(){
-
-    }
-    public void EditInfo(User user, String email, String phoneNumber, String address){
-
-    }
 
     public void SetValues(User user){
         try{
