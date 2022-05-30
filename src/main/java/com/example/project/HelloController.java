@@ -45,13 +45,13 @@ public class HelloController {
 
 
 
-//
+
 //        FXMLLoader loader1 = ScreenSelector.getImageSlider();
 //        Parent Screen = loader1.load();
 //        ImageSliderController imageController = loader1.getController();
 //        imageController.setTheImages(order1);
 //        stage = new Stage();
-//        Scene scene2 = new Scene(Screen,500 , 350);
+//        Scene scene2 = new Scene(Screen,480 , 291);
 //        stage.setScene(scene2);
 //        stage.show();
 
@@ -113,7 +113,4 @@ public class HelloController {
         SignUpController signUPScreen = loader.getController();
 
     }
-
-
-
 }

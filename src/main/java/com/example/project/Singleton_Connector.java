@@ -267,7 +267,7 @@ public class Singleton_Connector {
             preparedStmt.setString(4, user.getAddress());
             preparedStmt.setString(5, user.getEmail());
             preparedStmt.setString(6, user.getPhoneNumber());
-            preparedStmt.setInt(7, 0);
+            preparedStmt.setInt(7, 1);
             preparedStmt.setString(8, user.getPassword());
             preparedStmt.setInt(9, user.getGender());
             preparedStmt.setString(10, user.getNational_ID());
@@ -314,7 +314,7 @@ public class Singleton_Connector {
         }
         return orders;
     }
-    
+
     public void deleteUserOrders(User user) throws SQLException {
         instance.establishConnection();
         String query = "DELETE FROM tbl_orders WHERE User_ID = " + user.getID();

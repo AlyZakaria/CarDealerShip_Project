@@ -25,7 +25,7 @@
                   <FontAwesomeIconView glyphName="CLOSE" size="20" />
                </graphic>
             </Button>
-            <Label fx:id="name" layoutX="14.0" layoutY="39.0" prefHeight="30.0" prefWidth="395.0" text="Label">
+            <Label fx:id="name" layoutX="55.0" layoutY="38.0" prefHeight="30.0" prefWidth="395.0" text="Label">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
