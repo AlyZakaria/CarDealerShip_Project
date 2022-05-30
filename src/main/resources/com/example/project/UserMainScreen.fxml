@@ -15,7 +15,7 @@
       <AnchorPane fx:id="TopAnchorPane" prefHeight="74.0" prefWidth="960.0" style="-fx-background-color: #0598FF;" BorderPane.alignment="CENTER">
          <children>
             <FontAwesomeIconView fill="#fafafa" glyphName="CAR" layoutX="684.0" layoutY="59.0" size="50" text="" wrappingWidth="15.885688781738281" />
-            <Text fill="#f7f2f2" layoutX="744.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">
+            <Text fill="#f7f2f2" layoutX="754.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -85,7 +85,7 @@
    <center>
       <AnchorPane prefHeight="483.0" prefWidth="693.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="MainPane" layoutX="-2.0" layoutY="2.0" prefHeight="478.0" prefWidth="712.0" style="-fx-border-style: none;" />
+            <AnchorPane fx:id="MainPane" layoutX="5.0" layoutY="4.0" prefHeight="474.0" prefWidth="695.0" style="-fx-border-style: none;" />
          </children>
       </AnchorPane>
    </center>
