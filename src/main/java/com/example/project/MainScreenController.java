@@ -30,9 +30,11 @@ public class MainScreenController implements Initializable{
     public Button SettingsButton;
 
     public Button LogOutBtn;
-
-    public Label MyOdrders;
+    
     public Button AddOrderBtn;
+    public Button HomeScreenBtn;
+    public Button WishListBtn;
+    public Button MyOrders;
 
     @FXML
     private Label nameField;

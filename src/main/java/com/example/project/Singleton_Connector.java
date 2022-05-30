@@ -314,6 +314,7 @@ public class Singleton_Connector {
         }
         return orders;
     }
+    
     public void deleteUserOrders(User user) throws SQLException {
         instance.establishConnection();
         String query = "DELETE FROM tbl_orders WHERE User_ID = " + user.getID();
