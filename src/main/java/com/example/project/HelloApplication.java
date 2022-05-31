@@ -67,7 +67,7 @@ public class HelloApplication extends Application {
 //        //admin.deleteUser(user);
 
         // when creating an order, you have to set the orderID to be the last one, use getLastOrderID
-
+//        System.out.println(Singleton_Connector.getInstance().getUserByID(10).getName());
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
         //To be able to drag it
         LoginScreen.setOnMousePressed(pressEvent -> {
