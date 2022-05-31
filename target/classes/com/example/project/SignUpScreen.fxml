@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="197.0" prefWidth="170.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.SignUpController">
    <children>
-      <AnchorPane layoutY="3.0" prefHeight="456.0" prefWidth="408.0">
+      <AnchorPane layoutY="1.0" prefHeight="456.0" prefWidth="408.0">
          <children>
             <Label layoutX="144.0" layoutY="25.0" prefHeight="50.0" prefWidth="139.0" text="Sign Up" textFill="#0598ff">
                <font>
@@ -26,8 +26,8 @@
             <TextField fx:id="nameField" layoutX="130.0" layoutY="109.0" style="-fx-border-color: #0598ff; -fx-border-width: 2px; -fx-background-color: transparent; -fx-border-radius: 50px;" />
             <Label layoutX="37.0" layoutY="147.0" prefHeight="18.0" prefWidth="54.0" text="Email: " />
             <TextField fx:id="EmailField" layoutX="130.0" layoutY="150.0" style="-fx-border-color: #0598ff; -fx-border-width: 2PX; -fx-border-radius: 50PX; -fx-background-color: transparent;" />
-            <Label layoutX="290.0" layoutY="106.0" prefHeight="18.0" prefWidth="42.0" text="Age: " />
-            <TextField fx:id="AgeField" layoutX="321.0" layoutY="101.0" prefHeight="26.0" prefWidth="62.0" style="-fx-border-color: #0598ff; -fx-border-width: 2px; -fx-background-color: transparent; -fx-border-radius: 50px;" />
+            <Label layoutX="291.0" layoutY="111.0" prefHeight="18.0" prefWidth="42.0" text="Age: " />
+            <TextField fx:id="AgeField" layoutX="322.0" layoutY="105.0" prefHeight="26.0" prefWidth="62.0" style="-fx-border-color: #0598ff; -fx-border-width: 2px; -fx-background-color: transparent; -fx-border-radius: 50px;" />
             <Label layoutX="37.0" layoutY="106.0" prefHeight="18.0" prefWidth="54.0" text="Name: " />
             <Label layoutX="37.0" layoutY="192.0" prefHeight="18.0" prefWidth="54.0" text="Address: " />
             <TextField fx:id="AddressField" layoutX="130.0" layoutY="186.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-width: 2px;" />
@@ -41,7 +41,7 @@
                   <FontAwesomeIconView fill="#0598ff" glyphName="USER" size="30" text="" wrappingWidth="25.285714149475098" />
                </graphic>
             </Button>
-            <Label fx:id="LabelMessage" layoutX="192.0" layoutY="354.0" prefHeight="50.0" prefWidth="154.0" textAlignment="CENTER" textFill="RED" />
+            <Label fx:id="LabelMessage" layoutX="31.0" layoutY="386.0" prefHeight="50.0" prefWidth="154.0" textAlignment="CENTER" textFill="RED" />
             <RadioButton fx:id="Male" layoutX="36.0" layoutY="322.0" mnemonicParsing="false" text="Male">
                <toggleGroup>
                   <ToggleGroup fx:id="gender" />

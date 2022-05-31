@@ -88,6 +88,7 @@ public class HelloController {
             });
 
             Scene scene = new Scene(UserScreen);
+            scene.getStylesheets().add(getClass().getResource("Styles.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (LoginExceptionEmpty E) {
