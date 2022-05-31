@@ -34,30 +34,30 @@
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane prefHeight="483.0" prefWidth="223.0" style="-fx-border-color: #dddddd; -fx-border-width: 0px 4px 0px 0px;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="483.0" prefWidth="223.0" style="-fx-border-color: #dddddd; -fx-border-width: 0px 4px 0px 0px;" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="HomeBtn" contentDisplay="TOP" layoutX="-2.0" mnemonicParsing="false" onAction="#HomeScreenBtn" prefHeight="58.0" prefWidth="238.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Home" textFill="#0598ff">
+            <Button fx:id="HomeBtn" contentDisplay="TOP" layoutX="-2.0" mnemonicParsing="false" onAction="#HomeScreenBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="Home" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="LogOutBtn" layoutX="-2.0" layoutY="424.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="58.0" prefWidth="238.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="   Log Out" textFill="#0598ff">
+            <Button fx:id="LogOutBtn" layoutX="-2.0" layoutY="424.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="   Log Out" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="SettingsBtn" layoutX="-2.0" layoutY="365.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="58.0" prefWidth="238.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="  Settings" textFill="#0598ff">
+            <Button fx:id="SettingsBtn" layoutX="-2.0" layoutY="365.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="  Settings" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
             <Line endX="100.0" layoutX="117.0" layoutY="341.0" startX="-100.0" stroke="#dddddd" strokeWidth="3.0" />
-            <Button fx:id="PendingOrdersBtn" layoutX="-2.0" layoutY="58.0" mnemonicParsing="false" onAction="#pendingOrdersBtn" prefHeight="58.0" prefWidth="238.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="       Pending Orders" textFill="#0598ff">
+            <Button fx:id="PendingOrdersBtn" layoutX="-2.0" layoutY="58.0" mnemonicParsing="false" onAction="#pendingOrdersBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="       Pending Orders" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="SearchUserBtn" layoutX="-2.0" layoutY="116.0" mnemonicParsing="false" onAction="#searchUserBtn" prefHeight="58.0" prefWidth="238.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Search User" textFill="#0598ff">
+            <Button fx:id="SearchUserBtn" layoutX="-2.0" layoutY="116.0" mnemonicParsing="false" onAction="#searchUserBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="Search User" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
