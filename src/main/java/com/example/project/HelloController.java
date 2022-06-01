@@ -111,8 +111,8 @@ public class HelloController {
         loginPane.getChildren().removeAll();
         loginPane.getChildren().setAll ( (AnchorPane)SignUpScreen );
         SignUpController signUPScreen = loader.getController();
-
     }
+
 
 
 
