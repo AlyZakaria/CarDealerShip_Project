@@ -10,6 +10,12 @@ public class Admin_User extends Person{
     public Admin_User() {
 
     }
+
+    @Override
+    public int getAdminlvl() {
+        return 0;
+    }
+
     public String addUser(User user) throws SQLException {
         String password = generatePassword();
         Singleton_Connector instance = Singleton_Connector.getInstance();

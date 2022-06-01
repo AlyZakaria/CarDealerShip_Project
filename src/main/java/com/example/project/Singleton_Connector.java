@@ -80,13 +80,13 @@ public class Singleton_Connector {
         Statement statement = connection.createStatement();
         try {
             int resultSet = statement.executeUpdate(query);
+
         }
         catch(Exception e){
             System.out.println(e.getMessage());
         } finally {
             instance.closeConnection();
         }
-
     }
 
     public void deleteUser(User user) throws SQLException {
@@ -102,7 +102,6 @@ public class Singleton_Connector {
         } finally {
             instance.closeConnection();
         }
-
     }
     public ArrayList<Order> getAllUserOrders(User user) throws SQLException {
         instance.establishConnection();
@@ -246,12 +245,11 @@ public class Singleton_Connector {
         }
         return ID;
     }
-
     public ArrayList<Order> getAllOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
-        //change it later
-        String query = "SELECT * FROM tbl_orders WHERE Status = 1";
+        // TODO: 6/1/2022 change from 0 to 1 
+        String query = "SELECT * FROM tbl_orders WHERE Status = 0";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -381,7 +379,7 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
     }
-    public static User getUserByID(int userID) throws SQLException {
+    public User getUserByID(int userID) throws SQLException {
         instance.establishConnection();
         String query = "SELECT * FROM tbl_users WHERE ID = " + userID;
         Statement statement = connection.createStatement();

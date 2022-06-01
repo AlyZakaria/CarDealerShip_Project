@@ -4,19 +4,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable{
@@ -78,26 +84,17 @@ public class MainScreenController implements Initializable{
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
-
-        flowPane.setHgap(20);
-        flowPane.setVgap(20);
-        flowPane.setPadding(new Insets(10, 10, 10, 10));
-        flowPane.setPrefSize(695, 474);;
-
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
         flowPane.setPrefSize(695, 474);
-
         ArrayList<Order> orders = Order.getAllOrders();
         for(Order order : orders) {
             OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            System.out.println(person instanceof User? "Yes" : "NO");
-            controller.getOrder(order,MainPane,person , false);
+            controller.getOrder(order);
             flowPane.getChildren().add(OrderPane);
         }
         MainPane.getChildren().removeAll();
@@ -113,13 +110,13 @@ public class MainScreenController implements Initializable{
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
         flowPane.setPrefSize(695, 474);
-        ArrayList<Order> orders = Order.getAllUserOrders((User) person);
+        ArrayList<Order> orders = Order.getAllUserOrders(user);
         for(Order order : orders) {
             OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order,MainPane,person, true);
+            controller.getOrder(order);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -130,7 +127,6 @@ public class MainScreenController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         try {
             HomeScreenBtn(new ActionEvent());
         } catch (Exception e) {
@@ -139,14 +135,10 @@ public class MainScreenController implements Initializable{
     }
 
 
-    public void sendPersonData(Person person) throws SQLException, IOException {
-       // System.out.println("MainScreenController");
-       // System.out.println(person instanceof User? "Yes" : "NO");
-        this.person = person;
-        name.setText("Hello, " + person.getName());
+    public void sendPersonData(Person person) throws SQLException {
+        user = (User) person;
+        name.setText("Hello, " + user.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
-        HomeScreenBtn(new ActionEvent());
-
     }
 
 
@@ -157,8 +149,8 @@ public class MainScreenController implements Initializable{
 
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(AddOrder);
-        controller.SetValues(user);
 
+        controller.SetValues(user);
     }
 
 }

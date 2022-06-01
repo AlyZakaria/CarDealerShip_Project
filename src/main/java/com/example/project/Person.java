@@ -44,6 +44,9 @@ public class  Person {
     public String getEmail() {
         return Email;
     }
+    public int getAdminlvl() {
+        return -1;
+    }
 
     public String getPhoneNumber() {
         return PhoneNumber;
