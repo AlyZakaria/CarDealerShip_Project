@@ -49,7 +49,7 @@ public class MainScreenController implements Initializable{
     private AnchorPane MainPane;
 
     private Person person;
-    private User user;
+
     /*public MainScreenController(Person person) {
         this.user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
                 person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
@@ -67,7 +67,7 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
 
-        controller.SetValues(user);
+        controller.SetValues((User) person);
     }
     @FXML
     public void LogOutBtn(ActionEvent event) throws IOException {
@@ -94,8 +94,9 @@ public class MainScreenController implements Initializable{
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order);
+            controller.getOrder(order,MainPane,person, false);
             flowPane.getChildren().add(OrderPane);
+
         }
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(scrollPane);
@@ -110,13 +111,13 @@ public class MainScreenController implements Initializable{
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
         flowPane.setPrefSize(695, 474);
-        ArrayList<Order> orders = Order.getAllUserOrders(user);
+        ArrayList<Order> orders = Order.getAllUserOrders((User) person);
         for(Order order : orders) {
             OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order);
+            controller.getOrder(order,MainPane,person, true);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -135,10 +136,12 @@ public class MainScreenController implements Initializable{
     }
 
 
-    public void sendPersonData(Person person) throws SQLException {
-        user = (User) person;
-        name.setText("Hello, " + user.getName());
+    public void sendPersonData(Person person) throws SQLException, IOException {
+        this.person = person;
+        name.setText("Hello, " + person.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
+        HomeScreenBtn(new ActionEvent());
+
     }
 
 
@@ -150,7 +153,7 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(AddOrder);
 
-        controller.SetValues(user);
+        controller.SetValues((User) person);
     }
 
 }
