@@ -404,6 +404,8 @@ public class Singleton_Connector {
                     gender = resultSet.getInt("Gender");
                     National_ID = resultSet.getString("National_ID");
             }
+            if(name == null)
+                throw new UserNotFoundException();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {

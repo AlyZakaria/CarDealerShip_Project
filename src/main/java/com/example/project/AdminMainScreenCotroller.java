@@ -86,8 +86,12 @@ public class AdminMainScreenCotroller implements Initializable {
         MainPane.getChildren().setAll(scrollPane);
     }
 
-    public void searchUserBtn() {
-        System.out.println("Test");
+    public void searchUserBtn() throws IOException {
+        FXMLLoader Loader = ScreenSelector.getSearchUser();
+        Parent SearchPane = Loader.load();
+        SearchUserScreenController controller = Loader.getController();
+        MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(SearchPane);
     }
 
     public void pendingOrdersBtn() {

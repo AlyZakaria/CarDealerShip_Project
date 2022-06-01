@@ -42,5 +42,8 @@ public class ScreenSelector {
     public static FXMLLoader getAddOrder(){
         return new FXMLLoader(HelloApplication.class.getResource("AddOrder.fxml"));
     }
+    public static FXMLLoader getSearchUser(){
+        return new FXMLLoader(HelloApplication.class.getResource("SearchUserScreen.fxml"));
+    }
 
 }

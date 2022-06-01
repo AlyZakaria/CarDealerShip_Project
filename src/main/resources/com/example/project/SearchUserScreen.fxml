@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="457.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.SearchUserScreenController">
+   <children>
+      <Label fx:id="status_lbl" layoutX="80.0" layoutY="128.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: transparent;" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="238.0" layoutY="17.0" text="Search User" textFill="#0098ff">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fill="#0098ff" glyphName="SEARCH" layoutX="183.0" layoutY="60.0" size="50" />
+      <Label layoutX="18.0" layoutY="105.0" prefHeight="20.0" prefWidth="62.0" text="User ID:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="id_txt" layoutX="80.0" layoutY="102.0" />
+      <TableView fx:id="tableview" layoutX="312.0" layoutY="102.0" prefHeight="358.0" prefWidth="383.0">
+        <columns>
+          <TableColumn fx:id="Order_ID" prefWidth="63.20001220703125" text="Order ID" />
+          <TableColumn fx:id="Model" prefWidth="71.20001220703125" text="Model" />
+            <TableColumn fx:id="Year" prefWidth="71.20001220703125" text="Year" />
+            <TableColumn fx:id="Transmission" prefWidth="92.0" text="Transmission" />
+            <TableColumn fx:id="Price" prefWidth="79.20001220703125" text="Price" />
+        </columns>
+      </TableView>
+      <Label fx:id="Name_lbl" layoutX="18.0" layoutY="176.0" prefHeight="38.0" prefWidth="294.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="Email_lbl" layoutX="18.0" layoutY="214.0" prefHeight="38.0" prefWidth="294.0" style="-fx-background-color: #dddddd;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="Address_lbl" layoutX="18.0" layoutY="252.0" prefHeight="38.0" prefWidth="294.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="Phone_lbl" layoutX="18.0" layoutY="290.0" prefHeight="38.0" prefWidth="294.0" style="-fx-background-color: #dddddd;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="NatID_lbl" layoutX="18.0" layoutY="328.0" prefHeight="38.0" prefWidth="294.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button fx:id="search_btn" layoutX="242.0" layoutY="102.0" mnemonicParsing="false" onAction="#searchUser" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #0098ff; -fx-cursor: hand;" text="Search" textFill="#efeeee">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="Delete_btn" layoutX="198.0" layoutY="404.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: red; -fx-cursor: hand;" text="Delete User" textFill="#efeeee">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="16" />
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

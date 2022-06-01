@@ -55,8 +55,7 @@ public class SignUpController {
     public void SignUpBtn(ActionEvent event) throws IOException {
 
         Singleton_Connector instance = Singleton_Connector.getInstance();
-        Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa",
-                "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
+        Admin_User admin = new Admin_User();
         int gender = -1;
 
         try {
