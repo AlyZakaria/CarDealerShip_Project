@@ -23,46 +23,50 @@ public class OrderCardController implements Initializable {
     Order order;
     Person person;
     public AnchorPane mainPane;
-
+    boolean myOrder = false;
 
     public void t(MouseEvent event) throws IOException, SQLException {
+        ScrollPane ScrollPane = new ScrollPane();
+        ScrollPane.setPrefSize(695, 474);
         FXMLLoader loader = ScreenSelector.getOrderScreen();
         Parent OrderScreen = loader.load();
         OrderController controller = loader.getController();
 
 
-        if(person instanceof User) {
+        if(person instanceof User && !myOrder) {
+
             person = Singleton_Connector.getUserByID(order.getUserId());
             controller.sendOrderInfo(order, (User) person);
             FXMLLoader loader1 = ScreenSelector.getUserOrderScreen();
             AnchorPane UserOderScreen = loader1.load();
             UserOrderController controller1 = loader1.getController();
             controller1.setPane((AnchorPane) OrderScreen);
-
-            ScrollPane ScrollPane = new ScrollPane();
-            ScrollPane.setPrefSize(695, 474);
             ScrollPane.setContent(UserOderScreen);
-
-            mainPane.getChildren().removeAll();
-            mainPane.getChildren().setAll(ScrollPane);
         }
-        else{
+        else if(person instanceof Admin_User){
+            person = Singleton_Connector.getUserByID(order.getUserId());
+            controller.sendOrderInfo(order, (User) person);
             FXMLLoader loader1 = ScreenSelector.getAdminOrderScreen();
             AnchorPane AdminOrderScreen = loader1.load();
             AdminOrderController controller1 = loader1.getController();
-            controller1.setPane((AnchorPane) OrderScreen);
-
-            ScrollPane ScrollPane = new ScrollPane();
-            ScrollPane.setPrefSize(695, 474);
+            controller1.setPane((AnchorPane) OrderScreen,order);
             ScrollPane.setContent(AdminOrderScreen);
-
-            mainPane.getChildren().removeAll();
-            mainPane.getChildren().setAll(ScrollPane);
         }
-
+        else{
+            person = Singleton_Connector.getUserByID(order.getUserId());
+            controller.sendOrderInfo(order, (User) person);
+            FXMLLoader loader2 = ScreenSelector.getMyOrderScreen();
+            AnchorPane MyOrder = loader2.load();
+            MyOrderController controller2 = loader2.getController();
+            controller2.setPane((AnchorPane) OrderScreen,order);
+            ScrollPane.setContent(MyOrder);
+        }
+        mainPane.getChildren().removeAll();
+        mainPane.getChildren().setAll(ScrollPane);
 
     }
-    public void getOrder(Order order, AnchorPane mainPane, Person person) {
+    public void getOrder(Order order, AnchorPane mainPane, Person person , Boolean myOrder) {
+        this.myOrder = myOrder;
         this.mainPane = mainPane;
         this.order = order;
         this.person = person;

@@ -17,7 +17,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="nameField" layoutX="54.0" layoutY="26.0" prefHeight="19.0" prefWidth="68.0" text="Label">
+      <Label fx:id="nameField" layoutX="50.0" layoutY="26.0" prefHeight="19.0" prefWidth="68.0" text="Label">
          <font>
             <Font size="13.0" />
          </font>
@@ -47,7 +47,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="nationalIdField" layoutX="97.0" layoutY="66.0" prefHeight="18.0" prefWidth="86.0" text="Label">
+      <Label fx:id="nationalIdField" layoutX="83.0" layoutY="66.0" prefHeight="19.0" prefWidth="120.0" text="Label">
          <font>
             <Font size="13.0" />
          </font>

@@ -45,7 +45,10 @@ public class AdminMainScreenCotroller implements Initializable {
 
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
-        controller.SetValues((User) person);
+        if(person instanceof User)
+            controller.SetValues((User) person);
+
+           // controller.SetValues ((Admin_User)person);
     }
     public void LogOutBtn(ActionEvent event) throws IOException {
         Parent loginScreen = ScreenSelector.getLoginScreen().load();
@@ -55,27 +58,27 @@ public class AdminMainScreenCotroller implements Initializable {
         stage.show();
     }
 
-    public void sendPersonData(Person person) throws SQLException {
+    public void sendPersonData(Person person) throws SQLException, IOException {
         this.person = person;
         name.setText("Hello, " + person.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
-
+        HomeScreenBtn(new ActionEvent());
     }
     public void HomeScreenBtn(ActionEvent event) throws IOException, SQLException {
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
-
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
-        flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());
+        flowPane.setPrefSize(695, 474);
         ArrayList<Order> orders = Order.getAllOrders();
         for(Order order : orders) {
             OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order,MainPane, person);
+            controller.getOrder(order,MainPane, person,false);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -83,8 +86,12 @@ public class AdminMainScreenCotroller implements Initializable {
         MainPane.getChildren().setAll(scrollPane);
     }
 
-    public void searchUserBtn() {
-        System.out.println("Test");
+    public void searchUserBtn() throws IOException {
+        FXMLLoader Loader = ScreenSelector.getSearchUser();
+        Parent SearchPane = Loader.load();
+        SearchUserScreenController controller = Loader.getController();
+        MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(SearchPane);
     }
 
     public void pendingOrdersBtn() {
@@ -93,34 +100,8 @@ public class AdminMainScreenCotroller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FlowPane flowPane = new FlowPane();
-        ScrollPane scrollPane = new ScrollPane(flowPane);
 
-        flowPane.setHgap(20);
-        flowPane.setVgap(20);
-        flowPane.setPadding(new Insets(10, 10, 10, 10));
-        flowPane.setPrefSize(698, 470);
-        ArrayList<Order> orders = null;
-        try {
-            orders = Order.getAllOrders();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        for(Order order : orders) {
-            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
-            FXMLLoader loader = orderMaker.getOrderFXML();
-            Parent OrderPane = null;
-            try {
-                OrderPane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            OrderCardController  controller = loader.getController();
-            controller.getOrder(order,MainPane, person);
-            flowPane.getChildren().add(OrderPane);
         }
 
-        MainPane.getChildren().removeAll();
-        MainPane.getChildren().setAll(scrollPane);
+
     }
-}

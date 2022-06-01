@@ -42,14 +42,20 @@ public class ScreenSelector {
     public static FXMLLoader getAddOrder(){
         return new FXMLLoader(HelloApplication.class.getResource("AddOrder.fxml"));
     }
+
     public static FXMLLoader getOrderScreen(){
         return new FXMLLoader(HelloApplication.class.getResource("OrderScreen.fxml"));
     }
     public static FXMLLoader getUserOrderScreen(){
         return new FXMLLoader(HelloApplication.class.getResource("UserOrderScreen.fxml"));
     }
-    public static FXMLLoader getAdminOrderScreen(){
+    public static FXMLLoader getAdminOrderScreen() {
         return new FXMLLoader(HelloApplication.class.getResource("AdminOrderScreen.fxml"));
     }
-
+    public static FXMLLoader getSearchUser(){
+        return new FXMLLoader(HelloApplication.class.getResource("SearchUserScreen.fxml"));
+    }
+    public static FXMLLoader getMyOrderScreen(){
+        return new FXMLLoader(HelloApplication.class.getResource("MyOrderScreen.fxml"));
+    }
 }

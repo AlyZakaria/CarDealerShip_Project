@@ -10,7 +10,9 @@ public class  Person {
     private int gender;
     private String password;
     private String National_ID;
+    public Person() {
 
+    }
     public Person(int ID, String name, int age, String address, String email, String phoneNumber, int gender, String password, String National_ID) {
         this.ID = ID;
         this.Name = name;

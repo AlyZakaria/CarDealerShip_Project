@@ -46,8 +46,10 @@ public class HelloApplication extends Application {
 //        });
 
 
-//        Order order = new Order(1, 1, "Sedan", 500, "automatic", "red", "test",
+//        Order order = new Order(1, 2, "Sedan", 500, "automatic", "red", "test",
 //                2001, 90, "sh8ala", 0);
+//        User user = new User(11,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        Singleton_Connector.getInstance().RemoveFromWishList(user, order);
 //        order.confirmOrder();
 
 //        order.DeleteOrder();
@@ -62,9 +64,9 @@ public class HelloApplication extends Application {
 //        }
 
 //        Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
-//        admin.addUser(new User(500,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "8989"));
-//        //User user = new User(1,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
-//        //admin.deleteUser(user);
+//        //admin.addUser(new User(500,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "8989"));
+//        User user = new User(11,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        admin.deleteUser(user);
 
         // when creating an order, you have to set the orderID to be the last one, use getLastOrderID
 //        System.out.println(Singleton_Connector.getInstance().getUserByID(10).getName());

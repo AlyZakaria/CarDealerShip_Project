@@ -12,7 +12,7 @@
          <padding>
             <Insets left="116.0" right="100.0" />
          </padding></StackPane>
-      <Label fx:id="orderModel" alignment="CENTER" contentDisplay="CENTER" layoutX="276.0" layoutY="286.0" prefHeight="23.0" prefWidth="151.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="orderModel" alignment="CENTER" contentDisplay="CENTER" layoutX="276.0" layoutY="286.0" prefHeight="26.0" prefWidth="204.0" text="Label" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></Label>
