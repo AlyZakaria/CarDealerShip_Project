@@ -102,6 +102,4 @@ public class AdminMainScreenCotroller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         }
-
-
     }

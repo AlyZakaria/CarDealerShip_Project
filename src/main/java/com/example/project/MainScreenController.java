@@ -128,11 +128,7 @@ public class MainScreenController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            HomeScreenBtn(new ActionEvent());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
     }
 
 
