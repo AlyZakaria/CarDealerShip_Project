@@ -75,7 +75,7 @@ public class OrderCardController implements Initializable {
     private void setData() {
         File[] files = File_Handler.getOrderDirectory(order).listFiles();
         Image img = new Image(files[0].getAbsolutePath());
-
+        System.out.println(File_Handler.getOrderDirectory(order).getAbsolutePath());
         OrderImg.setImage(img);
         OrderImg.setFitHeight(112);
         OrderImg.setFitWidth(200);
