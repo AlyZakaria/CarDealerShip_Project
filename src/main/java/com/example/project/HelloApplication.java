@@ -48,6 +48,8 @@ public class HelloApplication extends Application {
 
 //        Order order = new Order(1, 1, "Sedan", 500, "automatic", "red", "test",
 //                2001, 90, "sh8ala", 0);
+//        User user = new User(11,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        Singleton_Connector.getInstance().RemoveFromWishList(user, order);
 //        order.confirmOrder();
 
 //        order.DeleteOrder();

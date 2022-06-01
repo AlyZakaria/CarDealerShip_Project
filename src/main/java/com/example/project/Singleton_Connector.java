@@ -173,6 +173,33 @@ public class Singleton_Connector {
         return last +1;
     }
 
+    public void addUser(User user) throws SQLException {
+        if(userExists(user.getNational_ID()) != -1) {
+            throw new UserExistsException();
+        }
+        instance.establishConnection();
+        String query = "INSERT INTO `project_database`.`tbl_users` (ID, Name, Age, Address, Email, PhoneNumber, AdminLevel, Password, Gender, National_ID)"
+                +   "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setInt(1, user.getID());
+            preparedStmt.setString(2, user.getName());
+            preparedStmt.setInt(3, user.getAge());
+            preparedStmt.setString(4, user.getAddress());
+            preparedStmt.setString(5, user.getEmail());
+            preparedStmt.setString(6, user.getPhoneNumber());
+            preparedStmt.setInt(7, 1);
+            preparedStmt.setString(8, user.getPassword());
+            preparedStmt.setInt(9, user.getGender());
+            preparedStmt.setString(10, user.getNational_ID());
+
+            preparedStmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            connection.close();
+        }
+    }
     public void addOrder(Order order) throws SQLException {
         instance.establishConnection();
         String query = "INSERT INTO `project_database`.`tbl_orders` (User_ID, Order_ID, Car_Type, Price, Transmission, Color, Model, Year, Kilometers, Extra_Info, Status)"
@@ -217,33 +244,6 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
         return ID;
-    }
-    public void addUser(User user) throws SQLException {
-        if(userExists(user.getNational_ID()) != -1) {
-            throw new UserExistsException();
-        }
-        instance.establishConnection();
-        String query = "INSERT INTO `project_database`.`tbl_users` (ID, Name, Age, Address, Email, PhoneNumber, AdminLevel, Password, Gender, National_ID)"
-                +   "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setInt(1, user.getID());
-            preparedStmt.setString(2, user.getName());
-            preparedStmt.setInt(3, user.getAge());
-            preparedStmt.setString(4, user.getAddress());
-            preparedStmt.setString(5, user.getEmail());
-            preparedStmt.setString(6, user.getPhoneNumber());
-            preparedStmt.setInt(7, 1);
-            preparedStmt.setString(8, user.getPassword());
-            preparedStmt.setInt(9, user.getGender());
-            preparedStmt.setString(10, user.getNational_ID());
-
-            preparedStmt.execute();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            connection.close();
-        }
     }
 
     public ArrayList<Order> getAllOrders() throws SQLException {
@@ -413,5 +413,34 @@ public class Singleton_Connector {
         }
         return new User(userID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
     }
+    public void AddToWishList(User user, Order order) throws SQLException {
+        instance.establishConnection();
+        String query = "INSERT INTO `project_database`.`tbl_wishlist` (`User_ID`,`Order_ID`)" + "VALUES(?, ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, user.getID());
+            preparedStatement.setInt(2, order.getOrderId());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+    }
+    public void RemoveFromWishList(User user, Order order) throws SQLException {
+        instance.establishConnection();
+        String query = "DELETE FROM `project_database`.`tbl_wishlist` WHERE User_ID = '" + user.getID() + "'AND Order_ID = '" + order.getOrderId() +"'";
+        Statement statement = connection.createStatement();
+        try {
+            statement.executeUpdate(query);
+
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+    }
+
 }
 
