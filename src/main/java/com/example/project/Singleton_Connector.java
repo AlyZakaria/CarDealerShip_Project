@@ -246,7 +246,6 @@ public class Singleton_Connector {
         }
         return ID;
     }
-
     public ArrayList<Order> getAllOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
