@@ -331,8 +331,8 @@ public class Singleton_Connector {
             return false;
         } finally {
             instance.closeConnection();
-            return true;
         }
+        return true;
     }
 
     public ArrayList<Order> getAllPendingOrders() throws SQLException {

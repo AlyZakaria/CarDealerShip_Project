@@ -43,7 +43,7 @@ public class MainScreenController implements Initializable{
     private AnchorPane MainPane;
 
     private Person person;
-    private User user;
+
     /*public MainScreenController(Person person) {
         this.user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
                 person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
@@ -61,7 +61,7 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
 
-        controller.SetValues(user);
+        controller.SetValues((User) person);
     }
     @FXML
     public void LogOutBtn(ActionEvent event) throws IOException {
@@ -99,6 +99,7 @@ public class MainScreenController implements Initializable{
             System.out.println(person instanceof User? "Yes" : "NO");
             controller.getOrder(order,MainPane,person , false);
             flowPane.getChildren().add(OrderPane);
+
         }
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(scrollPane);
@@ -139,7 +140,8 @@ public class MainScreenController implements Initializable{
     }
 
 
-<<<<<<< HEAD
+
+
     public void sendPersonData(Person person) throws SQLException, IOException {
        // System.out.println("MainScreenController");
        // System.out.println(person instanceof User? "Yes" : "NO");
@@ -147,14 +149,20 @@ public class MainScreenController implements Initializable{
         name.setText("Hello, " + person.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
         HomeScreenBtn(new ActionEvent());
+    }
 
-=======
     public void sendPersonData(Person person) throws SQLException {
         user = (User) person;
         name.setText("Hello, " + user.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
->>>>>>> 76d6ad0 (delete user button now hides viewtables and info lables)
     }
+    public void sendPersonData(Person person) throws SQLException, IOException {
+        this.person = person;
+        name.setText("Hello, " + person.getName());
+        date.setText(String.valueOf(java.time.LocalDate.now()));
+        HomeScreenBtn(new ActionEvent());
+    }
+
 
 
     public void AddOrderBtn(ActionEvent event) throws IOException {
