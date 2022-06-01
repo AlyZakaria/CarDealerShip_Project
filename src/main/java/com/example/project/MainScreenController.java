@@ -38,7 +38,6 @@ public class MainScreenController implements Initializable{
 
     @FXML
     private Label nameField;
-    Button[] buttons;
 
     @FXML
     private Label date;
@@ -81,14 +80,37 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void HomeScreenBtn(ActionEvent event) throws IOException, SQLException {
+
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
-
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         flowPane.setHgap(20);
         flowPane.setVgap(20);
         flowPane.setPadding(new Insets(10, 10, 10, 10));
-        flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());;
+        flowPane.setPrefSize(695, 474);
         ArrayList<Order> orders = Order.getAllOrders();
+        for(Order order : orders) {
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
+            Parent OrderPane = loader.load();
+            OrderCardController  controller = loader.getController();
+            controller.getOrder(order);
+            flowPane.getChildren().add(OrderPane);
+        }
+        MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(scrollPane);
+    }
+
+    @FXML
+    public void MyOrdersBtn(ActionEvent event) throws IOException, SQLException {
+        FlowPane flowPane = new FlowPane();
+        ScrollPane scrollPane = new ScrollPane(flowPane);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        flowPane.setHgap(20);
+        flowPane.setVgap(20);
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
+        flowPane.setPrefSize(695, 474);
+        ArrayList<Order> orders = Order.getAllUserOrders(user);
         for(Order order : orders) {
             OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
             FXMLLoader loader = orderMaker.getOrderFXML();
@@ -102,46 +124,14 @@ public class MainScreenController implements Initializable{
         MainPane.getChildren().setAll(scrollPane);
     }
 
-    @FXML
-    public void MyOrdersBtn(ActionEvent event) throws IOException {
-        AnchorPane MyOrder = ScreenSelector.getMyOrders().load();
-        MainPane.getChildren().removeAll();
-        MainPane.getChildren().setAll((AnchorPane) MyOrder);
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buttons = new Button[] {AddOrderBtn, MyOrders, SettingsButton, LogOutBtn, HomeScreenBtn, WishListBtn};
-        FlowPane flowPane = new FlowPane();
-        ScrollPane scrollPane = new ScrollPane(flowPane);
-
-        flowPane.setHgap(20);
-        flowPane.setVgap(20);
-        flowPane.setPadding(new Insets(10, 10, 10, 10));
-        flowPane.setPrefSize(698, 470);
-        ArrayList<Order> orders = null;
         try {
-            orders = Order.getAllOrders();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            HomeScreenBtn(new ActionEvent());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        for(Order order : orders) {
-            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
-            FXMLLoader loader = orderMaker.getOrderFXML();
-            Parent OrderPane = null;
-            try {
-                OrderPane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            OrderCardController  controller = loader.getController();
-            controller.getOrder(order);
-            flowPane.getChildren().add(OrderPane);
-        }
-
-        MainPane.getChildren().removeAll();
-        MainPane.getChildren().setAll(scrollPane);
     }
 
 
@@ -165,8 +155,5 @@ public class MainScreenController implements Initializable{
 
         controller.SetValues(user);
     }
-//    private void disableButtons() {
-//        for(Button button: buttons)
-//            button.setStyle("-fx-background-color: transparent");
-//    }
+
 }

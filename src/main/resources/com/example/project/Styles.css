@@ -1,5 +1,6 @@
 .Button {
     -fx-background-color: transparent;
+    -fx-cursor: hand;
 }
 .Button:hover {
     -fx-background-color: #D4F1F4;

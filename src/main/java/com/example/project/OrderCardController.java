@@ -12,7 +12,7 @@ public class OrderCardController {
     public ImageView OrderImg;
     public Label PriceLbl;
     public Label ModelLbl;
-    Order order;
+    private Order order;
     public void t(MouseEvent event) throws IOException {
         System.out.println("test");
     }
