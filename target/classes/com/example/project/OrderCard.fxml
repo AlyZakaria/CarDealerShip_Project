@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="159.0" prefWidth="206.0" style="-fx-border-color: #000000; -fx-border-width: 1px 1px 1px 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-background-color: #f7EF8A;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.OrderCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#t" prefHeight="159.0" prefWidth="206.0" style="-fx-border-color: #000000; -fx-border-width: 1px 1px 1px 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-background-color: #f7EF8A;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.OrderCardController">
    <children>
-      <AnchorPane layoutY="116.0" onMouseClicked="#t" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #000000;">
+      <AnchorPane layoutY="116.0" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #000000;">
          <children>
             <Label fx:id="ModelLbl" layoutX="20.0" layoutY="15.0" text="Label" textFill="WHITE">
                <font>
@@ -20,7 +20,7 @@
                </font></Label>
          </children>
       </AnchorPane>
-      <ImageView fx:id="OrderImg" fitHeight="112.0" fitWidth="200.0" layoutX="3.0" layoutY="4.0" onMouseClicked="#t" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="OrderImg" fitHeight="112.0" fitWidth="200.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

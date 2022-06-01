@@ -1,7 +1,6 @@
 package com.example.project;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -33,7 +32,7 @@ public class AdminMainScreenCotroller implements Initializable {
     public Label date;
     public AnchorPane MainPane;
     public Label name;
-    private Person user;
+    private Person person;
 
     public void exitBtn(ActionEvent event) {
         System.exit(0);
@@ -46,7 +45,7 @@ public class AdminMainScreenCotroller implements Initializable {
 
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
-        controller.SetValues((User) user);
+        controller.SetValues((User) person);
     }
     public void LogOutBtn(ActionEvent event) throws IOException {
         Parent loginScreen = ScreenSelector.getLoginScreen().load();
@@ -57,10 +56,8 @@ public class AdminMainScreenCotroller implements Initializable {
     }
 
     public void sendPersonData(Person person) throws SQLException {
-        user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
-                person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
-
-        name.setText("Hello, " + user.getName());
+        this.person = person;
+        name.setText("Hello, " + person.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
 
     }
@@ -78,7 +75,7 @@ public class AdminMainScreenCotroller implements Initializable {
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order);
+            controller.getOrder(order,MainPane, person);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -119,7 +116,7 @@ public class AdminMainScreenCotroller implements Initializable {
                 e.printStackTrace();
             }
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order);
+            controller.getOrder(order,MainPane, person);
             flowPane.getChildren().add(OrderPane);
         }
 

@@ -1,23 +1,71 @@
 package com.example.project;
 
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class OrderCardController {
+public class OrderCardController implements Initializable {
     public ImageView OrderImg;
     public Label PriceLbl;
     public Label ModelLbl;
     Order order;
-    public void t(MouseEvent event) throws IOException {
-        System.out.println("test");
+    Person person;
+    public AnchorPane mainPane;
+
+
+    public void t(MouseEvent event) throws IOException, SQLException {
+        FXMLLoader loader = ScreenSelector.getOrderScreen();
+        Parent OrderScreen = loader.load();
+        OrderController controller = loader.getController();
+
+
+        if(person instanceof User) {
+            person = Singleton_Connector.getUserByID(order.getUserId());
+            controller.sendOrderInfo(order, (User) person);
+            FXMLLoader loader1 = ScreenSelector.getUserOrderScreen();
+            AnchorPane UserOderScreen = loader1.load();
+            UserOrderController controller1 = loader1.getController();
+            controller1.setPane((AnchorPane) OrderScreen);
+
+            ScrollPane ScrollPane = new ScrollPane();
+            ScrollPane.setPrefSize(695, 474);
+            ScrollPane.setContent(UserOderScreen);
+
+            mainPane.getChildren().removeAll();
+            mainPane.getChildren().setAll(ScrollPane);
+        }
+        else{
+            FXMLLoader loader1 = ScreenSelector.getAdminOrderScreen();
+            AnchorPane AdminOrderScreen = loader1.load();
+            AdminOrderController controller1 = loader1.getController();
+            controller1.setPane((AnchorPane) OrderScreen);
+
+            ScrollPane ScrollPane = new ScrollPane();
+            ScrollPane.setPrefSize(695, 474);
+            ScrollPane.setContent(AdminOrderScreen);
+
+            mainPane.getChildren().removeAll();
+            mainPane.getChildren().setAll(ScrollPane);
+        }
+
+
     }
-    public void getOrder(Order order) {
+    public void getOrder(Order order, AnchorPane mainPane, Person person) {
+        this.mainPane = mainPane;
         this.order = order;
+        this.person = person;
         setData();
     }
     private void setData() {
@@ -29,5 +77,10 @@ public class OrderCardController {
         OrderImg.setFitWidth(200);
         PriceLbl.setText("$"+String.valueOf(order.getPrice()));
         ModelLbl.setText(order.getModel());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

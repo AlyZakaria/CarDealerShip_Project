@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class HelloController {
+
     @FXML
     public TextField ID;
     public PasswordField password;
@@ -41,7 +42,7 @@ public class HelloController {
         Singleton_Connector instance = Singleton_Connector.getInstance();
 
         Order order1 = new Order(0,1,"Mercedes",50000,"","","",2000,
-                2000,"",5);
+                2000,"",1);
 
 
 
@@ -68,7 +69,6 @@ public class HelloController {
                 UserScreen = loader.load();
                 AdminMainScreenCotroller adminController = loader.getController();
                 adminController.sendPersonData(person);
-
             }
             else {
                 FXMLLoader loader = ScreenSelector.getUserMainScreen();

@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.project.AdminOrderScreen"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AdminOrderController">
+   <children>
+      <Button layoutX="144.0" layoutY="750.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #0598ff; -fx-background-radius: 10px;" text="Accept" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="LIME" glyphName="CAR" size="25" text="" wrappingWidth="23.88568878173828" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="345.0" layoutY="750.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="133.0" style="-fx-background-color: #0598ff; -fx-background-radius: 10px;" text="Decline" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="RED" glyphName="CAR" size="25" text="" wrappingWidth="23.88568878173828" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+        </Button>
+      <AnchorPane fx:id="MainOrderPane" layoutX="6.0" layoutY="8.0" prefHeight="675.0" prefWidth="592.0" />
+   </children>
 </AnchorPane>

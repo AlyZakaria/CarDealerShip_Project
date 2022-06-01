@@ -1,5 +1,6 @@
 .Button {
     -fx-background-color: transparent;
+    -fx-cursor: hand;
 }
 .Button:hover {
     -fx-background-color: #D4F1F4;
@@ -7,3 +8,16 @@
 .Button:pressed {
     -fx-background-color: #75E6DA;
 }
+.close{
+    -fx-cursor: hand;
+}
+
+.labelEven{
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+}
+.labelOdd{
+    -fx-background-color: #dddddd;
+    -fx-background-radius: 5px;
+}
+
