@@ -1,8 +1,6 @@
 package com.example.project;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 @SuppressWarnings("ALL")
 public class Singleton_Connector {
@@ -54,6 +52,7 @@ public class Singleton_Connector {
                     String password_DB = resultSet.getString("Password");
                     int gender = resultSet.getInt("Gender");
                     String National_ID = resultSet.getString("National_ID");
+                    System.out.println(name + " " + age + " " + address + " " + email + " " + phoneNumber);
                     if (resultSet.getInt("AdminLevel") == 0)
                         return new Admin_User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
                     else if (resultSet.getInt("AdminLevel") == 1)
@@ -160,6 +159,7 @@ public class Singleton_Connector {
         String query = "SELECT max(ID) FROM tbl_users";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
+        System.out.println("Here");
         int last = -1;
         try {
             while(resultSet.next()) {
@@ -226,7 +226,9 @@ public class Singleton_Connector {
     }
     public int userExists(String National_ID) throws SQLException {
         instance.establishConnection();
+
         String query = "SELECT * FROM tbl_users WHERE National_ID = " + National_ID;
+
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -246,7 +248,8 @@ public class Singleton_Connector {
     public ArrayList<Order> getAllOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
-        String query = "SELECT * FROM tbl_orders WHERE Status = 1";
+        // TODO: 6/1/2022 change from 0 to 1 
+        String query = "SELECT * FROM tbl_orders WHERE Status = 0";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -298,6 +301,7 @@ public class Singleton_Connector {
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, Email);
+
             preparedStmt.setString(2,PhoneNumber);
             preparedStmt.setString(3, Address);
             preparedStmt.setInt(4,user.getID());
@@ -375,7 +379,7 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
     }
-    public  User getUserByID(int userID) throws SQLException {
+    public User getUserByID(int userID) throws SQLException {
         instance.establishConnection();
         String query = "SELECT * FROM tbl_users WHERE ID = " + userID;
         Statement statement = connection.createStatement();
@@ -408,8 +412,6 @@ public class Singleton_Connector {
         }
         return new User(userID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
     }
-    //WISHLIST
-
     public void AddToWishList(User user, Order order) throws SQLException {
         instance.establishConnection();
         String query = "INSERT INTO `project_database`.`tbl_wishlist` (`User_ID`,`Order_ID`)" + "VALUES(?, ?)";
@@ -438,227 +440,6 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
     }
-    public Order getOrderByID(int ID) throws SQLException {
-        instance.establishConnection();
-        String query = "SELECT * FROM tbl_orders WHERE Order_ID = " + ID;
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        Order order = null;
-        try {
-            while(resultSet.next()) {
-                int userID = resultSet.getInt("User_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-                order = new Order(userID, ID, carType, price, Transmission, Color,
-                        Model, year, kilometers, ExtraInfo, status);
-            }
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return order;
-    }
-    public ArrayList<Order> getUserWishList(User user) throws SQLException {
-        instance.establishConnection();
-        String query = "SELECT * FROM tbl_wishlist WHERE User_ID = " + user.getID();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<>(  );
-        try {
-            while (resultSet.next()) {
-                orders.add(getOrderByID(resultSet.getInt("Order_ID")));
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return orders;
-    }
-    public ArrayList<Order> sortOrderIncreasing() throws SQLException {
-        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllOrders();
-        Collections.sort(orders, new Comparator<Order>() {
-            @Override
-            public int compare(Order o1, Order o2) {
-                return o1.getPrice() - o2.getPrice();
-            }
-        });
-        return orders;
-    }
 
-    public ArrayList<Order> sortOrderDecreasing() throws SQLException {
-        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllOrders();
-        Collections.sort(orders, new Comparator<Order>() {
-            @Override
-            public int compare(Order o1, Order o2) {
-                return o2.getPrice() - o1.getPrice();
-            }
-        });
-        return orders;
-    }
-
-    public ArrayList<Order> getAll_AutomaticCars() throws SQLException {
-        instance.establishConnection();
-        String auto = "Automatic";
-        String query = "select * from tbl_orders WHERE Transmission = '" + auto + "'AND Status = 1";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<Order>();
-
-        try{
-            while(resultSet.next()){
-                int userId = resultSet.getInt("User_ID");
-                int orderId = resultSet.getInt("Order_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
-                        Model, year, kilometers, ExtraInfo, status) );
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return orders;
-    }
-    public ArrayList<Order> getAll_ManualCars() throws SQLException{
-        instance.establishConnection();
-        String auto = "Manual";
-        String query = "select * from tbl_orders WHERE Transmission = '" + auto + "'AND Status = 1";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<Order>();
-
-        try{
-            while(resultSet.next()){
-                int userId = resultSet.getInt("User_ID");
-                int orderId = resultSet.getInt("Order_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
-                        Model, year, kilometers, ExtraInfo, status) );
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return orders;
-    }
-    public ArrayList<Order> getAll_SedanCars() throws SQLException {
-        instance.establishConnection();
-        String auto = "Sedan";
-        String query = "select * from tbl_orders WHERE Car_Type = '" + auto + "'AND Status = 1";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<Order>();
-
-        try{
-            while(resultSet.next()){
-                int userId = resultSet.getInt("User_ID");
-                int orderId = resultSet.getInt("Order_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
-                        Model, year, kilometers, ExtraInfo, status) );
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return orders;
-    }
-    public ArrayList<Order> getAll_SuvCars() throws SQLException{
-        instance.establishConnection();
-        String auto = "Suv";
-        String query = "select * from tbl_orders WHERE Car_Type = '" + auto + "'AND Status = 1";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<Order>();
-
-        try{
-            while(resultSet.next()){
-                int userId = resultSet.getInt("User_ID");
-                int orderId = resultSet.getInt("Order_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
-                        Model, year, kilometers, ExtraInfo, status) );
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return orders;
-    }
-    public ArrayList<Order> getAll_Trucks() throws SQLException {
-        instance.establishConnection();
-        String auto = "Truck";
-        String query = "select * from tbl_orders WHERE Car_Type = '" + auto + "'AND Status = 1";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<Order>();
-
-        try{
-            while(resultSet.next()){
-                int userId = resultSet.getInt("User_ID");
-                int orderId = resultSet.getInt("Order_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-                orders.add(new Order(userId, orderId, carType, price, Transmission, Color,
-                        Model, year, kilometers, ExtraInfo, status) );
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-        return orders;
-    }
 }
 
