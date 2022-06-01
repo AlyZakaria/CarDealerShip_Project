@@ -136,12 +136,9 @@ public class MainScreenController implements Initializable{
 
 
     public void sendPersonData(Person person) throws SQLException {
-        user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
-                person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
-
+        user = (User) person;
         name.setText("Hello, " + user.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
-
     }
 
 
