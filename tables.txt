@@ -1,0 +1,30 @@
+1	1	Sedan	800000	Automatic	Gray	Mercedes C180	2021	36501	Fabrika gowa w bara w zy el fol	0
+1	2	Suv	450000	Automatic	Black	Nissan Juke	2019	50546	Rasha nadafa	0
+1	3	Sedan	120000	Automatic	Red	Nissan Sunny	2016	90568	rasha dawa5l	0
+1	4	Suv	900000	Automatic	Black	Skoda Kodiaq	2022	6000	fabrika	0
+1	5	Suv	600000	Automatic	Black	Hyundai Tuscon	2022	3000	3al zero	0
+2	6	Sedan	100000	Automatic	Blue	Hyundai Matrix	2002	133666	swa2t tabeeb	0
+2	7	Truck	256000	Automatic	Beige	Kia Carens	2010	90065	fabrika	0
+2	8	Sedan	160000	Automatic	Gray	Hyundai Accent	2020	30000	swa2t tabiba ;)	0
+3	9	Sedan	360000	Automatic	White	Toyota Corrola	2022	0	ZERO	0
+3	10	Sedan	20000	Manual	Red	Lada 2011	2005	99999999	gayba a5erha	0
+5	11	Sedan	250000	Automatic	Red	MG 5	2021	9000	rasha eksdam amamy	0
+5	12	Suv	140000	Manual	Gold	Hyundai Matrix	2009	180000	ms2ta makana	0
+4	13	Sedan	120000	Manual	Grey	Hyundai Verna	2005	90000	gayba gaz	0
+4	14	Suv	260000	Automatic	Black	Renault Duster	2016	60000	takyeef bayz	0
+
+
+
+
+
+0	Admin	69	Admin	Admin	010	0	admin	0	1
+1	Aly Zakaria	21	El-Ibrahemya	ali.zakaria@outlook.com	01154567214	1	555	0	3010107020455
+2	Philemon	21	Bwalino	philo.gmail.com	01254567214	1	password	0	30101070200069
+3	Mina Magdy	21	El-Rasafa	minamagdy651@gmail.com	01203662382	1	test	0	30101070200096
+4	Mostafa Ashraf	21	Smouha	mostafaashraf.com	01003662382	1	password	0	30101070200055
+5	Mostafa Ahmed	21	El-Ma2moun	mostafaahmed@gmail.com	01254567214	1	password	0	696969696969
+
+
+
+
+
