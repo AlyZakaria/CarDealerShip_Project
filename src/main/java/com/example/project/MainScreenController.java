@@ -31,12 +31,14 @@ public class MainScreenController implements Initializable{
 
     public Button LogOutBtn;
 
-    public Label MyOdrders;
     public Button AddOrderBtn;
+    public Button HomeScreenBtn;
+    public Button WishListBtn;
+    public Button MyOrders;
 
     @FXML
     private Label nameField;
-
+    Button[] buttons;
 
     @FXML
     private Label date;
@@ -44,14 +46,11 @@ public class MainScreenController implements Initializable{
     private Label name;
 
 
-    //   private Label no_orders;
-
     @FXML
     private AnchorPane MainPane;
 
     private Person person;
     private User user;
-
     /*public MainScreenController(Person person) {
         this.user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
                 person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
@@ -62,7 +61,6 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void SettingsButton(ActionEvent event) throws IOException  {
-
         FXMLLoader Loader = ScreenSelector.getSettingScreen();
         Parent SettingPane = Loader.load();
         SettingsController controller = Loader.getController();
@@ -83,7 +81,6 @@ public class MainScreenController implements Initializable{
 
     @FXML
     public void HomeScreenBtn(ActionEvent event) throws IOException, SQLException {
-
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
 
@@ -93,7 +90,8 @@ public class MainScreenController implements Initializable{
         flowPane.setPrefSize(MainPane.getWidth(), MainPane.getHeight());;
         ArrayList<Order> orders = Order.getAllOrders();
         for(Order order : orders) {
-            FXMLLoader loader = ScreenSelector.getOrderCard();
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
             controller.getOrder(order);
@@ -114,6 +112,7 @@ public class MainScreenController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        buttons = new Button[] {AddOrderBtn, MyOrders, SettingsButton, LogOutBtn, HomeScreenBtn, WishListBtn};
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
 
@@ -128,7 +127,8 @@ public class MainScreenController implements Initializable{
             e.printStackTrace();
         }
         for(Order order : orders) {
-            FXMLLoader loader = ScreenSelector.getOrderCard();
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = null;
             try {
                 OrderPane = loader.load();
@@ -154,11 +154,6 @@ public class MainScreenController implements Initializable{
 
     }
 
-    @FXML
-    public void EditInfo(ActionEvent event) throws IOException{
-
-    }
-
 
     public void AddOrderBtn(ActionEvent event) throws IOException {
         FXMLLoader Loader = ScreenSelector.getAddOrder();
@@ -170,5 +165,8 @@ public class MainScreenController implements Initializable{
 
         controller.SetValues(user);
     }
-
+//    private void disableButtons() {
+//        for(Button button: buttons)
+//            button.setStyle("-fx-background-color: transparent");
+//    }
 }

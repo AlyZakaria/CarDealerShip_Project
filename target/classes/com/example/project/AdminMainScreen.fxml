@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AdminMainScreenCotroller">
    <top>
-      <AnchorPane fx:id="TopAnchorPane" prefHeight="74.0" prefWidth="960.0" style="-fx-background-color: #0598FF;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="TopAnchorPane" prefHeight="46.0" prefWidth="964.0" style="-fx-background-color: #0598FF;" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIconView fill="#fafafa" glyphName="CAR" layoutX="703.0" layoutY="40.0" size="30" text="" wrappingWidth="15.885688781738281" />
-            <Text fill="#f7f2f2" layoutX="744.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">
+            <FontAwesomeIconView fill="#fafafa" glyphName="CAR" layoutX="671.0" layoutY="54.0" size="50" text="" wrappingWidth="15.885688781738281" />
+            <Text fill="#f7f2f2" layoutX="738.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -24,7 +25,7 @@
                   <FontAwesomeIconView fx:id="ExitBtn" glyphName="CLOSE" size="20" />
                </graphic>
             </Button>
-            <Label fx:id="name" layoutX="45.0" layoutY="21.0" prefHeight="30.0" prefWidth="90.0" text="Label">
+            <Label fx:id="name" layoutX="21.0" layoutY="36.0" prefHeight="30.0" prefWidth="302.0" text="Label">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -33,37 +34,39 @@
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane prefHeight="479.0" prefWidth="230.0" style="-fx-border-color: #dddddd; -fx-border-width: 0px 4px 0px 0px;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="483.0" prefWidth="223.0" style="-fx-border-color: #dddddd; -fx-border-width: 0px 4px 0px 0px;" stylesheets="@Styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="HomeBtn" layoutY="91.0" mnemonicParsing="false" onAction="#HomeScreenBtn" prefHeight="58.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 0px 0px; -fx-cursor: hand;" text="Home" textFill="#0598ff">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font></Button>
-            <Button fx:id="PendingOrdersBtn" layoutX="-3.0" layoutY="150.0" mnemonicParsing="false" onAction="#pendingOrdersBtn" prefHeight="58.0" prefWidth="251.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="           Pending Orders" textFill="#0598ff">
+            <Button fx:id="HomeBtn" contentDisplay="TOP" layoutX="-2.0" mnemonicParsing="false" onAction="#HomeScreenBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="Home" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="SearchUserBtn" layoutX="-1.0" layoutY="201.0" mnemonicParsing="false" onAction="#searchUserBtn" prefHeight="58.0" prefWidth="250.0" style="-fx-background-color: Transparent; -fx-cursor: hand;" text="    Search User" textFill="#0598ff">
+            <Button fx:id="LogOutBtn" layoutX="-2.0" layoutY="424.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="   Log Out" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="SettingsBtn" layoutX="-13.0" layoutY="265.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="58.0" prefWidth="256.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="  Settings" textFill="#0598ff">
+            <Button fx:id="SettingsBtn" layoutX="-2.0" layoutY="365.0" mnemonicParsing="false" onAction="#SettingsButton" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="  Settings" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="LogOutBtn" layoutX="-14.0" layoutY="323.0" mnemonicParsing="false" onAction="#LogOutBtn" prefHeight="58.0" prefWidth="262.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="   Log Out" textFill="#0598ff">
+            <Line endX="100.0" layoutX="117.0" layoutY="341.0" startX="-100.0" stroke="#dddddd" strokeWidth="3.0" />
+            <Button fx:id="PendingOrdersBtn" layoutX="-2.0" layoutY="58.0" mnemonicParsing="false" onAction="#pendingOrdersBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="       Pending Orders" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="41.0" layoutY="304.0" size="29" text="" wrappingWidth="28.0" />
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="41.0" layoutY="362.0" size="29" text="" wrappingWidth="28.0" />
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="40.0" layoutY="134.0" selectionEnd="1" size="40" text="" wrappingWidth="28.0" />
-            <FontAwesomeIconView fill="#0598ff" glyphName="SEARCH" layoutX="41.0" layoutY="240.0" size="29" />
-            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="40.0" layoutY="189.0" size="29" text="" wrappingWidth="28.0" />
+            <Button fx:id="SearchUserBtn" layoutX="-2.0" layoutY="116.0" mnemonicParsing="false" onAction="#searchUserBtn" prefHeight="58.0" prefWidth="238.0" styleClass="Button" text="Search User" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Button>
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="24.0" layoutY="43.0" selectionEnd="1" size="36" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="26.0" layoutY="98.0" size="29" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="SEARCH" layoutX="29.0" layoutY="154.0" size="29" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="32.0" layoutY="406.0" size="30" text="" wrappingWidth="28.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="LIST" layoutX="31.0" layoutY="465.0" size="29" text="" wrappingWidth="28.0" />
          </children></AnchorPane>
    </left>
    <bottom>
@@ -76,7 +79,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="MainPane" layoutY="3.0" prefHeight="483.0" prefWidth="702.0" />
+            <AnchorPane fx:id="MainPane" layoutX="6.0" layoutY="4.0" prefHeight="474.0" prefWidth="702.0" />
          </children>
       </AnchorPane>
    </center>

@@ -1,0 +1,9 @@
+.Button {
+    -fx-background-color: transparent;
+}
+.Button:hover {
+    -fx-background-color: #D4F1F4;
+}
+.Button:pressed {
+    -fx-background-color: #75E6DA;
+}

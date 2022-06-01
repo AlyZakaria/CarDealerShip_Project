@@ -73,39 +73,6 @@ public class Singleton_Connector {
         throw new InvalidInputException();
     }
 
-    public Order checkOrder(int userId, int orderId) throws SQLException {
-        instance.establishConnection();
-        String query = "SELECT * FROM tbl_orders WHERE User_ID = " + userId + " AND Order_ID = " + orderId;
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        try {
-
-            while (resultSet.next()) {
-                userId = resultSet.getInt("User_ID");
-                orderId = resultSet.getInt("Order_ID");
-                String carType = resultSet.getString("Car_Type");
-                int price = resultSet.getInt("Price");
-                String Transmission = resultSet.getString("Transmission");
-                String Color = resultSet.getString("Color");
-                String Model = resultSet.getString("Model");
-                int year = resultSet.getInt("Year");
-                int kilometers = resultSet.getInt("Kilometers");
-                String ExtraInfo = resultSet.getString("Extra_Info");
-                int status = resultSet.getInt("Status");
-
-                if (!resultSet.next())
-                    return new Order(userId, orderId, carType, price, Transmission, Color,
-                            Model, year, kilometers, ExtraInfo, status);
-
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            instance.closeConnection();
-        }
-
-        return null;
-    }
 
     public void deleteOrder(Order order) throws SQLException {
         instance.establishConnection();
@@ -237,7 +204,6 @@ public class Singleton_Connector {
 
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
-       // System.out.println(National_ID);
 
         int ID = -1;
 
@@ -267,7 +233,7 @@ public class Singleton_Connector {
             preparedStmt.setString(4, user.getAddress());
             preparedStmt.setString(5, user.getEmail());
             preparedStmt.setString(6, user.getPhoneNumber());
-            preparedStmt.setInt(7, 0);
+            preparedStmt.setInt(7, 1);
             preparedStmt.setString(8, user.getPassword());
             preparedStmt.setInt(9, user.getGender());
             preparedStmt.setString(10, user.getNational_ID());
@@ -314,6 +280,7 @@ public class Singleton_Connector {
         }
         return orders;
     }
+
     public void deleteUserOrders(User user) throws SQLException {
         instance.establishConnection();
         String query = "DELETE FROM tbl_orders WHERE User_ID = " + user.getID();
@@ -412,6 +379,37 @@ public class Singleton_Connector {
         } finally {
             instance.closeConnection();
         }
+    }
+    public User getUserByID(int userID) throws SQLException {
+        instance.establishConnection();
+        String query = "SELECT * FROM tbl_users WHERE ID = " + userID;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        String name = null;
+        int age = 0;
+        String address = null;
+        String email = null;
+        String phoneNumber = null;
+        String password_DB = null;
+        int gender = 0;
+        String National_ID = null;
+        try {
+            while(resultSet.next()) {
+                    name = resultSet.getString("Name");
+                    age = resultSet.getInt("Age");
+                    address = resultSet.getString("Address");
+                    email = resultSet.getString("Email");
+                    phoneNumber = resultSet.getString("PhoneNumber");
+                    password_DB = resultSet.getString("Password");
+                    gender = resultSet.getInt("Gender");
+                    National_ID = resultSet.getString("National_ID");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+        return new User(userID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
     }
 }
 

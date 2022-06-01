@@ -78,11 +78,6 @@ public class Order {
          this.status = status;
         }
 
-        public static Order getOrder(int userId,int orderId) throws SQLException {
-            Singleton_Connector instance = Singleton_Connector.getInstance();
-            return instance.checkOrder(userId,orderId);
-        }
-
         public static ArrayList<Order> getAllUserOrders(User user) throws SQLException {
             Singleton_Connector instance = Singleton_Connector.getInstance();
             return instance.getAllUserOrders(user);
