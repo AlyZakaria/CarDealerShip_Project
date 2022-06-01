@@ -3,7 +3,6 @@ package com.example.project;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -21,64 +20,42 @@ public class OrderCardController implements Initializable {
     public ImageView OrderImg;
     public Label PriceLbl;
     public Label ModelLbl;
-    private Order order;
-    private Person person;
+    Order order;
+    Person person;
     public AnchorPane mainPane;
-    private ComboBox comboBox;
+    boolean myOrder = false;
 
-    private boolean myOrder = false;
-    private boolean pending = false;
-
-    public void CardPressed(MouseEvent event) throws IOException, SQLException {
-        if(comboBox != null)
-            comboBox.setVisible(false);
+    public void t(MouseEvent event) throws IOException, SQLException {
         ScrollPane ScrollPane = new ScrollPane();
         ScrollPane.setPrefSize(695, 474);
-        OrderMaker orderMaker = new OrderMaker(new OrderScreenFactory());
-        FXMLLoader loader = orderMaker.getOrderFXML();
+        FXMLLoader loader = ScreenSelector.getOrderScreen();
         Parent OrderScreen = loader.load();
         OrderController controller = loader.getController();
 
 
         if(person instanceof User && !myOrder) {
-            OrderMaker orderMaker1 = new OrderMaker(new OrderUserScreenFactory());
-            FXMLLoader loader1 = orderMaker1.getOrderFXML();
 
+            person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
+            controller.sendOrderInfo(order, (User) person);
+            FXMLLoader loader1 = ScreenSelector.getUserOrderScreen();
             AnchorPane UserOderScreen = loader1.load();
             UserOrderController controller1 = loader1.getController();
-
-            controller1.setPane((AnchorPane) OrderScreen, order ,(User)person);
-            person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
-            controller.sendOrderInfo(order, (User) person);
+            controller1.setPane((AnchorPane) OrderScreen);
             ScrollPane.setContent(UserOderScreen);
-        }
-        else if(person instanceof Admin_User && pending) {
-            OrderMaker orderMaker1 = new OrderMaker(new PendingOrderScreenFactory());
-            FXMLLoader loader1 = orderMaker1.getOrderFXML();
-            person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
-            controller.sendOrderInfo(order, (User) person);
-            AnchorPane PendingOrderScreen = loader1.load();
-            PendingOrderController controller1 = loader1.getController();
-
-            controller1.setPane((AnchorPane) OrderScreen, order);
-            ScrollPane.setContent(PendingOrderScreen);
         }
         else if(person instanceof Admin_User){
             person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
             controller.sendOrderInfo(order, (User) person);
-            OrderMaker orderMaker1 = new OrderMaker(new AdminOrderScreenFactory());
-            FXMLLoader loader1 = orderMaker1.getOrderFXML();
+            FXMLLoader loader1 = ScreenSelector.getAdminOrderScreen();
             AnchorPane AdminOrderScreen = loader1.load();
             AdminOrderController controller1 = loader1.getController();
             controller1.setPane((AnchorPane) OrderScreen,order);
             ScrollPane.setContent(AdminOrderScreen);
         }
-
-        else if(person instanceof User && myOrder){
+        else{
             person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
             controller.sendOrderInfo(order, (User) person);
-            OrderMaker orderMaker1 = new OrderMaker(new MyOrderScreenFactory());
-            FXMLLoader loader2 = orderMaker1.getOrderFXML();
+            FXMLLoader loader2 = ScreenSelector.getMyOrderScreen();
             AnchorPane MyOrder = loader2.load();
             MyOrderController controller2 = loader2.getController();
             controller2.setPane((AnchorPane) OrderScreen,order);
@@ -88,32 +65,26 @@ public class OrderCardController implements Initializable {
         mainPane.getChildren().setAll(ScrollPane);
 
     }
-    public void getOrder(Order order, AnchorPane mainPane, Person person, Boolean myOrder, ComboBox comboBox) {
+    public void getOrder(Order order, AnchorPane mainPane, Person person , Boolean myOrder) {
         this.myOrder = myOrder;
         this.mainPane = mainPane;
         this.order = order;
         this.person = person;
-        this.comboBox = comboBox;
-
         setData();
     }
     private void setData() {
         File[] files = File_Handler.getOrderDirectory(order).listFiles();
-        Image img;
-        if(files == null || files.length == 0) {
-            File temp = new File("Images\\no-image.jpg");
-            img = new Image(temp.getAbsolutePath(), 200, 112, false, true);
-        } else {
-            img = new Image(files[0].getAbsolutePath(), 200, 112, false, true);
-        }
+        Image img = new Image(files[0].getAbsolutePath());
+
         OrderImg.setImage(img);
+        OrderImg.setFitHeight(112);
+        OrderImg.setFitWidth(200);
         PriceLbl.setText("$"+String.valueOf(order.getPrice()));
         ModelLbl.setText(order.getModel());
     }
-    public void setPending(boolean pending) {
-        this.pending = pending;
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

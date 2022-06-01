@@ -379,7 +379,7 @@ public class Singleton_Connector {
             instance.closeConnection();
         }
     }
-    public User getUserByID(int userID) throws SQLException {
+    public  User getUserByID(int userID) throws SQLException {
         instance.establishConnection();
         String query = "SELECT * FROM tbl_users WHERE ID = " + userID;
         Statement statement = connection.createStatement();
