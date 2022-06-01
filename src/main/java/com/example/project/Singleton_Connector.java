@@ -245,11 +245,10 @@ public class Singleton_Connector {
         }
         return ID;
     }
-
     public ArrayList<Order> getAllOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
-        //change it later
+        // TODO: 6/1/2022 change from 0 to 1 
         String query = "SELECT * FROM tbl_orders WHERE Status = 0";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
