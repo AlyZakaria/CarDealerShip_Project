@@ -85,6 +85,8 @@ public class SearchUserScreenController implements Initializable {
     public void deleteUser(ActionEvent event) throws SQLException {
         Admin_User admin = new Admin_User();
         admin.deleteUser(user);
+        status_lbl.setText("User Deleted");
+        hideInfo();
     }
     private void hideInfo() {
         for(Label label : labels) {
