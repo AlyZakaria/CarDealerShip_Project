@@ -34,13 +34,12 @@ public class OrderCardController implements Initializable {
 
 
         if(person instanceof User && !myOrder) {
-
-            person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
-            controller.sendOrderInfo(order, (User) person);
             FXMLLoader loader1 = ScreenSelector.getUserOrderScreen();
             AnchorPane UserOderScreen = loader1.load();
             UserOrderController controller1 = loader1.getController();
-            controller1.setPane((AnchorPane) OrderScreen);
+            controller1.setPane((AnchorPane) OrderScreen, order ,(User)person);
+            person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
+            controller.sendOrderInfo(order, (User) person);
             ScrollPane.setContent(UserOderScreen);
         }
         else if(person instanceof Admin_User){
@@ -52,7 +51,8 @@ public class OrderCardController implements Initializable {
             controller1.setPane((AnchorPane) OrderScreen,order);
             ScrollPane.setContent(AdminOrderScreen);
         }
-        else{
+        else if(person instanceof User && myOrder){
+            System.err.println("Here");
             person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
             controller.sendOrderInfo(order, (User) person);
             FXMLLoader loader2 = ScreenSelector.getMyOrderScreen();
@@ -60,6 +60,9 @@ public class OrderCardController implements Initializable {
             MyOrderController controller2 = loader2.getController();
             controller2.setPane((AnchorPane) OrderScreen,order);
             ScrollPane.setContent(MyOrder);
+        }
+        else{
+
         }
         mainPane.getChildren().removeAll();
         mainPane.getChildren().setAll(ScrollPane);
