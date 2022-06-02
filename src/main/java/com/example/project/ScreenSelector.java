@@ -58,4 +58,7 @@ public class ScreenSelector {
     public static FXMLLoader getMyOrderScreen(){
         return new FXMLLoader(HelloApplication.class.getResource("MyOrderScreen.fxml"));
     }
+    public static FXMLLoader getPendingOrderScreen() {
+        return new FXMLLoader(HelloApplication.class.getResource("PendingOrderScreen.fxml"));
+    }
 }
