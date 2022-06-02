@@ -1,13 +1,13 @@
 package com.example.project;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -30,6 +30,57 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
 
+//        //file chooser
+//        Pane pane = new Pane();
+//        Button btn = new Button("Click me");
+//        pane.getChildren().add(btn);
+//        btn.setOnAction(event -> {
+//            FileChooser fc = new FileChooser();
+//            List<File> list = fc.showOpenMultipleDialog(null);
+//            try {
+//                File_Handler.createOrderFile(list);
+//            } catch (Exception e) {
+//                System.out.println("here");
+//                System.out.println(e.getMessage());
+//            }
+//
+//        });
+
+
+//        Order order = new Order(1, 2, "Sedan", 500, "automatic", "red", "test",
+//                2001, 90, "sh8ala", 0);
+//        User user = new User(11,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        Singleton_Connector.getInstance().RemoveFromWishList(user, order);
+//        order.confirmOrder();
+
+//        order.DeleteOrder();
+//        System.out.println(Singleton_Connector.getInstance().getAllPendingOrders().size());
+
+
+//        Singleton_Connector instance = Singleton_Connector.getInstance();
+//        try {
+//            instance.addUser(new User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001"));
+//        } catch (UserExistsException e) {
+//            System.out.println("user exists");
+//        }
+
+//        Admin_User admin = new Admin_User(5,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "001");
+//        //admin.addUser(new User(500,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "8989"));
+//        User user = new User(11,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        admin.deleteUser(user);
+
+//        when creating an order, you have to set the orderID to be the last one, use getLastOrderID
+//        System.out.println(Singleton_Connector.getInstance().getUserByID(10).getName());
+
+//        Order order = Singleton_Connector.getInstance().getOrderByID(14);
+//        System.out.println(order.getModel());
+
+//        User user = new User(1,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        ArrayList<Order> orders = Singleton_Connector.getInstance().getUserWishList(user);
+//        for(Order order: orders) {
+//            System.out.println(order.getModel());
+//        }
+
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
         //To be able to drag it
         LoginScreen.setOnMousePressed(pressEvent -> {
@@ -38,8 +89,6 @@ public class HelloApplication extends Application {
                 stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
             });
         });
-        File iconFile = new File("Images/Icon.png");
-        stage.getIcons().add(new Image(iconFile.getAbsolutePath()));
         Scene scene = new Scene(LoginScreen);
         stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         stage.setScene(scene);
