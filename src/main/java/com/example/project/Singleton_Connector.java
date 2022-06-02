@@ -411,6 +411,7 @@ public class Singleton_Connector {
         return new User(userID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
     }
     //WISHLIST
+
     public void AddToWishList(User user, Order order) throws SQLException {
         instance.establishConnection();
         String query = "INSERT INTO `project_database`.`tbl_wishlist` (`User_ID`,`Order_ID`)" + "VALUES(?, ?)";
