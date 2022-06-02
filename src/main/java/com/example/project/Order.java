@@ -106,4 +106,11 @@ public class Order {
             Singleton_Connector instance = Singleton_Connector.getInstance();
             instance.confirmOrder(this);
         }
+        public static ArrayList<Order> getPendingOrders() throws SQLException {
+            return Singleton_Connector.getInstance().getAllPendingOrders();
+        }
+        public void deleteOrder() throws SQLException {
+            Singleton_Connector.getInstance().deleteOrder(this);
+            File_Handler.deleteOrder(this);
+        }
 }

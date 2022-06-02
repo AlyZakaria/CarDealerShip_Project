@@ -246,8 +246,7 @@ public class Singleton_Connector {
     public ArrayList<Order> getAllOrders() throws SQLException {
         instance.establishConnection();
         ArrayList<Order> orders = new ArrayList<>();
-        // TODO: 6/1/2022 change from 0 to 1 
-        String query = "SELECT * FROM tbl_orders WHERE Status = 0";
+        String query = "SELECT * FROM tbl_orders WHERE Status = 1";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 

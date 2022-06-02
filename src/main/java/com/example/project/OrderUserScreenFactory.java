@@ -2,10 +2,9 @@ package com.example.project;
 
 import javafx.fxml.FXMLLoader;
 
-public class BigOrderCardFactory implements iFactory{
-    //change it later
+public class OrderUserScreenFactory implements iFactory{
     @Override
     public FXMLLoader getOrderCard() {
-        return ScreenSelector.getOrderCard();
+        return ScreenSelector.getUserOrderScreen();
     }
 }

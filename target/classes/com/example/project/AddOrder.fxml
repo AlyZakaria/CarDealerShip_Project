@@ -54,7 +54,7 @@
       <TextField fx:id="YearTxt" layoutX="131.0" layoutY="208.0" />
       <TextField fx:id="KilometerTxt" layoutX="131.0" layoutY="242.0" />
       <TextField fx:id="ExtraInfoTxt" alignment="TOP_LEFT" layoutX="43.0" layoutY="335.0" prefHeight="70.0" prefWidth="334.0" />
-      <Button fx:id="AddOrderBtn" layoutX="414.0" layoutY="372.0" mnemonicParsing="false" onAction="#AddOrderBtn" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #00FF00; -fx-background-radius: 100px; -fx-border-width: 1px; -fx-border-color: #dddddd; -fx-border-radius: 100px;" text="Add Order" textFill="WHITE">
+      <Button fx:id="AddOrderBtn" layoutX="414.0" layoutY="372.0" mnemonicParsing="false" onAction="#AddOrderBtn" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #00FF00; -fx-background-radius: 100px; -fx-border-radius: 100px;" text="Add Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -67,10 +67,13 @@
          </font></Label>
       <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="430.0" layoutY="393.0" size="15" text="" />
       <Line endX="418.99993896484375" endY="1.52587890625E-5" layoutX="141.0" layoutY="116.0" startX="-116.99998474121094" startY="1.52587890625E-5" stroke="#dddddd" />
-      <Button fx:id="AddPicturesBtn" layoutX="414.0" layoutY="210.0" mnemonicParsing="false" onAction="#AddPicturesBtn" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #0589ff; -fx-background-radius: 100px; -fx-cursor: hand;" text="    Add Pictures" textFill="WHITE">
+      <Button fx:id="AddPicturesBtn" layoutX="414.0" layoutY="320.0" mnemonicParsing="false" onAction="#AddPicturesBtn" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #0589ff; -fx-background-radius: 100px; -fx-cursor: hand;" text="    Add Pictures" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <FontAwesomeIconView fill="WHITE" glyphName="PHOTO" layoutX="425.0" layoutY="231.0" size="15" />
       <Label layoutX="43.0" layoutY="284.0" text="Price">
