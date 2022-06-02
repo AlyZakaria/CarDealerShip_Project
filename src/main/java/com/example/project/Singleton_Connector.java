@@ -472,7 +472,7 @@ public class Singleton_Connector {
         String query = "SELECT * FROM tbl_wishlist WHERE User_ID = " + user.getID();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
-        ArrayList<Order> orders = new ArrayList<>();
+        ArrayList<Order> orders = new ArrayList<>(  );
         try {
             while (resultSet.next()) {
                 orders.add(getOrderByID(resultSet.getInt("Order_ID")));
