@@ -1,38 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="859.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.UserOrderController">
+<AnchorPane prefHeight="859.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.UserOrderController">
    <children>
-      <Button fx:id="AddWishlist" layoutX="129.0" layoutY="765.0" mnemonicParsing="false" onAction="#AddWishList" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15px;" text="Add To Wishlist" textFill="WHITE">
+      <Button fx:id="AddWishlist" layoutX="161.0" layoutY="765.0" mnemonicParsing="false" onAction="#AddWishList" prefHeight="36.0" prefWidth="125.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15px;" text="Add Wishlist" textFill="WHITE">
          <graphic>
              <FontAwesomeIconView fill="LIME" glyphName="CAR" size="25" text="" wrappingWidth="23.88568878173828" />
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-       <Button fx:id="RemoveWishlist" layoutX="332.0" layoutY="765.0" mnemonicParsing="false" onAction="#RemoveWishList" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15px;" text="Remove From Wishlist" textFill="WHITE">
+         </cursor></Button>
+       <Button fx:id="RemoveWishlist" layoutX="339.0" layoutY="765.0" mnemonicParsing="false" onAction="#RemoveWishList" prefHeight="35.0" prefWidth="133.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15px;" text="Remove Wishlist" textFill="WHITE">
          <graphic>
              <FontAwesomeIconView fill="RED" glyphName="CAR" size="25" text="" wrappingWidth="23.88568878173828" />
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </cursor></Button>
       <AnchorPane fx:id="MainOrderPane" layoutX="3.0" layoutY="-1.0" prefHeight="743.0" prefWidth="594.0" />
-      <Label fx:id="Message" alignment="CENTER" layoutX="224.0" layoutY="827.0" prefHeight="18.0" prefWidth="215.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
+      <Label fx:id="Message" alignment="CENTER" layoutX="224.0" layoutY="827.0" prefHeight="18.0" prefWidth="215.0" textFill="RED" />
    </children>
 </AnchorPane>
