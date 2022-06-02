@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -114,34 +115,41 @@ public class ImageSliderController implements Initializable {
 
     public void setTheImages(Order order) throws SQLException, IOException {
         File[] files = File_Handler.getOrderDirectory(order).listFiles();
-        int  p = 1;
-
-        for(File file: files) {
-            if(p == 1) {
-                image1 = new ImageView(file.getAbsolutePath());
-                images.add(image1);
-                image1.setFitWidth(398);
-                image1.setFitHeight(240);
-
-                panes.add(pane1);
-            }
-            else if(p == 2) {
-                image2 = new ImageView(file.getAbsolutePath());
-                images.add(image2);
-                image2.setFitWidth(398);
-                image2.setFitHeight(240);
-
-                panes.add(pane2);
-            }else {
-                image3 = new ImageView(file.getAbsolutePath());
-                images.add(image3);
-                image3.setFitWidth(398);
-                image3.setFitHeight(240);
-                panes.add(pane3);
-            }
-            p++;
+        if(files.length == 0) {
+            File temp = new File("Images\\no-image.jpg");
+            image1 = new ImageView(temp.getAbsolutePath());
+            image1.setFitWidth(398);
+            image1.setFitHeight(240);
+            images.add(image1);
+            panes.add(pane1);
         }
+        else {
+            int p = 1;
+            for (File file : files) {
+                if (p == 1) {
+                    image1 = new ImageView(file.getAbsolutePath());
+                    images.add(image1);
+                    image1.setFitWidth(398);
+                    image1.setFitHeight(240);
 
+                    panes.add(pane1);
+                } else if (p == 2) {
+                    image2 = new ImageView(file.getAbsolutePath());
+                    images.add(image2);
+                    image2.setFitWidth(398);
+                    image2.setFitHeight(240);
+
+                    panes.add(pane2);
+                } else {
+                    image3 = new ImageView(file.getAbsolutePath());
+                    images.add(image3);
+                    image3.setFitWidth(398);
+                    image3.setFitHeight(240);
+                    panes.add(pane3);
+                }
+                p++;
+            }
+        }
         pageNo.setText(i+1 +"/" + panes.size());
         panes.get(0).getChildren().setAll(images.get(0));
         mainPane.getChildren().setAll(panes.get(0));

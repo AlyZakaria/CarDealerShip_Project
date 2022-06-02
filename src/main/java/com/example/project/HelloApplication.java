@@ -20,6 +20,7 @@ import java.io.File;
 import java.sql.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Flow;
 
@@ -68,8 +69,18 @@ public class HelloApplication extends Application {
 //        User user = new User(11,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
 //        admin.deleteUser(user);
 
-        // when creating an order, you have to set the orderID to be the last one, use getLastOrderID
+//        when creating an order, you have to set the orderID to be the last one, use getLastOrderID
 //        System.out.println(Singleton_Connector.getInstance().getUserByID(10).getName());
+
+//        Order order = Singleton_Connector.getInstance().getOrderByID(14);
+//        System.out.println(order.getModel());
+
+//        User user = new User(1,"Mina", 21, "rasafa", "minamagdy651@gmail.com", "01203662382", 1, "test", "609");
+//        ArrayList<Order> orders = Singleton_Connector.getInstance().getUserWishList(user);
+//        for(Order order: orders) {
+//            System.out.println(order.getModel());
+//        }
+
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
         //To be able to drag it
         LoginScreen.setOnMousePressed(pressEvent -> {

@@ -56,7 +56,14 @@ public class MainScreenController implements Initializable{
     }
 */
 
-    public void exitBtn(ActionEvent event) { System.exit(0); }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void exitBtn(ActionEvent event) {
+        System.exit(0);
+    }
 
     @FXML
     public void SettingsButton(ActionEvent event) throws IOException  {
@@ -126,10 +133,7 @@ public class MainScreenController implements Initializable{
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 
 
     public void sendPersonData(Person person) throws SQLException, IOException {
@@ -137,7 +141,6 @@ public class MainScreenController implements Initializable{
         name.setText("Hello, " + person.getName());
         date.setText(String.valueOf(java.time.LocalDate.now()));
         HomeScreenBtn(new ActionEvent());
-
     }
 
 
@@ -145,11 +148,32 @@ public class MainScreenController implements Initializable{
         FXMLLoader Loader = ScreenSelector.getAddOrder();
         Parent AddOrder = Loader.load();
         AddOrderController controller = Loader.getController();
+        controller.SetValues((User) person);
 
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll(AddOrder);
-
-        controller.SetValues((User) person);
     }
 
+    public void WishListBtn(ActionEvent event) throws SQLException, IOException {
+        FlowPane flowPane = new FlowPane();
+        ScrollPane scrollPane = new ScrollPane(flowPane);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        flowPane.setHgap(20);
+        flowPane.setVgap(20);
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
+        flowPane.setPrefSize(695, 474);
+        ArrayList<Order> orders = Singleton_Connector.getInstance().getUserWishList((User) person);
+        for(Order order : orders) {
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
+            Parent OrderPane = loader.load();
+            OrderCardController  controller = loader.getController();
+            //@Aly
+            controller.getOrder(order,MainPane,person, true);
+            flowPane.getChildren().add(OrderPane);
+        }
+
+        MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(scrollPane);
+    }
 }

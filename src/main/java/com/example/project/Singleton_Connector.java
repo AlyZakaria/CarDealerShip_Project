@@ -226,9 +226,7 @@ public class Singleton_Connector {
     }
     public int userExists(String National_ID) throws SQLException {
         instance.establishConnection();
-
         String query = "SELECT * FROM tbl_users WHERE National_ID = " + National_ID;
-
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
@@ -412,6 +410,7 @@ public class Singleton_Connector {
         }
         return new User(userID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
     }
+    //WISHLIST
     public void AddToWishList(User user, Order order) throws SQLException {
         instance.establishConnection();
         String query = "INSERT INTO `project_database`.`tbl_wishlist` (`User_ID`,`Order_ID`)" + "VALUES(?, ?)";
@@ -439,6 +438,51 @@ public class Singleton_Connector {
         } finally {
             instance.closeConnection();
         }
+    }
+    public Order getOrderByID(int ID) throws SQLException {
+        instance.establishConnection();
+        String query = "SELECT * FROM tbl_orders WHERE Order_ID = " + ID;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        Order order = null;
+        try {
+            while(resultSet.next()) {
+                int userID = resultSet.getInt("User_ID");
+                String carType = resultSet.getString("Car_Type");
+                int price = resultSet.getInt("Price");
+                String Transmission = resultSet.getString("Transmission");
+                String Color = resultSet.getString("Color");
+                String Model = resultSet.getString("Model");
+                int year = resultSet.getInt("Year");
+                int kilometers = resultSet.getInt("Kilometers");
+                String ExtraInfo = resultSet.getString("Extra_Info");
+                int status = resultSet.getInt("Status");
+                order = new Order(userID, ID, carType, price, Transmission, Color,
+                        Model, year, kilometers, ExtraInfo, status);
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+        return order;
+    }
+    public ArrayList<Order> getUserWishList(User user) throws SQLException {
+        instance.establishConnection();
+        String query = "SELECT * FROM tbl_wishlist WHERE User_ID = " + user.getID();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        ArrayList<Order> orders = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                orders.add(getOrderByID(resultSet.getInt("Order_ID")));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            instance.closeConnection();
+        }
+        return orders;
     }
 
 }

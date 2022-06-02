@@ -67,14 +67,14 @@ public class AddOrderController implements Initializable {
             int price = Integer.parseInt(PriceTxt.getText());
             String extraInfo = ExtraInfoTxt.getText();
             Singleton_Connector instance = Singleton_Connector.getInstance();
-
+            if(color.equals("") || model.equals("") || carType.equals("") || TransType.equals(""))
+                throw new Exception();
             Order order = new Order(user.getID(), instance.getLastOrderID(), carType, price, TransType, color, model, year, kilos, extraInfo, 0 );
             order.AddOrder(list);
             status.setText("Order Added Successfully, Order ID: " + order.getOrderId());
             cleanTextFields();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             status.setText("Invalid Inputs");
             cleanTextFields();
         }
