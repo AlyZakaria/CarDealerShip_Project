@@ -75,7 +75,7 @@ public class OrderCardController implements Initializable {
     private void setData() {
         File[] files = File_Handler.getOrderDirectory(order).listFiles();
         Image img;
-        if(files.length == 0) {
+        if(files == null || files.length == 0) {
             File temp = new File("Images\\no-image.jpg");
             img = new Image(temp.getAbsolutePath());
         } else {
