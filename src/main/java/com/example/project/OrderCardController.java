@@ -51,7 +51,8 @@ public class OrderCardController implements Initializable {
             controller1.setPane((AnchorPane) OrderScreen,order);
             ScrollPane.setContent(AdminOrderScreen);
         }
-        else{
+        else if(person instanceof User && myOrder){
+            System.err.println("Here");
             person = Singleton_Connector.getInstance().getUserByID(order.getUserId());
             controller.sendOrderInfo(order, (User) person);
             FXMLLoader loader2 = ScreenSelector.getMyOrderScreen();
@@ -59,6 +60,9 @@ public class OrderCardController implements Initializable {
             MyOrderController controller2 = loader2.getController();
             controller2.setPane((AnchorPane) OrderScreen,order);
             ScrollPane.setContent(MyOrder);
+        }
+        else{
+
         }
         mainPane.getChildren().removeAll();
         mainPane.getChildren().setAll(ScrollPane);

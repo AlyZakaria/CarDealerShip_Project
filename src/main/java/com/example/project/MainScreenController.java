@@ -169,7 +169,7 @@ public class MainScreenController implements Initializable{
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
             //@Aly
-            controller.getOrder(order,MainPane,person, true);
+            controller.getOrder(order,MainPane,person, false);
             flowPane.getChildren().add(OrderPane);
         }
 
