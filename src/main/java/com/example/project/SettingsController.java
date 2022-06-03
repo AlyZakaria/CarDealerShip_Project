@@ -55,9 +55,9 @@ public class SettingsController implements Initializable {
             nameField.setText(user.getName());
             ageField.setText(String.valueOf(user.getAge()));
             if(user.getGender() == 0)
-                genderField.setText("M");
+                genderField.setText("Male");
             else
-                genderField.setText("F");
+                genderField.setText("Female");
             nationalIdField.setText(user.getNational_ID());
             EmailText.setPromptText(user.getEmail());
             addressText.setPromptText(user.getAddress());

@@ -97,10 +97,6 @@ public class Order {
             Singleton_Connector instance = Singleton_Connector.getInstance();
             return instance.getAllOrders();
         }
-        public void test(){
-            System.out.println(carType + " " + price +" " + Transmission + " " + Color + " " + Model + " " + year +
-                    " "  + kilometers + " " + ExtraInfo + " " + status);
-        }
         public void confirmOrder() throws SQLException {
             status = 1;
             Singleton_Connector instance = Singleton_Connector.getInstance();

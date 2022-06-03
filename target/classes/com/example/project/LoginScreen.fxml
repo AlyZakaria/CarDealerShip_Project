@@ -24,7 +24,7 @@
             <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="141.0" layoutY="125.0" size="40" />
             <Text fill="#0598ff" layoutX="115.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                <font>
-                  <Font size="22.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Text>
             <Button layoutX="303.0" layoutY="5.0" mnemonicParsing="false" onAction="#exitBtn" style="-fx-background-color: transparent; -fx-cursor: hand;">
@@ -45,7 +45,7 @@
             <FontAwesomeIconView fill="#efefef" glyphName="CAR" layoutX="144.0" layoutY="232.0" size="75" />
             <Text fill="#f7f7f7" layoutX="95.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car DealerShip">
                <font>
-                  <Font size="28.0" />
+                  <Font name="System Bold" size="28.0" />
                </font>
             </Text>
          </children>

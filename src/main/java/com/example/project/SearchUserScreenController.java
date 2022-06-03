@@ -67,11 +67,8 @@ public class SearchUserScreenController implements Initializable {
         Phone_lbl.setText("Phone: " + user.getPhoneNumber());
         NatID_lbl.setText("National ID: " + user.getNational_ID());
 
-        ArrayList<Order> userOrders = instance.getAllUserOrders(user);
         ObservableList<Order> orders = FXCollections.observableArrayList();
-        for(Order order: userOrders){
-            orders.add(order);
-        }
+        orders.addAll(instance.getAllUserOrders(user));
 
         Order_ID.setCellValueFactory(new PropertyValueFactory<>("orderId"));
         Model.setCellValueFactory(new PropertyValueFactory<>("model"));
