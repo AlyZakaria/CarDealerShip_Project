@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="859.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.PendingOrderController">
+   <children>
+      <Button fx:id="AcceptOrder" layoutX="129.0" layoutY="765.0" mnemonicParsing="false" onAction="#AcceptOrder" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15px;" text="Accept Order" textFill="WHITE">
+         <graphic>
+             <FontAwesomeIconView fill="LIME" glyphName="CAR" size="25" text="" wrappingWidth="23.88568878173828" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+       <Button fx:id="RejectOrder" layoutX="332.0" layoutY="765.0" mnemonicParsing="false" onAction="#RejectOrder" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15px;" text="Reject Order" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <AnchorPane fx:id="MainOrderPane" layoutX="3.0" layoutY="-1.0" prefHeight="743.0" prefWidth="594.0" />
+      <Label fx:id="Message" alignment="CENTER" layoutX="224.0" layoutY="827.0" prefHeight="18.0" prefWidth="215.0" textFill="RED" />
+      <FontAwesomeIconView fill="#e40f0f" glyphName="CLOSE" layoutX="354.0" layoutY="793.0" size="25" text="" />
+   </children>
+</AnchorPane>
