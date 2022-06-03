@@ -1,6 +1,8 @@
 package com.example.project;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 @SuppressWarnings("ALL")
 public class Singleton_Connector {
@@ -484,6 +486,26 @@ public class Singleton_Connector {
         }
         return orders;
     }
+    public ArrayList<Order> sortOrderIncreasing() throws SQLException {
+        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllOrders();
+        Collections.sort(orders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return o1.getPrice() - o2.getPrice();
+            }
+        });
+        return orders;
+    }
 
+    public ArrayList<Order> sortOrderDecreasing() throws SQLException {
+        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllOrders();
+        Collections.sort(orders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return o2.getPrice() - o1.getPrice();
+            }
+        });
+        return orders;
+    }
 }
 
