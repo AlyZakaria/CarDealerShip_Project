@@ -40,7 +40,6 @@ public class UserOrderController implements Initializable {
         MainOrderPane.getChildren().removeAll();
         MainOrderPane.getChildren().setAll(pane);
         Wishlists = Singleton_Connector.getInstance().getUserWishList(user);
-        System.out.println(user.getID() + " " + order.getUserId());
         if(user.getID() == order.getUserId()){
             RemoveWishlist.setDisable(true);
             AddWishlist.setDisable(true);

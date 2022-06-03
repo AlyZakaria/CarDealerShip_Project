@@ -18,13 +18,7 @@ public class ScreenSelector {
     public static FXMLLoader getSettingScreen(){
         return new FXMLLoader(HelloApplication.class.getResource("SettingScreen.fxml"));
     }
-    public static FXMLLoader getHomeScreen(){
-        return new FXMLLoader(HelloApplication.class.getResource("HomeScreen.fxml"));
-    }
 
-    public static FXMLLoader getMyOrders(){
-        return new FXMLLoader(HelloApplication.class.getResource("MyOrders.fxml"));
-    }
     public static FXMLLoader getAdminScreen() {
         return new FXMLLoader(HelloApplication.class.getResource("AdminMainScreen.fxml"));
     }

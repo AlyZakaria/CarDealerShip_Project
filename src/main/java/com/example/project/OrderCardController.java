@@ -96,13 +96,11 @@ public class OrderCardController implements Initializable {
         Image img;
         if(files == null || files.length == 0) {
             File temp = new File("Images\\no-image.jpg");
-            img = new Image(temp.getAbsolutePath());
+            img = new Image(temp.getAbsolutePath(), 200, 112, true, true);
         } else {
-            img = new Image(files[0].getAbsolutePath());
+            img = new Image(files[0].getAbsolutePath(), 200, 112, true, true);
         }
         OrderImg.setImage(img);
-        OrderImg.setFitHeight(112);
-        OrderImg.setFitWidth(200);
         PriceLbl.setText("$"+String.valueOf(order.getPrice()));
         ModelLbl.setText(order.getModel());
     }
