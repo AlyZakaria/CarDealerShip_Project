@@ -58,6 +58,8 @@ public class HelloController {
 
 
 
+
+
         try{
             person = instance.checkCredentials(ID.getText(), password.getText());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
