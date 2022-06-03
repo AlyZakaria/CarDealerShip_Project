@@ -27,10 +27,7 @@
             <Font name="System Bold" size="12.0" />
          </font></Button>
       <AnchorPane fx:id="MainOrderPane" layoutX="3.0" layoutY="-1.0" prefHeight="743.0" prefWidth="594.0" />
-      <Label fx:id="Message" alignment="CENTER" layoutX="224.0" layoutY="827.0" prefHeight="18.0" prefWidth="215.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
+      <Label fx:id="Message" alignment="CENTER" layoutX="224.0" layoutY="827.0" prefHeight="18.0" prefWidth="215.0" textFill="RED" />
       <FontAwesomeIconView fill="#e40f0f" glyphName="CLOSE" layoutX="354.0" layoutY="793.0" size="25" text="" />
    </children>
 </AnchorPane>
