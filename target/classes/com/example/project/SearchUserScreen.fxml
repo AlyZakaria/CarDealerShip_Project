@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="457.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.SearchUserScreenController">
+<AnchorPane prefHeight="483.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.SearchUserScreenController">
    <children>
       <Label fx:id="status_lbl" layoutX="80.0" layoutY="128.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: transparent;" textFill="RED">
          <font>
@@ -28,7 +28,7 @@
          </font>
       </Label>
       <TextField fx:id="id_txt" layoutX="80.0" layoutY="102.0" />
-      <TableView fx:id="tableview" layoutX="312.0" layoutY="102.0" prefHeight="358.0" prefWidth="383.0">
+      <TableView fx:id="tableview" layoutX="313.0" layoutY="102.0" prefHeight="380.0" prefWidth="382.0">
         <columns>
           <TableColumn fx:id="Order_ID" prefWidth="63.20001220703125" text="Order ID" />
           <TableColumn fx:id="Model" prefWidth="71.20001220703125" text="Model" />

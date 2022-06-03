@@ -1,6 +1,8 @@
 package com.example.project;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 @SuppressWarnings("ALL")
 public class Singleton_Connector {
@@ -52,7 +54,6 @@ public class Singleton_Connector {
                     String password_DB = resultSet.getString("Password");
                     int gender = resultSet.getInt("Gender");
                     String National_ID = resultSet.getString("National_ID");
-                    System.out.println(name + " " + age + " " + address + " " + email + " " + phoneNumber);
                     if (resultSet.getInt("AdminLevel") == 0)
                         return new Admin_User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
                     else if (resultSet.getInt("AdminLevel") == 1)
@@ -484,6 +485,26 @@ public class Singleton_Connector {
         }
         return orders;
     }
+    public ArrayList<Order> sortOrderIncreasing() throws SQLException {
+        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllOrders();
+        Collections.sort(orders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return o1.getPrice() - o2.getPrice();
+            }
+        });
+        return orders;
+    }
 
+    public ArrayList<Order> sortOrderDecreasing() throws SQLException {
+        ArrayList<Order> orders = Singleton_Connector.getInstance().getAllOrders();
+        Collections.sort(orders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return o2.getPrice() - o1.getPrice();
+            }
+        });
+        return orders;
+    }
 }
 

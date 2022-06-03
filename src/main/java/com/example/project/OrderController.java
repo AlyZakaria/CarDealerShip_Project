@@ -52,11 +52,6 @@ public class OrderController implements Initializable {
     @FXML
     private StackPane ImagePane;
 
-
-    public void WishlistFunction(ActionEvent event){
-        System.out.println("LIKED");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -77,12 +72,12 @@ public class OrderController implements Initializable {
             userPhone.setText(user.getPhoneNumber());
 //            OrderID.setText(String.valueOf(order.getOrderId()));
             orderModel.setText(order.getModel() + " - " + order.getYear());
-            carType.setText("   " + "Car Type:      " + order.getCarType());
-            Transmission.setText("   "+"Transmission:      "+ order.getTransmission());
-            Kilometers.setText("   "+"Kilometers:           "+ order.getKilometers());
-            Color.setText("   "+ "Color:           "+ order.getColor());
-            orderPrice.setText("   " +"Price:            $"+ order.getPrice());
-            ExtraInfo.setText("  "+ "Extra Information:      " + order.getExtraInfo());
+            carType.setText("   " + "Car Type: " + order.getCarType());
+            Transmission.setText("   "+"Transmission: "+ order.getTransmission());
+            Kilometers.setText("   "+"Kilometers: "+ order.getKilometers());
+            Color.setText("   "+ "Color: "+ order.getColor());
+            orderPrice.setText("   " +"Price: $"+ order.getPrice());
+            ExtraInfo.setText("  "+ "Extra Information: " + order.getExtraInfo());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
