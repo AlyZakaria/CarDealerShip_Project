@@ -45,10 +45,7 @@ public class AdminMainScreenCotroller implements Initializable {
 
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
-        if(person instanceof User)
-            controller.SetValues((User) person);
-
-           // controller.SetValues ((Admin_User)person);
+        controller.SetValues ((User) person);
     }
     public void LogOutBtn(ActionEvent event) throws IOException {
         Parent loginScreen = ScreenSelector.getLoginScreen().load();
