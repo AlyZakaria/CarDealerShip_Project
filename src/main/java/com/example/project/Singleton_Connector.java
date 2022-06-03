@@ -54,7 +54,6 @@ public class Singleton_Connector {
                     String password_DB = resultSet.getString("Password");
                     int gender = resultSet.getInt("Gender");
                     String National_ID = resultSet.getString("National_ID");
-                    System.out.println(name + " " + age + " " + address + " " + email + " " + phoneNumber);
                     if (resultSet.getInt("AdminLevel") == 0)
                         return new Admin_User(ID, name, age, address, email, phoneNumber, gender, password_DB, National_ID);
                     else if (resultSet.getInt("AdminLevel") == 1)

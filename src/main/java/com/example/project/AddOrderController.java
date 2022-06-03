@@ -87,7 +87,6 @@ public class AddOrderController implements Initializable {
     }
 
     public void SetValues(User user) {
-
         this.user = user;
     }
 }

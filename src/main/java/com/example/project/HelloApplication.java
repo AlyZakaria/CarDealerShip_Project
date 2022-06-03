@@ -29,15 +29,6 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
 
-//        ArrayList<Order> order = Singleton_Connector.getInstance().sortOrderIncreasing();
-//        ArrayList<Order> orders = Singleton_Connector.getInstance().sortOrderDecreasing();
-//        for(Order o : order) {
-//            System.out.println(o.getPrice());
-//        }
-//        System.out.println("------------------");
-//        for(Order o : orders) {
-//            System.out.println(o.getPrice());
-//        }
         Parent LoginScreen = ScreenSelector.getLoginScreen().load();
         //To be able to drag it
         LoginScreen.setOnMousePressed(pressEvent -> {
