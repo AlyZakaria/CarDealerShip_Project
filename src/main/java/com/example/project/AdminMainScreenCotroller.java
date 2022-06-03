@@ -42,10 +42,12 @@ public class AdminMainScreenCotroller implements Initializable {
         FXMLLoader Loader = ScreenSelector.getSettingScreen();
         Parent SettingPane = Loader.load();
         SettingsController controller = Loader.getController();
-
+        User temp = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(),
+                person.getEmail(), person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
+        controller.SetValues (temp);
         MainPane.getChildren().removeAll();
         MainPane.getChildren().setAll((AnchorPane)SettingPane);
-        controller.SetValues ((User) person);
+
     }
     public void LogOutBtn(ActionEvent event) throws IOException {
         Parent loginScreen = ScreenSelector.getLoginScreen().load();
@@ -91,8 +93,27 @@ public class AdminMainScreenCotroller implements Initializable {
         MainPane.getChildren().setAll(SearchPane);
     }
 
-    public void pendingOrdersBtn() {
+    public void pendingOrdersBtn() throws SQLException, IOException {
+        FlowPane flowPane = new FlowPane();
+        ScrollPane scrollPane = new ScrollPane(flowPane);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        flowPane.setHgap(20);
+        flowPane.setVgap(20);
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
+        flowPane.setPrefSize(695, 474);
+        ArrayList<Order> orders = Order.getPendingOrders();
+        for(Order order : orders) {
+            OrderMaker orderMaker = new OrderMaker(new DefaultOrderCardFactory());
+            FXMLLoader loader = orderMaker.getOrderFXML();
+            Parent OrderPane = loader.load();
+            OrderCardController controller = loader.getController();
+            controller.setPending(true);
+            controller.getOrder(order, MainPane, person,false);
+            flowPane.getChildren().add(OrderPane);
+        }
 
+        MainPane.getChildren().removeAll();
+        MainPane.getChildren().setAll(scrollPane);
     }
 
     @Override

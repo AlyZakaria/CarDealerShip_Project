@@ -97,7 +97,7 @@ public class SettingsController implements Initializable {
 
             user = User.EditInfo(user,Email,PhoneNumber,Address);
             if(user != null){
-                MessageText.setText("The User Information has been Updated!");
+                MessageText.setText("The Information has been Updated!");
                 EmailText.clear();phoneText.clear();
                 addressText.clear();
                 SetValues(user);
