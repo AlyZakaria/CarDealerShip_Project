@@ -42,13 +42,15 @@ public class MainScreenController implements Initializable{
 
     Boolean SortD = false;
     Boolean SortI = false;
+    Boolean AutomaticCar = false;
+    Boolean ManualCar = false;
 
     @FXML
     private AnchorPane MainPane;
 
     private Person person;
 
-    ObservableList<String> Sort = FXCollections.observableArrayList("High to Low", "Low to High");
+    ObservableList<String> Sort = FXCollections.observableArrayList("High to Low", "Low to High" , "Automatic" , "Manual");
 
 
     @Override
@@ -107,7 +109,15 @@ public class MainScreenController implements Initializable{
             orders = Singleton_Connector.getInstance().sortOrderIncreasing();
             SortI = false;
         }
+        else if(AutomaticCar){
+            orders = Singleton_Connector.getInstance().getAll_AutomaticCars();
+            AutomaticCar = false;
+        }else if(ManualCar){
+            orders = Singleton_Connector.getInstance().getAll_ManualCars();
+            ManualCar = false;
+        }
         else{
+            comboBox.getSelectionModel().clearSelection();
             orders = Order.getAllOrders();
         }
         for(Order order : orders) {
@@ -211,7 +221,14 @@ public class MainScreenController implements Initializable{
             } else if (val.equals("Low to High")) {
                 SortI = true;
                 HomeScreenBtn(new ActionEvent());
+            }else if(val.equals("Automatic")){
+                AutomaticCar = true;
+                HomeScreenBtn(new ActionEvent());
+            }else if(val.equals("Manual")){
+                ManualCar = true;
+                HomeScreenBtn(new ActionEvent());
             }
+
         }catch(NullPointerException e){
 
         }
