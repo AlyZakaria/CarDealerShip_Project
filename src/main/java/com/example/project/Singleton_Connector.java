@@ -160,7 +160,6 @@ public class Singleton_Connector {
         String query = "SELECT max(ID) FROM tbl_users";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
-        System.out.println("Here");
         int last = -1;
         try {
             while(resultSet.next()) {
@@ -299,7 +298,6 @@ public class Singleton_Connector {
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, Email);
-
             preparedStmt.setString(2,PhoneNumber);
             preparedStmt.setString(3, Address);
             preparedStmt.setInt(4,user.getID());
