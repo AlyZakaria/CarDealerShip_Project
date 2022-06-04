@@ -7,6 +7,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -37,6 +38,8 @@ public class HelloApplication extends Application {
                 stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
             });
         });
+        File iconFile = new File("Images/Icon.png");
+        stage.getIcons().add(new Image(iconFile.getAbsolutePath()));
         Scene scene = new Scene(LoginScreen);
         stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         stage.setScene(scene);
