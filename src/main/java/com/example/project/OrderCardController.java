@@ -3,6 +3,7 @@ package com.example.project;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -13,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.security.PublicKey;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -24,10 +24,14 @@ public class OrderCardController implements Initializable {
     private Order order;
     private Person person;
     public AnchorPane mainPane;
+    private ComboBox comboBox;
+
     private boolean myOrder = false;
     private boolean pending = false;
 
     public void CardPressed(MouseEvent event) throws IOException, SQLException {
+        if(comboBox != null)
+            comboBox.setVisible(false);
         ScrollPane ScrollPane = new ScrollPane();
         ScrollPane.setPrefSize(695, 474);
         OrderMaker orderMaker = new OrderMaker(new OrderScreenFactory());
@@ -84,11 +88,13 @@ public class OrderCardController implements Initializable {
         mainPane.getChildren().setAll(ScrollPane);
 
     }
-    public void getOrder(Order order, AnchorPane mainPane, Person person , Boolean myOrder) {
+    public void getOrder(Order order, AnchorPane mainPane, Person person, Boolean myOrder, ComboBox comboBox) {
         this.myOrder = myOrder;
         this.mainPane = mainPane;
         this.order = order;
         this.person = person;
+        this.comboBox = comboBox;
+
         setData();
     }
     private void setData() {
