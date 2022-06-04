@@ -63,6 +63,7 @@ public class OrderController implements Initializable {
         this.user = user;
         FXMLLoader loader = ScreenSelector.getImageSlider();
         try {
+
             Parent imageSlider = loader.load();
             ImageSliderController ImageController = loader.getController();
             ImageController.setTheImages(order);
@@ -70,7 +71,6 @@ public class OrderController implements Initializable {
             userName.setText(user.getName());
             userEmail.setText(user.getEmail());
             userPhone.setText(user.getPhoneNumber());
-//            OrderID.setText(String.valueOf(order.getOrderId()));
             orderModel.setText(order.getModel() + " - " + order.getYear());
             carType.setText("   " + "Car Type: " + order.getCarType());
             Transmission.setText("   "+"Transmission: "+ order.getTransmission());
@@ -78,6 +78,7 @@ public class OrderController implements Initializable {
             Color.setText("   "+ "Color: "+ order.getColor());
             orderPrice.setText("   " +"Price: $"+ order.getPrice());
             ExtraInfo.setText("  "+ "Extra Information: " + order.getExtraInfo());
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
