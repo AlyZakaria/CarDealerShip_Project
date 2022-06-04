@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="439.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AddOrderController">
+<AnchorPane prefHeight="439.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AddOrderController">
    <children>
       <Label layoutX="41.0" layoutY="39.0" text="Car Type:">
          <font>
@@ -45,10 +42,10 @@
          </font></Label>
       <AnchorPane layoutX="131.0" layoutY="36.0">
          <children>
-            <ComboBox fx:id="CarTypeCB" onAction="#ComboBoxChanged" prefWidth="150.0" promptText="Please Select One" visibleRowCount="3" />
+            <ComboBox fx:id="CarTypeCB" onAction="#ComboBoxChanged" prefWidth="150.0" promptText="Please Select One" style="-fx-background-color: transparent; -fx-border-color: #0589ff; -fx-border-width: 0px 0px 2px 0px;" visibleRowCount="3" />
          </children>
       </AnchorPane>
-      <ComboBox fx:id="TransmissionCB" layoutX="131.0" layoutY="70.0" onAction="#ComboBoxChanged" prefWidth="150.0" promptText="Please Select One" />
+      <ComboBox fx:id="TransmissionCB" layoutX="131.0" layoutY="70.0" onAction="#ComboBoxChanged" prefWidth="150.0" promptText="Please Select One" style="-fx-background-color: transparent; -fx-border-color: #0589ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="ColorTxt" layoutX="131.0" layoutY="140.0" />
       <TextField fx:id="ModelTxt" layoutX="131.0" layoutY="174.0" />
       <TextField fx:id="YearTxt" layoutX="131.0" layoutY="208.0" />
@@ -74,8 +71,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="PHOTO" size="15" />
+         </graphic>
       </Button>
-      <FontAwesomeIconView fill="WHITE" glyphName="PHOTO" layoutX="425.0" layoutY="231.0" size="15" />
       <Label layoutX="43.0" layoutY="284.0" text="Price">
          <font>
             <Font name="System Bold" size="11.0" />
