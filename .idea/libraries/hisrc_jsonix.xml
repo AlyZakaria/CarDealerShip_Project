@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="hisrc.jsonix" type="repository">
+    <properties maven-id="org.hisrc.jsonix:jsonix:1.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jsonix-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
