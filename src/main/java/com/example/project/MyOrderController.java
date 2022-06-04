@@ -44,7 +44,7 @@ public class MyOrderController implements Initializable {
         MainPaneOrder.getChildren().setAll(orderScreen);
     }
     public void removeOrderBtn(ActionEvent event) throws SQLException {
-        Singleton_Connector.getInstance().deleteOrder(order);
+        order.deleteOrder();
         Message.setText("Order Has been Removed");
         removeOrderBtn.setVisible(false);
     }

@@ -96,9 +96,9 @@ public class OrderCardController implements Initializable {
         Image img;
         if(files == null || files.length == 0) {
             File temp = new File("Images\\no-image.jpg");
-            img = new Image(temp.getAbsolutePath(), 200, 112, true, true);
+            img = new Image(temp.getAbsolutePath(), 200, 112, false, true);
         } else {
-            img = new Image(files[0].getAbsolutePath(), 200, 112, true, true);
+            img = new Image(files[0].getAbsolutePath(), 200, 112, false, true);
         }
         OrderImg.setImage(img);
         PriceLbl.setText("$"+String.valueOf(order.getPrice()));

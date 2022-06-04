@@ -32,6 +32,7 @@ public class SearchUserScreenController implements Initializable {
 
     public Label status_lbl;
     public TextField id_txt;
+    public Button Delete_Order_btn;
 
     private Label[] labels;
 
@@ -85,12 +86,23 @@ public class SearchUserScreenController implements Initializable {
         status_lbl.setText("User Deleted");
         hideInfo();
     }
+    public void RemoveOrder(ActionEvent event) throws SQLException {
+        Order order = tableview.getSelectionModel().getSelectedItem();
+        if(order == null)
+            status_lbl.setText("No order is selected");
+        else {
+            order.deleteOrder();
+            status_lbl.setText("Order Deleted Successfully");
+            searchUser(new ActionEvent());
+        }
+    }
     private void hideInfo() {
         for(Label label : labels) {
             label.setVisible(false);
         }
         tableview.setVisible(false);
         Delete_btn.setVisible(false);
+        Delete_Order_btn.setVisible(false);
     }
     private void showInfo() {
         for(Label label : labels) {
@@ -98,5 +110,6 @@ public class SearchUserScreenController implements Initializable {
         }
         tableview.setVisible(true);
         Delete_btn.setVisible(true);
+        Delete_Order_btn.setVisible(true);
     }
 }
