@@ -50,11 +50,6 @@ public class MainScreenController implements Initializable{
 
     ObservableList<String> Sort = FXCollections.observableArrayList("High to Low", "Low to High");
 
-    /*public MainScreenController(Person person) {
-        this.user = new User(person.getID(), person.getName(), person.getAge(), person.getAddress(), person.getEmail(),
-                person.getPhoneNumber(), person.getGender(), person.getPassword(), person.getNational_ID());
-    }
-*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
