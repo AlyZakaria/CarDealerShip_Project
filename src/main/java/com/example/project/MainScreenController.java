@@ -252,6 +252,5 @@ public class MainScreenController implements Initializable{
         }catch(NullPointerException e){
 
         }
-
     }
 }
