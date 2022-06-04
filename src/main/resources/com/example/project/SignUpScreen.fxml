@@ -62,7 +62,10 @@
                   <FontAwesomeIconView fill="#0598ff" glyphName="USER" size="30" text="" wrappingWidth="25.285714149475098" />
                </graphic>
             </Button>
-            <Label fx:id="LabelMessage" layoutX="31.0" layoutY="386.0" prefHeight="50.0" prefWidth="154.0" textAlignment="CENTER" textFill="RED" />
+            <Label fx:id="LabelMessage" layoutX="31.0" layoutY="386.0" prefHeight="50.0" prefWidth="154.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
             <RadioButton fx:id="Male" layoutX="36.0" layoutY="322.0" mnemonicParsing="false" text="Male">
                <toggleGroup>
                   <ToggleGroup fx:id="gender" />

@@ -81,15 +81,25 @@ public class SignUpController {
                     EmailField.getText() , PhoneField.getText() , gender , "", National_IDField.getText() );
             String newpassword = admin.addUser(user);
 
-                LabelMessage.setText("UserID is " + newId + "  " + "\nPassword is "+newpassword);
+            LabelMessage.setText("UserID is " + newId + "  " + "\nPassword is "+newpassword);
 
         }catch (UserExistsException e){
-                LabelMessage.setText("User already exists");
+            LabelMessage.setText("User already exists");
+            clearInfo();
         }catch (Exception e) {
-                LabelMessage.setText("Invalid Inputs, Try Again");
-
+            LabelMessage.setText("Invalid Inputs, Try Again");
+            clearInfo();
         }
 
-
+    }
+    private void clearInfo() {
+        Male.setSelected(false);
+        Female.setSelected(false);
+        nameField.clear();
+        EmailField.clear();
+        AddressField.clear();
+        PhoneField.clear();
+        National_IDField.clear();
+        AgeField.clear();
     }
 }
