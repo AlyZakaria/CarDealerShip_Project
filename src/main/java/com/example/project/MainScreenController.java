@@ -96,7 +96,6 @@ public class MainScreenController implements Initializable{
         comboBox.setVisible(true);
         comboBox.setItems(Sort);
 
-
         FlowPane flowPane = new FlowPane();
         ScrollPane scrollPane = new ScrollPane(flowPane);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
