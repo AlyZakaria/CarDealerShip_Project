@@ -77,7 +77,7 @@ public class AdminMainScreenCotroller implements Initializable {
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order,MainPane, person,false);
+            controller.getOrder(order,MainPane, person,false ,null);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -108,7 +108,7 @@ public class AdminMainScreenCotroller implements Initializable {
             Parent OrderPane = loader.load();
             OrderCardController controller = loader.getController();
             controller.setPending(true);
-            controller.getOrder(order, MainPane, person,false);
+            controller.getOrder(order, MainPane, person,false, null);
             flowPane.getChildren().add(OrderPane);
         }
 

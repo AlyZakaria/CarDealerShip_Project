@@ -6,22 +6,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable{
@@ -136,7 +131,7 @@ public class MainScreenController implements Initializable{
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order,MainPane,person, false);
+            controller.getOrder(order,MainPane,person, false , comboBox);
             flowPane.getChildren().add(OrderPane);
 
         }
@@ -162,7 +157,7 @@ public class MainScreenController implements Initializable{
             FXMLLoader loader = orderMaker.getOrderFXML();
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
-            controller.getOrder(order,MainPane,person, true);
+            controller.getOrder(order,MainPane,person, true, comboBox);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -214,7 +209,7 @@ public class MainScreenController implements Initializable{
             Parent OrderPane = loader.load();
             OrderCardController  controller = loader.getController();
             //@Aly
-            controller.getOrder(order,MainPane,person, false);
+            controller.getOrder(order,MainPane,person, false, comboBox);
             flowPane.getChildren().add(OrderPane);
         }
 
@@ -252,6 +247,5 @@ public class MainScreenController implements Initializable{
         }catch(NullPointerException e){
 
         }
-
     }
 }
