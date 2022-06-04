@@ -21,3 +21,7 @@
     -fx-background-radius: 5px;
 }
 
+.comboBox{
+    -fx-text-fill: white;
+}
+
