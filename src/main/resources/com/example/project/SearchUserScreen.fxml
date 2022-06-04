@@ -62,12 +62,20 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="Delete_btn" layoutX="198.0" layoutY="404.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: red; -fx-cursor: hand;" text="Delete User" textFill="#efeeee">
+      <Button fx:id="Delete_btn" layoutX="27.0" layoutY="409.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: red; -fx-cursor: hand;" text="Delete User" textFill="#efeeee">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="16" />
+         </graphic>
+      </Button>
+      <Button fx:id="Delete_Order_btn" layoutX="187.0" layoutY="409.0" mnemonicParsing="false" onAction="#RemoveOrder" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #0098ff; -fx-cursor: hand;" text="Delete Order" textFill="#efeeee">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" size="16" />
          </graphic>
       </Button>
    </children>
