@@ -44,13 +44,16 @@ public class MainScreenController implements Initializable{
     Boolean SortI = false;
     Boolean AutomaticCar = false;
     Boolean ManualCar = false;
-
+    Boolean SedanCar = false;
+    Boolean SuvCar = false;
+    Boolean Truck = false;
     @FXML
     private AnchorPane MainPane;
 
     private Person person;
 
-    ObservableList<String> Sort = FXCollections.observableArrayList("High to Low", "Low to High" , "Automatic" , "Manual");
+    ObservableList<String> Sort = FXCollections.observableArrayList("High to Low", "Low to High" , "Automatic" , "Manual",
+            "Sedan" , "Suv", "Truck");
 
 
     @Override
@@ -115,8 +118,16 @@ public class MainScreenController implements Initializable{
         }else if(ManualCar){
             orders = Singleton_Connector.getInstance().getAll_ManualCars();
             ManualCar = false;
-        }
-        else{
+        }else if(SedanCar){
+            orders = Singleton_Connector.getInstance().getAll_SedanCars();
+            SedanCar = false;
+        }else if(SuvCar){
+            orders = Singleton_Connector.getInstance().getAll_SuvCars();
+            SuvCar = false;
+        }else if(Truck){
+            orders = Singleton_Connector.getInstance().getAll_Trucks();
+            Truck = false;
+        } else{
             comboBox.getSelectionModel().clearSelection();
             orders = Order.getAllOrders();
         }
@@ -226,6 +237,15 @@ public class MainScreenController implements Initializable{
                 HomeScreenBtn(new ActionEvent());
             }else if(val.equals("Manual")){
                 ManualCar = true;
+                HomeScreenBtn(new ActionEvent());
+            }else if(val.equals("Sedan")){
+                SedanCar = true;
+                HomeScreenBtn(new ActionEvent());
+            }else if(val.equals("Suv")){
+                SuvCar = true;
+                HomeScreenBtn(new ActionEvent());
+            }else if(val.equals("Truck")){
+                Truck = true;
                 HomeScreenBtn(new ActionEvent());
             }
 
