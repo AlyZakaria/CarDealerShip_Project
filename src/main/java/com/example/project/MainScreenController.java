@@ -139,6 +139,7 @@ public class MainScreenController implements Initializable{
     }
 
 
+<<<<<<< HEAD
     public void sendPersonData(Person person) throws SQLException, IOException {
        // System.out.println("MainScreenController");
        // System.out.println(person instanceof User? "Yes" : "NO");
@@ -147,6 +148,12 @@ public class MainScreenController implements Initializable{
         date.setText(String.valueOf(java.time.LocalDate.now()));
         HomeScreenBtn(new ActionEvent());
 
+=======
+    public void sendPersonData(Person person) throws SQLException {
+        user = (User) person;
+        name.setText("Hello, " + user.getName());
+        date.setText(String.valueOf(java.time.LocalDate.now()));
+>>>>>>> 76d6ad0 (delete user button now hides viewtables and info lables)
     }
 
 
